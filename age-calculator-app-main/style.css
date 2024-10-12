@@ -1,0 +1,170 @@
+/* Fonts imported from google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* root */
+:root {
+  --Purple: hsl(259, 100%, 65%);
+  --Light-red: hsl(0, 100%, 67%);
+  --White: hsl(0, 0%, 100%);
+  --Off-white: hsl(0, 0%, 94%);
+  --Light-grey: hsl(0, 0%, 86%);
+  --Smokey-grey: hsl(0, 1%, 44%);
+  --Off-black: hsl(0, 0%, 8%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins-italic", sans-serif;
+}
+body {
+  background-color: var(--Off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+main {
+  background-color: var(--White);
+  width: 700px;
+  margin: 10px;
+  padding: 50px;
+  border-radius: 20px 20px 150px 20px;
+}
+
+/* Birthday date input styles */
+#date-input {
+  display: flex;
+  gap: 30px;
+}
+#day {
+  display: flex;
+  flex-direction: column;
+}
+#month {
+  display: flex;
+  flex-direction: column;
+}
+#year {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--Smokey-grey);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+input {
+  padding: 10px;
+  color: hsl(0, 0%, 8%);
+  text-align: left;
+  font-size: 20px;
+  font-weight: 800;
+  border: 1px solid var(--Light-grey);
+  border-radius: 5px;
+  transition: border-color 0.3s;
+  width: 110px;
+}
+input:focus {
+  border-color: var(--Purple);
+  outline: none;
+}
+.error-msg {
+  margin-top: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--Light-red);
+  width: 100px;
+  min-height: 0.6rem;
+}
+
+/* Submit button styles */
+#button {
+  display: flex;
+  align-items: center;
+}
+hr {
+  width: 100%;
+  height: 0;
+  border: 1px solid var(--Light-grey);
+}
+button {
+  background-color: var(--Purple);
+  border-radius: 100%;
+  border: none;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Birthday output styles */
+h2 {
+  font-weight: 800;
+  font-size: 70px;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+}
+span {
+  color: var(--Purple);
+}
+
+/* Attribution styles */
+.attribution {
+  font-size: 1em;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* responsive css */
+@media (max-width: 800px) {
+  main {
+    width: 95%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  input {
+    width: 100px;
+    font-size: 14px;
+  }
+  #date-input {
+    gap: 5px;
+  }
+  #button {
+    margin-top: 10px;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
+  hr {
+    width: 100%;
+    margin: 20px 0;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  button {
+    z-index: 2; /* Set a higher z-index to place the button on top of the line */
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 50px;
+    margin-left: -40px;
+  }
+}

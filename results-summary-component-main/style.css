@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Colors */
+:root {
+  --primary-gradient-start: hsl(252, 100%, 67%);
+  --primary-gradient-end: hsl(241, 81%, 54%);
+  --secondary-color: hsl(241, 100%, 89%);
+  --shadow-color: rgb(231, 221, 221);
+  --button-background: hsl(224, 30%, 27%);
+  --button-text: white;
+}
+
+@media (min-width: 501px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Hanken", sans-serif;
+  }
+
+  /* Container Styles */
+  #container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 650px;
+    /* height: 400px; */
+    box-shadow: 0.5em 0.5em 1em var(--shadow-color);
+    border-radius: 20px;
+  }
+
+  /* Left Panel Styles */
+  #left {
+    background: linear-gradient(
+      var(--primary-gradient-start),
+      var(--primary-gradient-end)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+    color: var(--secondary-color);
+    margin: 30px 0;
+  }
+
+  #score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    text-align: center;
+    background: linear-gradient(hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+    margin-bottom: 30px;
+  }
+
+  #big-score {
+    color: var(--button-text);
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  #small-score {
+    color: var(--secondary-color);
+  }
+
+  #left > h2 {
+    color: var(--button-text);
+    margin-bottom: 30px;
+    font-weight: 600;
+  }
+
+  #left > p {
+    color: var(--secondary-color);
+    text-align: center;
+    margin: 0 40px;
+    margin-bottom: 40px;
+    line-height: 20px;
+  }
+
+  /* Right Panel Styles */
+  #right {
+    padding: 2.2em;
+  }
+
+  #right h2 {
+    font-weight: 500;
+    margin-bottom: 1em;
+  }
+
+  #Summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  /* Data Styles */
+  .data {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--button-background);
+  }
+  .data img {
+    height: 16px;
+  }
+  .data p {
+    display: inline;
+  }
+  .score2 {
+    display: inline;
+  }
+  .score2 b {
+    font-size: 22px;
+    font-weight: 600;
+    color: black;
+  }
+
+  .score2 p {
+    color: grey;
+  }
+
+  /* Reaction Styles */
+  .Reaction {
+    background-color: hsla(0, 100%, 67%, 0.1);
+    color: hsl(0, 100%, 67%);
+  }
+
+  /* Memory Styles */
+  .Memory {
+    background-color: hsla(39, 100%, 56%, 0.1);
+    color: hsl(39, 100%, 56%);
+  }
+
+  /* Verbal Styles */
+  .Verbal {
+    background-color: hsla(166, 100%, 37%, 0.1);
+    color: hsl(166, 100%, 37%);
+  }
+
+  /* Visual Styles */
+  .Visual {
+    background-color: hsla(234, 85%, 45%, 0.1);
+    color: hsl(234, 85%, 45%);
+  }
+
+  /* Button Styles */
+  button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: 30px;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    cursor: pointer;
+  }
+
+  /* Attribution Styles */
+  .attribution {
+    font-size: 1em;
+    text-align: center;
+    margin: 4em;
+    line-height: 2;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+}
+
+@media (max-width: 500px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  /* Body Styles */
+  body {
+    height: 120vh;
+    font-family: "Hanken", sans-serif;
+  }
+
+  /* Left Side Styles */
+  #left {
+    background: linear-gradient(
+      var(--primary-gradient-start),
+      var(--primary-gradient-end)
+    );
+    border-radius: 0 0 40px 40px;
+    text-align: center;
+  }
+  h1 {
+    font-size: 20px;
+    color: var(--secondary-color);
+    padding: 30px;
+  }
+
+  #score-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #score {
+    background: linear-gradient(hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0));
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+
+  #big-score {
+    color: var(--button-text);
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  #small-score {
+    color: var(--secondary-color);
+  }
+
+  #left > h2 {
+    color: var(--button-text);
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+
+  #left > p {
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 0 3em;
+    line-height: 25px;
+    padding-bottom: 2em;
+  }
+
+  /* Right Panel Styles */
+  #right {
+    padding: 2.2em;
+  }
+
+  #right h2 {
+    font-weight: 600;
+    margin-bottom: 1em;
+  }
+
+  #Summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  /* Data Styles */
+  .data {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: var(--button-background);
+  }
+  .data img {
+    height: 16px;
+  }
+  .data p {
+    display: inline;
+  }
+  .score2 {
+    display: inline;
+  }
+  .score2 b {
+    font-size: 22px;
+    font-weight: 600;
+    color: black;
+  }
+
+  .score2 p {
+    color: grey;
+  }
+
+  /* Reaction Styles */
+  .Reaction {
+    background-color: hsla(0, 100%, 67%, 0.1);
+    color: hsl(0, 100%, 67%);
+  }
+
+  /* Memory Styles */
+  .Memory {
+    background-color: hsla(39, 100%, 56%, 0.1);
+    color: hsl(39, 100%, 56%);
+  }
+
+  /* Verbal Styles */
+  .Verbal {
+    background-color: hsla(166, 100%, 37%, 0.1);
+    color: hsl(166, 100%, 37%);
+  }
+
+  /* Visual Styles */
+  .Visual {
+    background-color: hsla(234, 85%, 45%, 0.1);
+    color: hsl(234, 85%, 45%);
+  }
+
+  /* Button Styles */
+  button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    font-weight: 600;
+    border-radius: 30px;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    cursor: pointer;
+  }
+
+  /* Attribution Styles */
+  .attribution {
+    font-size: 1em;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 4em;
+    line-height: 2;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+}

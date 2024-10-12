@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Advice generator app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      body {
+        background-color: hsl(218, 23%, 16%);
+        color: hsl(150, 100%, 66%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        font-size: 28px;
+        font-family: "Manrope", sans-serif;
+        font-weight: 800;
+        letter-spacing: 2px;
+      }
+      main {
+        background-color: hsl(217, 19%, 24%);
+        border-radius: 14px;
+        padding: 1em;
+        text-align: center;
+        min-height: 6em;
+        min-width: 8em;
+        max-width: 15em;
+        margin-bottom: 4em;
+        position: relative;
+      }
+      h6 {
+        margin: 0;
+      }
+      p {
+        line-height: 1.5;
+        color: hsl(193, 38%, 86%);
+        font-size: 1em;
+        margin: 0.5em 0;
+      }
+      .dice {
+        background-color: hsl(150, 100%, 66%);
+        width: 2em;
+        height: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute;
+        left: 50%;
+        bottom: -10%;
+        transform: translate(-50%);
+        transition: 0.4s ease-out;
+        margin: 0;
+      }
+      .dice:hover {
+        box-shadow: 0 0 30px hsl(150, 100%, 66%);
+      }
+      .divider {
+        margin: 0;
+      }
+      .divider img {
+        width: 90%;
+        margin: 0;
+      }
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h6>Advice # <span></span></h6>
+      </header>
+      <div class="content">
+        <p></p>
+      </div>
+      <div class="divider">
+        <img src="./images/pattern-divider-desktop.svg" alt="" />
+      </div>
+      <div class="dice">
+        <img class="btn" src="./images/icon-dice.svg" alt="" />
+      </div>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. <br />
+      <br />
+      Coded by <a href="https://github.com/Yashbabani0">Yash Babani</a>.
+    </div>
+    <script>
+      const span = document.querySelector("span");
+      const p = document.querySelector(".content p");
+      const btn = document.querySelector(".btn");
+
+      function fetchAdvice() {
+        fetch(`https://api.adviceslip.com/advice?timestamp=${new Date().getTime()}`)
+          .then((response) => response.json())
+          .then((data) => {
+            span.innerHTML = data.slip.id;
+            p.innerHTML = data.slip.advice;
+          });
+      }
+
+      btn.addEventListener("click", fetchAdvice);
+
+      // Initial advice fetch on page load
+      fetchAdvice();
+    </script>
+  </body>
+</html>

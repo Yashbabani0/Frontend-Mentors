@@ -1,0 +1,81 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: white;
+  text-decoration: none;
+}
+
+body {
+  background-color: hsl(0, 0%, 8%);
+}
+
+#container {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#card {
+  background-color: hsl(0, 0%, 12%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+img {
+  border-radius: 100%;
+  width: 80px;
+}
+#content {
+  text-align: center;
+}
+h1 {
+  font-weight: 500;
+  padding-top: 20px;
+}
+h4 {
+  padding-top: 10px;
+  color: hsl(75, 94%, 57%);
+}
+#content p {
+  padding-top: 20px;
+  font-weight: lighter;
+}
+#btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 15px;
+}
+button {
+  width: 300px;
+  padding: 12px 0;
+  margin-bottom: 15px;
+  background-color: hsl(0, 0%, 20%);
+  border: none;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: hsl(75, 94%, 57%);
+  color: black;
+  transition: background-color 0.9s;
+}
+
+.attribution {
+  margin-bottom: 50px;
+}
+.attribution p {
+  text-align: center;
+  padding: 5px;
+}
+.attribution a {
+  color: #182f95;
+}

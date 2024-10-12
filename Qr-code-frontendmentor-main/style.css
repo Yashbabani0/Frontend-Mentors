@@ -1,0 +1,43 @@
+body {
+  background-color: hsl(212, 45%, 89%);
+}
+#main {
+  height: 29rem;
+  width: 18rem;
+  background-color: white;
+  margin: 50px auto;
+  padding: 1rem;
+  border-radius: 20px;
+  text-align: center;
+}
+/* .img {
+  width: 18rem;
+  
+  background-color: blue;
+  z-index: 1;
+} */
+.qr {
+  height: 260px;
+  width: 260px;
+  background-color: blue;
+  border-radius: 20px;
+  margin: auto;
+}
+.qr-code {
+  margin-top: 2.2rem;
+}
+h2 {
+  font-weight: 600;
+}
+p {
+  color: rgb(92, 88, 88);
+  margin: 0px 14px 16px 14px;
+}
+.attribution {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

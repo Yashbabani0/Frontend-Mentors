@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.filter-white-on-hover {
+  transition: filter 0.3s;
+}
+
+.filter-white-on-hover:hover {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg)
+    brightness(100%) contrast(100%);
+}

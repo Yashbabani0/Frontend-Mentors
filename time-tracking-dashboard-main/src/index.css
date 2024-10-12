@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* styles.css or similar */
+.bg-primary-blue { background-color: hsl(246, 80%, 60%); }
+.bg-light-red-work { background-color: hsl(15, 100%, 70%); }
+.bg-soft-blue-play { background-color: hsl(195, 74%, 62%); }
+.bg-light-red-study { background-color: hsl(348, 100%, 68%); }
+.bg-lime-green-exercise { background-color: hsl(145, 58%, 55%); }
+.bg-violet-social { background-color: hsl(264, 64%, 52%); }
+.bg-soft-orange-self-care { background-color: hsl(43, 84%, 65%); }
+    

@@ -1,0 +1,145 @@
+@import url(https://fonts.google.com/specimen/Overpass);
+:root {
+  --Orange: hsl(25, 97%, 53%);
+  --White: hsl(0, 0%, 100%);
+  --Light-Grey: hsl(217, 12%, 63%);
+  --Medium-Grey: hsl(220, 8%, 28%);
+  --Dark-Blue: hsl(213, 19%, 18%);
+  --Very-Dark-Blue: hsl(216, 12%, 8%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 15px;
+  color: var(--White);
+  font-family: sans-serif;
+}
+body {
+  background-color: var(--Very-Dark-Blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+main {
+  background-color: var(--Dark-Blue);
+  width: 400px;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px;
+}
+/* Page One Give Rating */
+#page1 {
+  display: block;
+}
+#star-img {
+  background-color: var(--Medium-Grey);
+  color: var(--Orange);
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+p {
+  color: var(--White);
+  opacity: 50%;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+#rating-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.ratings {
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  background-color: var(--Medium-Grey);
+  color: var(--Light-Grey);
+  border: none;
+  cursor: pointer;
+}
+.ratings:hover {
+  background-color: var(--Light-Grey);
+  color: var(--White);
+  transition: 0.4s ease-out;
+}
+.ratings-selected {
+  background-color: var(--Orange);
+  color: var(--White);
+}
+#submit-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--White);
+  background-color: var(--Orange);
+  cursor: pointer;
+  border: none;
+  border-radius: 30px;
+}
+#submit-btn:hover {
+  color: var(--Orange);
+  background-color: var(--White);
+  transition: 0.5s ease-out;
+}
+
+/* Page 2 Thank You Page */
+
+#page2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  padding-bottom: 0;
+  display: none;
+}
+#page2 img {
+  margin-bottom: 25px;
+}
+#your-selected-stars {
+  background-color: var(--Medium-Grey);
+  margin: auto;
+  margin-bottom: 30px;
+  border-radius: 30px;
+  width: 60%;
+  height: 25px;
+}
+.Show-selected-stars-msg {
+  width: 100%;
+  color: var(--Orange);
+  font-weight: 600;
+  padding-top: 2px;
+}
+span {
+  color: var(--Orange);
+}
+
+@media (max-width: 400px) {
+  body {
+    max-width: 100%;
+    min-height: 100vh;
+  }
+  main {
+    width: 350px;
+  }
+  #your-selected-stars {
+    width: 100%;
+  }
+}

@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+:root {
+  --Dark-Grayish-Magenta: hsl(303, 10%, 53%);
+  --Light-Grayish-Magenta: hsl(300, 24%, 96%);
+  --White: hsl(0, 0%, 100%);
+  --very-dark-magenta: hsl(300, 43%, 22%);
+  --soft-pink: hsl(333, 80%, 67%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "League Spartan", sans-serif;
+}
+
+@media (min-width: 1001px) {
+  body {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 0px;
+  }
+
+  #top {
+    display: flex;
+  }
+
+  #top-left {
+    width: 400px;
+  }
+  h1 {
+    color: var(--very-dark-magenta);
+    font-size: 60px;
+  }
+  #first-par {
+    color: var(--Dark-Grayish-Magenta);
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    width: 80%;
+  }
+
+  #top-right {
+    width: 600px;
+  }
+  .ratings {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background-color: var(--Light-Grayish-Magenta);
+    padding: 20px;
+    margin: 30px;
+    width: 500px;
+    color: var(--very-dark-magenta);
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+  .star * {
+    margin-left: 5px;
+  }
+  .second-rating {
+    margin-left: 100px;
+  }
+  .third-rating {
+    margin-left: 200px;
+  }
+
+  #buttom {
+    display: flex;
+    gap: 30px;
+  }
+  .customer-review {
+    background-color: var(--very-dark-magenta);
+    padding: 30px;
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+  }
+  #customer-review-one {
+    margin-top: 50px;
+  }
+  #customer-review-second {
+    margin-top: 70px;
+  }
+  #customer-review-third {
+    margin-top: 90px;
+  }
+  .profile {
+    display: flex;
+    gap: 15px;
+  }
+  .profile-img {
+    border-radius: 100%;
+    width: 40px;
+  }
+  h4 {
+    color: var(--White);
+  }
+  b {
+    color: var(--soft-pink);
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .customer-review > p {
+    color: var(--White);
+    padding-top: 10px;
+  }
+
+  .backround-img {
+    position: fixed;
+    top: 0;
+    background-color: var(--white);
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr) 350px;
+    grid-template-rows: repeat(8, 1fr);
+  }
+
+  .top-img {
+    background-image: url("./images/bg-pattern-top-desktop.svg");
+    background-repeat: no-repeat;
+    grid-column: 1 / 5;
+    grid-row: 1 / 5;
+  }
+
+  .down-img {
+    background-image: url("./images/bg-pattern-bottom-desktop.svg");
+    background-repeat: no-repeat;
+    grid-row: -1 / 3;
+    grid-column: -1 / 4;
+  }
+  .attribution {
+    margin-top: 50px;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+@media (max-width: 1000px) {
+  body {
+    max-width: 1000px;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 0;
+  }
+  /* temp */
+  #top {
+    text-align: center;
+    margin-top: 50px;
+  }
+  h1 {
+    color: var(--very-dark-magenta);
+    font-size: 50px;
+  }
+  #first-par {
+    color: var(--Dark-Grayish-Magenta);
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .ratings {
+    gap: 50px;
+    background-color: var(--Light-Grayish-Magenta);
+    padding: 20px;
+    margin: 30px;
+    width: auto;
+    color: var(--very-dark-magenta);
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 10px;
+  }
+  .star * {
+    margin-left: 5px;
+  }
+  #buttom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .customer-review {
+    background-color: var(--very-dark-magenta);
+    padding: 30px;
+    min-width: 300px;
+    min-height: 200px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .profile {
+    display: flex;
+    gap: 15px;
+  }
+  .profile-img {
+    border-radius: 100%;
+    width: 40px;
+  }
+  h4 {
+    color: var(--White);
+  }
+  b {
+    color: var(--soft-pink);
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .customer-review > p {
+    color: var(--White);
+    padding-top: 10px;
+  }
+}

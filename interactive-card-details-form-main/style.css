@@ -1,0 +1,248 @@
+/* style.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+
+:root {
+  --White: hsl(0, 0%, 100%);
+  --Light-grayish-violet: hsl(270, 3%, 87%);
+  --Dark-grayish-violet: hsl(279, 6%, 55%);
+  --Very-dark-violet: hsl(278, 68%, 11%);
+  --Red: hsl(0, 100%, 66%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.hidden {
+  display: none;
+}
+.error {
+  border: 2px solid;
+  border-color: var(--Red);
+  color: var(--Red);
+  background-color: hsl(0, 98%, 81%);
+}
+.error:focus {
+  outline: none;
+  border: 2px solid;
+  border-color: var(--Red);
+  color: var(--Red);
+  background-color: hsl(0, 98%, 81%);
+}
+.errorvalue {
+  color: var(--Red);
+  font-weight: 600;
+  font-size: 0.8em;
+  margin-top: -2%;
+  margin-bottom: 1em;
+  display: none;
+}
+body {
+  min-height: 100vh;
+  width: 100%;
+  font-size: 18px;
+  font-family: "Space Grotesk", sans-serif;
+}
+label {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+input {
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  border: 2px solid var(--Light-grayish-violet);
+  color: var(--Light-grayish-violet);
+  /* outline: none; */
+}
+input:focus {
+  color: var(--Very-dark-violet);
+  /* border-color: var(--Very-dark-violet); */
+}
+button {
+  margin: 1em 0;
+  padding: 0.7em 8.8em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1em;
+  background-color: var(--Very-dark-violet);
+  color: var(--Light-grayish-violet);
+  cursor: pointer;
+  border: none;
+  border-radius: 0.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card_front > img {
+  width: 20em;
+}
+.card_back > img {
+  width: 20em;
+}
+main {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+.left {
+  background-image: url(./images/bg-main-desktop.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 40%;
+  min-height: 100vh;
+  background-size: cover;
+  color: var(--White);
+  position: relative;
+}
+.card_front {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+}
+.front_card_content {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+}
+h1 {
+  padding-top: 1.5em;
+  font-size: 1.3em;
+  padding-bottom: 0.4em;
+  font-weight: 600;
+}
+.card_information {
+  display: flex;
+  justify-content: space-between;
+}
+.card_back {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+}
+.card_front,
+.card_back {
+    transition: transform 0.3s ease;
+}
+
+.card_front:hover,
+.card_back:hover {
+    transform: scale(1.2);
+}
+.back_card_content {
+  position: absolute;
+  top: 44%;
+  right: 13%;
+  font-weight: 600;
+}
+.right {
+  min-width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.complete {
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h2 {
+  margin: 1em 0;
+}
+.complete p {
+  margin: 1em 0;
+}
+form {
+  margin-left: 30%;
+}
+.cardholder_name input {
+  width: 22em;
+  margin: 1em 0;
+}
+.card_number input {
+  width: 22em;
+  margin: 1em 0;
+}
+.card_dm,
+.card_cvc {
+  display: flex;
+  flex-direction: column;
+}
+.card_dm_cvc {
+  display: flex;
+  gap: 1em;
+}
+.card_dm_cvc input {
+  width: 4em;
+  gap: 1em;
+  margin: 1em 0;
+}
+.card_cvc input {
+  width: 7em;
+}
+@media (min-width: 900px) and (max-width: 1120px) {
+  .card_front {
+    left: 30%;
+  }
+  .card_back {
+    left: 40%;
+  }
+}
+@media (min-width: 370px) and (max-width: 899px) {
+  main {
+    flex-direction: column;
+    max-width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  .left {
+    background-image: url(./images/bg-main-mobile.png);
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 40vh;
+    max-height: 40vh;
+    background-size: cover;
+  }
+  .card_back {
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .card_front {
+    top: 48%;
+    left: 40%;
+    transform: translate(-40%);
+    z-index: 2;
+  }
+  .right {
+    min-width: 100%;
+    max-width: 100%;
+    margin-top: 4em;
+  }
+  .complete {
+    margin: 0 2em;
+    margin-top: 2em;
+  }
+  form {
+    margin: 1em;
+  }
+  .cardholder_name input {
+    width: 100%;
+    margin: 1em 0;
+  }
+  .card_number input {
+    width: 100%;
+    margin: 1em 0;
+  }
+  button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body * {
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+label {
+  font-size: 14px;
+}
+
+/* Theme 1 */
+.theme1 {
+  background-color: hsl(222, 26%, 31%);
+  color: white;
+}
+
+.theme1 .theme1_calcu_heading * {
+  color: hsl(30, 25%, 89%);
+}
+
+#theme1_screen {
+  background-color: hsl(224, 36%, 15%);
+  color: hsl(30, 25%, 89%);
+}
+
+.theme1 .theme1_keypad {
+  background-color: hsl(223, 31%, 20%);
+}
+
+.theme1 .theme1_generalbtn {
+  background-color: hsl(30, 25%, 89%);
+  box-shadow: 0 5px 0 0 hsl(28, 16%, 65%);
+  cursor: pointer;
+  color: hsl(221, 14%, 31%);
+  font-size: 1.6em;
+  transition: 0.3s ease-in;
+}
+
+.theme1 .theme1_generalbtn:hover {
+  background-color: white;
+}
+
+.theme1 .theme1_deletebtn,
+.theme1 .theme1_resetbtn {
+  background-color: hsl(225, 21%, 49%);
+  box-shadow: 0 5px 0 0 hsl(224, 28%, 35%);
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: 0.3s ease-in;
+}
+
+.theme1 .theme1_deletebtn:hover,
+.theme1 .theme1_resetbtn:hover {
+  opacity: 0.7;
+}
+
+.theme1 .theme1_equalbtn {
+  background-color: hsl(6, 63%, 50%);
+  box-shadow: 0 5px 0 0 hsl(6, 70%, 34%);
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: 0.3s ease-in;
+}
+
+.theme1 .theme1_equalbtn:hover {
+  background-color: hsl(6, 55%, 56%);
+}
+
+/* Theme 2 */
+.theme2 {
+  background-color: hsl(0, 0%, 90%);
+  color: hsl(60, 10%, 19%);
+}
+
+.theme2 .theme2_calcu_heading {
+  color: hsl(60, 10%, 19%);
+}
+
+#theme2_screen {
+  background-color: hsl(0, 0%, 93%);
+  color: hsl(60, 10%, 19%);
+}
+
+.theme2 .theme2_keypad {
+  background-color: hsl(0, 5%, 81%);
+}
+
+.theme2 .theme2_generalbtn {
+  background-color: hsl(45, 7%, 89%);
+  box-shadow: 0 5px 0 0 hsl(35, 11%, 61%);
+  cursor: pointer;
+  font-size: 1.6em;
+  transition: 0.3s ease-in;
+}
+
+.theme2 .theme2_generalbtn:hover {
+  background-color: white;
+}
+
+.theme2 .theme2_deletebtn,
+.theme2 .theme2_resetbtn {
+  background-color: hsl(185, 42%, 37%);
+  color: white;
+  box-shadow: 0 5px 0 0 hsl(185, 58%, 25%);
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: 0.3s ease-in;
+}
+
+.theme2 .theme2_deletebtn:hover,
+.theme2 .theme2_resetbtn:hover {
+  background-color: hsl(184, 27%, 54%);
+}
+
+.theme2 .theme2_equalbtn {
+  background-color: hsl(25, 98%, 40%);
+  color: white;
+  box-shadow: 0 5px 0 0 hsl(25, 99%, 27%);
+  cursor: pointer;
+  font-size: 1.6em;
+  transition: 0.3s ease-in;
+}
+
+.theme2 .theme2_equalbtn:hover {
+  background-color: hsl(25, 58%, 49%);
+}
+
+/* Theme 3 */
+.theme3 {
+  background-color: hsl(268, 75%, 9%);
+  color: hsl(52, 100%, 62%);
+}
+
+.theme3 .theme3_calcu_heading {
+  color: hsl(52, 100%, 62%);
+}
+
+#theme3_screen {
+  background-color: hsl(268, 71%, 12%);
+}
+
+.theme3 .theme3_keypad {
+  background-color: hsl(268, 71%, 12%);
+}
+
+.theme3 .theme3_generalbtn {
+  background-color: hsl(268, 47%, 21%);
+  box-shadow: 0 5px 0 0 hsl(290, 70%, 36%);
+  cursor: pointer;
+  font-size: 1.6em;
+  transition: 0.3s ease-in;
+}
+
+.theme3 .theme3_generalbtn:hover {
+  background-color: hsl(268, 34%, 38%);
+}
+
+.theme3 .theme3_deletebtn,
+.theme3 .theme3_resetbtn {
+  background-color: hsl(281, 89%, 26%);
+  box-shadow: 0 5px 0 0 hsl(285, 91%, 52%);
+  color: white;
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: 0.3s ease-in;
+}
+
+.theme3 .theme3_deletebtn:hover,
+.theme3 .theme3_resetbtn:hover {
+  background-color: hsla(285, 90%, 40%, 0.941);
+}
+
+.theme3 .theme3_equalbtn {
+  background-color: hsl(176, 100%, 44%);
+  box-shadow: 0 5px 0 0 hsl(177, 92%, 70%);
+  color: hsl(198, 20%, 13%);
+  cursor: pointer;
+  font-size: 1.6em;
+  transition: 0.3s ease-in;
+}
+
+.theme3 .theme3_equalbtn:hover {
+  background-color: hsl(178, 100%, 78%);
+}

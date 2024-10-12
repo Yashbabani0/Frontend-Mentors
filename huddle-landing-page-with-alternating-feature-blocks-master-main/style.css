@@ -1,0 +1,339 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --Very-Pale-Cyan: hsl(193, 100%, 96%);
+  --Very-Dark-Cyan: hsl(192, 100%, 9%);
+  --Grayish-Blue: hsl(208, 11%, 55%);
+  --Pink: hsl(322, 100%, 66%);
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  max-width: 100%;
+  min-height: 100vh;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Header */
+#pageTop {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(./images/bg-hero-desktop.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--Very-Pale-Cyan);
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3em 5em;
+  margin-bottom: 1em;
+}
+nav button {
+  padding: 0.6em 3em;
+  border-radius: 2em;
+  border: none;
+  background-color: white;
+  color: var(--Very-Dark-Cyan);
+  box-shadow: 0.2em 0.2em 0.2em var(--Grayish-Blue);
+}
+nav button:hover {
+  color: var(--Grayish-Blue);
+}
+header {
+  display: flex;
+}
+#headerText {
+  min-width: 50%;
+  max-width: 50%;
+  padding: 5em 5.5em;
+}
+h1 {
+  font-size: 2.5em;
+  color: var(--Very-Dark-Cyan);
+}
+#headerPara {
+  font-weight: 500;
+  padding: 2em 0;
+}
+button {
+  background-color: var(--Pink);
+  border: none;
+  border-radius: 2em;
+  color: white;
+  padding: 1em 4em;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 80%;
+}
+header img {
+  width: 90%;
+}
+
+/* Main Content of Body */
+main {
+  padding: 8em 6em;
+}
+.cardMain {
+  max-width: 100%;
+  display: flex;
+  gap: 5em;
+  align-items: center;
+  margin-bottom: 5em;
+  background-color: white;
+  border: none;
+  border-radius: 1em;
+  box-shadow: 0.1em 0.1em 1em var(--Very-Dark-Cyan);
+  padding: 2em 5em;
+  position: relative;
+}
+.cardMain img {
+  width: 80%;
+}
+h3 {
+  font-size: 1.8em;
+  margin-bottom: 0.6em;
+  color: var(--Very-Dark-Cyan);
+}
+.cardPara {
+  color: var(--Grayish-Blue);
+}
+
+/* Footer */
+footer {
+  background-color: var(--Very-Dark-Cyan);
+  position: relative;
+  color: var(--Grayish-Blue);
+  padding: 4em 4em;
+  padding-top: 8em;
+}
+#community {
+  background-color: white;
+  position: absolute;
+  top: -25%;
+  left: 50%;
+  transform: translate(-50%);
+  border: none;
+  border-radius: 0.7em;
+  width: 35em;
+  height: 14em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+  box-shadow: 0.2em 0.2em 1em var(--Very-Dark-Cyan);
+}
+h2 {
+  font-size: 1.5em;
+  color: var(--Very-Dark-Cyan);
+}
+#community button {
+  font-size: 1em;
+}
+
+#huddleSVG {
+  top: 7%;
+  left: 5%;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 1em;
+  position: absolute;
+}
+#contactUs {
+  width: 25%;
+  font-size: 1em;
+  font-weight: 600;
+}
+#footerData {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 100%;
+  position: relative;
+}
+#footerData img {
+  margin-right: 1em;
+}
+#footerLocation {
+  display: flex;
+  margin-bottom: 1em;
+}
+#footerLocation img {
+  width: 30px;
+  height: 30px;
+}
+#footerNumber {
+  margin-bottom: 1em;
+}
+#aboutUs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#aboutUs b {
+  padding-bottom: 1em;
+}
+#career {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#career b {
+  padding-bottom: 1em;
+}
+#socialMedia {
+  display: flex;
+  gap: 1em;
+}
+i {
+  border: 1px solid white;
+  padding: 0.4em;
+  cursor: pointer;
+  border-radius: 50%;
+}
+i:hover {
+  color: var(--Pink);
+  border-color: var(--Pink);
+  transition: 1s;
+}
+@media (min-width: 20em) and (max-width: 62em) {
+  body {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  #pageTop {
+    background-image: url(./images/bg-hero-mobile.svg);
+  }
+  nav {
+    padding: 2em;
+    margin: 0;
+  }
+  nav img {
+    width: 35%;
+  }
+  nav button {
+    padding: 1em 2em;
+  }
+  header {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  #headerText {
+    padding: 2em 1em;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  #headerPara {
+    padding: 2em 3em;
+    line-height: 2;
+  }
+  header img {
+    width: 80%;
+  }
+
+  main {
+    padding: 3em 1em;
+  }
+  .cardMain {
+    flex-direction: column;
+    max-width: 100%;
+    margin-bottom: 2em;
+    padding: 1em 2em;
+    text-align: center;
+    height: 30em;
+  }
+  .cardMain img {
+    width: 60%;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    padding: 1em;
+    transform: translate(-50%, -0%);
+  }
+  .cardText {
+    position: absolute;
+    top: 50%;
+  }
+  h3 {
+    font-size: 1.3em;
+  }
+  .cardPara {
+    font-size: 0.8;
+    padding: 0 1em;
+  }
+  .cardMain:nth-last-child(1) {
+    margin-bottom: 10em;
+  }
+  footer {
+    min-width: 100;
+    max-width: 100%;
+    padding: 0 1em;
+    padding-bottom: 1em;
+    padding-top: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #community {
+    width: 90%;
+    text-align: center;
+    top: -20%;
+  }
+  h2 {
+    font-size: 1em;
+  }
+  #community button {
+    font-size: 0.8em;
+    padding: 1em;
+  }
+  #huddleSVG {
+    top: 10%;
+    left: 5%;
+    width: 60%;
+  }
+  #contactUs {
+    width: 100%;
+    font-size: 1em;
+  }
+  #footerData {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #aboutUs {
+    margin-top: 3em;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    text-align: left;
+  }
+  #career {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    text-align: left;
+  }
+  #socialMedia {
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+
+}

@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: hsl(217, 54%, 11%);
+  color: white;
+}
+#card {
+  width: 25em;
+  padding: 1.5em;
+  margin: 4em 2em;
+  background-color: hsl(216, 50%, 16%);
+  font-family: "Outfit";
+  border-radius: 1rem;
+}
+#images {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#images > img {
+  width: 97%;
+  border-radius: 0.6em;
+}
+#images div {
+  position: absolute;
+  background-color: hsl(178, 100%, 50%, 60%);
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 0.6em;
+}
+#images div:hover {
+  opacity: 1;
+  cursor: pointer;
+  border-radius: 0.6em;
+  transition: 1s;
+}
+#images div img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+h1 {
+  font-size: 1.2em;
+  margin: 1em 0.5em;
+}
+h1:hover {
+  cursor: pointer;
+  color: hsl(178, 100%, 50%);
+  transition: 1s;
+}
+#description {
+  color: hsl(215, 51%, 70%);
+  margin: 1em 0.5em;
+  font-size: 1.1em;
+  line-height: 1.1em;
+}
+#data {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0em;
+  border-bottom: 1px solid;
+  margin: 1.1em 0.5em;
+  padding-bottom: 1.4em;
+}
+#eth {
+  color: hsl(178, 100%, 50%);
+  font-size: 1em;
+}
+#eth::before {
+  content: "";
+  display: inline-block;
+  width: 0.7em;
+  height: 1.2em;
+  background-image: url(./images/icon-ethereum.svg);
+  background-size: cover;
+  margin-right: 0.5em;
+  vertical-align: bottom;
+}
+#time {
+  color: hsl(215, 51%, 70%);
+}
+#profile {
+    margin: 0.5em 0em;
+    color: hsl(215, 51%, 70%);
+}
+#name {
+    color: white;
+    font-size: 1.03em;
+  }
+  #profile::before {
+    content: "";
+    display: inline-block;
+    width: 1.9em;
+    height: 1.9em;
+    background-image: url(./images/image-avatar.png);
+    background-size: cover;
+    margin-right: 1em;
+    border: 2px solid white;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .attribution {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 4em;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Base Apparel coming soon page</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 14px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div id="left">
+        <div id="back-img"></div>
+        <div class="logo">
+          <img src="./images/logo.svg" alt="" id="logo" />
+        </div>
+        <div id="content">
+          <h1>
+            <span class="h1-span">we're</span> <br />
+            coming <br />
+            soon
+          </h1>
+          <p>
+            Hello fellow shoppers! We're currently building our new fashion
+            store. Add your email below to stay up-to-date with announcements
+            and our launch deals.
+          </p>
+          <div id="email-container">
+            <div id="email-input">
+              <input type="email" id="email" placeholder="Email Address" />
+              <img id="error-img" src="./images/icon-error.svg" alt="" />
+              <button type="submit">
+                <img src="./images/icon-arrow.svg" alt="" />
+              </button>
+            </div>
+            <b>Please provide a valid email</b>
+          </div>
+        </div>
+      </div>
+      <div id="right">
+        <img class="hero-desktop" src="./images/hero-desktop.jpg" alt="" />
+        <img class="hero-mobile" src="./images/hero-mobile.jpg" alt="" />
+      </div>
+    </main>
+
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="https://github.com/Yashbabani0">Yash Babani</a>.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

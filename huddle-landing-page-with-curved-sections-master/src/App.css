@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+:root {
+  /* Colors */
+  --Pink: hsl(322, 100%, 66%);
+  --Light-Pink: hsl(321, 100%, 78%);
+  --Light-Red: hsl(0, 100%, 63%);
+  --Very-Dark-Cyan: hsl(192, 100%, 9%);
+  --Very-Pale-Blue: hsl(207, 100%, 98%);
+
+  /* Typography */
+  --font-poppins: "Poppins", sans-serif;
+  --font-open-sans: "Open Sans", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+.open-sans-regular {
+  font-family: var(--font-open-sans);
+  font-weight: var(--font-weight-regular);
+  font-style: normal;
+  color: var(--Very-Dark-Cyan);
+}
+
+.open-sans-semibold {
+  font-family: var(--font-open-sans);
+  font-weight: var(--font-weight-semibold);
+  font-style: normal;
+  color: var(--Very-Dark-Cyan);
+}
+
+.open-sans-bold {
+  font-family: var(--font-open-sans);
+  font-weight: var(--font-weight-bold);
+  font-style: normal;
+  color: var(--Very-Dark-Cyan);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-poppins);
+  font-weight: var(--font-weight-bold);
+  font-style: normal;
+  color: var(--Very-Dark-Cyan);
+}
+
+.growTogether {
+  background-image: url(../public/bg-section-top-desktop-1.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 50vw;
+  min-height: 50vh;
+  max-height: 100vh;
+}

@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+:root {
+  --Strong-cyan: hsl(172, 67%, 45%);
+  --Very-dark-cyan: hsl(183, 100%, 15%);
+  --Dark-grayish-cyan: hsl(186, 14%, 43%);
+  --Grayish-cyan: hsl(184, 14%, 56%);
+  --Light-grayish-cyan: hsl(185, 41%, 84%);
+  --Very-light-grayish-cyan: hsl(189, 41%, 97%);
+  --White: hsl(0, 0%, 100%);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+  text-align: center;
+  background-color: var(--Light-grayish-cyan);
+}
+header {
+  margin-top: 3em;
+  margin-bottom: 2.3em;
+}
+.tip_calcu {
+  background: #fff;
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  border-radius: 1.4em;
+  font-family: inherit;
+}
+label {
+  color: var(--Dark-grayish-cyan);
+  font-family: inherit;
+  margin-bottom: 0.3em;
+}
+input {
+  border: none;
+  outline: none;
+  padding: 0.3em;
+  padding-right: 1.2em;
+  background-color: var(--Very-light-grayish-cyan);
+  text-align: right;
+  font-size: 1.5em;
+  color: var(--Very-dark-cyan);
+  font-family: inherit;
+  font-weight: 700;
+  -moz-appearance: textfield;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+input:focus {
+  border: 2px solid var(--Strong-cyan);
+  background-color: var(--Light-grayish-cyan);
+}
+#add_amount_input {
+  position: relative;
+  width: 100%;
+}
+#number_of_people_input {
+  width: 100%;
+}
+.tip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1em;
+}
+.tips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.3em;
+  color: var(--Very-light-grayish-cyan);
+  background-color: var(--Very-dark-cyan);
+  transition: 300ms;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tips:hover {
+  background-color: var(--Light-grayish-cyan);
+}
+.active_tip {
+  background-color: var(--Light-grayish-cyan);
+  color: var(--Very-dark-cyan);
+}
+#custom_tip {
+  width: 100%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.result {
+  background-color: var(--Very-dark-cyan);
+  width: 100%;
+  padding: 2em;
+  margin: 2em;
+  border-radius: 0.9em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.result b {
+  color: var(--Very-light-grayish-cyan);
+}
+.result p {
+  color: var(--Dark-grayish-cyan);
+}
+.total,
+.tip_amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.amount {
+  font-size: 1.5em;
+  color: var(--Strong-cyan);
+}
+.number_of_people_lable {
+  display: flex;
+  justify-content: space-between;
+}
+.number_of_people_lable p {
+  font-size: 0.9em;
+}
+.error {
+  color: red;
+  display: none;
+}
+.error_input {
+  border: 2px solid red;
+  color: red;
+  background-color: rgba(255, 0, 0, 0.292);
+}
+.error_input:focus {
+  border: 2px solid red;
+  color: red;
+  background-color: rgba(255, 0, 0, 0.292);
+}
+.part1,
+.part2,
+.part3 {
+  position: relative;
+  margin-top: 1em;
+}
+.part2 > label {
+  padding-bottom: 1em;
+}
+.icon1,
+.icon2 {
+  position: absolute;
+  bottom: 22%;
+  left: 5%;
+  z-index: 10;
+}
+.reset {
+  width: 100%;
+  background-color: var(--Strong-cyan);
+  padding: 1em;
+  border-radius: 0.5em;
+  color: var(--Very-dark-cyan);
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 200ms;
+}
+.reset:hover {
+  background-color: var(--Light-grayish-cyan);
+}
+
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .tip_calcu {
+    width: 58em;
+    flex-direction: row;
+    padding: 2em 0;
+    gap: 1em;
+  }
+  .tip_calcu_input {
+    width: 50%;
+  }
+  .result {
+    width: 25em;
+    height: 25em;
+    margin: 0;
+    position: relative;
+  }
+  .reset {
+    width: 90%;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .tip {
+    width: 100%;
+    margin: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .tips {
+    width: 90%;
+  }
+  #custom_tip {
+    width: 90%;
+  }
+}

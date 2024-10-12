@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --Blue: hsl(223, 87%, 63%);
+  --Pale-Blue: hsl(223, 100%, 88%);
+  --Light-Red: hsl(354, 100%, 66%);
+  --Gray: hsl(0, 0%, 59%);
+  --Very-Dark-Blue: hsl(209, 33%, 12%);
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  max-width: 100%;
+  min-height: 100vh;
+  position: relative;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 4em 0;
+}
+.logo {
+  margin-bottom: 2em;
+}
+h1 {
+  margin-bottom: 0.5em;
+}
+span {
+  color: var(--Gray);
+}
+h3 {
+  margin-bottom: 2em;
+  font-weight: 500;
+}
+.email {
+  margin-bottom: 2em;
+  position: relative;
+}
+input {
+  padding: 1em 2em;
+  border-radius: 2em;
+  padding-right: 12em;
+  border: 2px solid var(--Pale-Blue);
+  outline: none;
+}
+button {
+  margin-left: 0.8em;
+  font-weight: 600;
+  padding: 1em 4em;
+  background-color: var(--Blue);
+  border: none;
+  border-radius: 2em;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 80%;
+}
+.errorMsg {
+  color: var(--Light-Red);
+  font-size: 0.6em;
+  margin-top: 0.3em;
+  margin-right: 25em;
+  display: none;
+}
+.mainImg img {
+  width: 50%;
+}
+i {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  color: var(--Blue);
+  border: 1px solid var(--Pale-Blue);
+  border-radius: 50%;
+  padding: 0.4em;
+  cursor: pointer;
+}
+i:hover {
+  background-color: var(--Blue);
+  color: white;
+  transition: 0.5s ease-in;
+}
+@media (max-width: 62em) {
+  h1 {
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 0.8em;
+  }
+  input {
+    padding-right: 6em;
+    margin-bottom: 1em;
+  }
+  button {
+    padding: 1em 9em;
+    margin: 0;
+  }
+  .errorMsg {
+    font-size: 0.6em;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+  }
+  .mainImg img {
+    width: 80%;
+    margin-bottom: 2em;
+  }
+}

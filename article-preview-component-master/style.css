@@ -1,0 +1,183 @@
+@import url(https://fonts.google.com/specimen/Manrope);
+
+:root {
+  --Very-Dark-Grayish-Blue: hsl(217, 19%, 35%);
+  --Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+  --Grayish-Blue: hsl(212, 23%, 69%);
+  --Light-Grayish-Blue: hsl(210, 46%, 95%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  background-color: var(--Light-Grayish-Blue);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+main {
+  width: 800px;
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+#main-img {
+  width: 40%;
+}
+
+#main-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+}
+
+#content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
+}
+
+h2 {
+  font-weight: 600;
+  color: var(--Very-Dark-Grayish-Blue);
+}
+
+p {
+  margin-top: 2px;
+  line-height: 20px;
+  color: var(--Grayish-Blue);
+  font-weight: 600;
+}
+
+#profile {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+#profile-data {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+#profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+#profile-name {
+  margin-top: 15px;
+}
+
+b {
+  color: var(--Desaturated-Dark-Blue);
+}
+
+#date {
+  font-size: 10px;
+}
+
+#share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#media {
+  background-color: var(--Very-Dark-Grayish-Blue);
+  overflow: visible;
+  width: 200px;
+  padding: 15px 30px;
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.white {
+  fill: var(--Grayish-Blue);
+}
+
+#share img {
+  width: 20px;
+  height: 20px;
+}
+.clicked {
+  background-color: var(--Very-Dark-Grayish-Blue);
+}
+button {
+  background-color: var(--Light-Grayish-Blue);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 100%;
+}
+@media (max-width: 1000px) {
+  body {
+    min-height: 100vh;
+    max-width: 100%;
+    margin-top: 60px;
+    padding: 0;
+  }
+
+  main {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  #main-img {
+    width: 100%;
+    height: 40%;
+  }
+
+  #main-img img {
+    border-radius: 10px 10px 0 0;
+  }
+  #content {
+    width: 100%;
+    padding: 0;
+  }
+
+  h2 {
+    padding: 20px;
+    font-weight: 600;
+  }
+
+  p {
+    padding: 0 20px;
+  }
+
+  #profile {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}

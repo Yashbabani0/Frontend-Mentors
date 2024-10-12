@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: "Rubik", sans-serif;
+}
+.gradient {
+  @apply bg-custom-gradient1;
+}
+.top {
+  @apply bg-custom-gradient2;
+}
+.price {
+  @apply bg-custom-gradient3;
+}

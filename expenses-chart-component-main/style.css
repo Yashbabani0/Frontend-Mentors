@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+:root {
+  --Soft-red: hsl(10, 79%, 65%);
+  --Cyan: hsl(186, 34%, 60%);
+  --Dark-brown: hsl(25, 47%, 15%);
+  --Medium-brown: hsl(28, 10%, 53%);
+  --Cream: hsl(27, 66%, 92%);
+  --Very-pale-orange: hsl(33, 100%, 98%);
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  max-width: 100%;
+  min-height: 100vh;
+  position: relative;
+  font-size: 18px;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: var(--Cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+nav {
+    width: 30%;
+    background-color: var(--Soft-red);
+    padding: 1.5em 1.5em;
+    border-radius: 1em;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    color: var(--Very-pale-orange);
+}
+nav h4 {
+    font-size: 1.6em;
+}
+nav h5 {
+    font-size: 0.8em;
+    font-weight: 500;
+    color: var(--Cream);
+}
+nav img {
+    width: 20%;
+}
+main {
+    background-color: var(--Very-pale-orange);
+    border-radius: 1em;
+    padding: 2em;
+    width: 30%;
+    height: 20em;
+}
+.top {
+  min-height: 10%;
+}
+.top h3 {
+    font-size: 1.6em;
+    color: var(--Dark-brown);
+}
+.chart__chart {
+  height: 60%;
+  border-bottom: 2px solid var(--Medium-brown);
+  margin-bottom: 1em;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+}
+.bottom b, h2 {
+  color: var(--Dark-brown);
+}
+.bottom p {
+  color: var(--Medium-brown);
+  font-size: 0.8em;
+}
+.bottom .right {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: baseline;
+}
