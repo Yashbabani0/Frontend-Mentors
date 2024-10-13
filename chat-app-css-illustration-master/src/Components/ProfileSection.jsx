@@ -1,6 +1,5 @@
 import React from "react";
-import profileImg from "../../public/avatar.jpg";
-
+import profileImg from "/avatar.jpg";
 
 export default function ProfileSection() {
   return (
@@ -14,7 +13,9 @@ export default function ProfileSection() {
           </div>
           <div className="">
             <b className="text-[0.8em]">Samuel Green</b>
-            <p className="text-[0.63em] text-pale-violet tracking-wide">Availble to Walk</p>
+            <p className="text-[0.63em] text-pale-violet tracking-wide">
+              Availble to Walk
+            </p>
           </div>
         </div>
         <div className="rotate-90">...</div>
