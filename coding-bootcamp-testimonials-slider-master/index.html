@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Coding Bootcamp Testimonials Slider</title>
+
+    <link rel="stylesheet" href="output.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 1em;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="w-screen h-screen font-inter">
+    <div class="bg-pattern-img absolute top-[5%] right-[10%] z-[1]">
+      <img src="./images/pattern-bg.svg" class="w-[25em] max-w-[35em]" alt="" />
+    </div>
+    <div class="bg-curve-img absolute bottom-0 z-[1]">
+      <img src="./images/pattern-curve.svg" class="z-[1]" alt="" />
+    </div>
+    <main class="w-full z-50 carousel">
+      <div
+        id="slide1"
+        class="relative min-w-[100vw] flex flex-col items-center justify-center"
+      >
+        <div
+          class="img w-full flex items-center justify-center relative h-[50vh] z-[10]"
+        >
+          <img
+            src="./images/image-tanya.jpg"
+            alt=""
+            class="absolute top-[3em] w-[20em] h-[45vh]"
+          />
+          <div
+            class="absolute left-[40%] top-[20em] flex -translate-y-1/2 transform justify-between bg-white rounded-full shadow-md shadow-zinc-500"
+          >
+            <a
+              href="#slide2"
+              class="btn bg-transparent outline-none text-grayish-blue border-none rounded-full"
+              >❮</a
+            >
+            <a
+              href="#slide2"
+              class="btn bg-transparent outline-none text-grayish-blue border-none rounded-full"
+              >❯</a
+            >
+          </div>
+        </div>
+        <div class="content z-[1] relative mt-12 p-4 text-center w-[20em]">
+          <div class="quotes-bg z-[1]">
+            <img
+              src="./images/pattern-quotes.svg"
+              class="absolute top-[-20%]"
+              alt=""
+            />
+          </div>
+          <p class="text-dark-blue font-semibold">
+            “ I’ve been interested in coding for a while but never taken the
+            jump, until now. I couldn’t recommend this course enough. I’m now in
+            the job of my dreams and so excited about the future. ”
+          </p>
+          <div class="user-data mt-4">
+            <b class="text-dark-blue font-bold">Tanya Sinclair</b>
+            <p class="text-grayish-blue">UX Engineer</p>
+          </div>
+        </div>
+      </div>
+      <div
+        id="slide2"
+        class="relative min-w-[100vw] flex flex-col items-center justify-center"
+      >
+        <div
+          class="img w-full flex items-center justify-center relative h-[50vh] z-[10]"
+        >
+          <img
+            src="./images/image-john.jpg"
+            alt=""
+            class="absolute top-[3em] w-[20em] h-[45vh]"
+          />
+          <div
+            class="absolute left-[40%] top-[20em] flex -translate-y-1/2 transform justify-between bg-white rounded-full shadow-md shadow-zinc-500"
+          >
+            <a
+              href="#slide1"
+              class="btn bg-transparent outline-none text-grayish-blue border-none rounded-full"
+              >❮</a
+            >
+            <a
+              href="#slide1"
+              class="btn bg-transparent outline-none text-grayish-blue border-none rounded-full"
+              >❯</a
+            >
+          </div>
+        </div>
+        <div class="content z-[1] relative mt-12 p-4 text-center w-[20em]">
+          <div class="quotes-bg z-[1]">
+            <img
+              src="./images/pattern-quotes.svg"
+              class="absolute top-[-20%]"
+              alt=""
+            />
+          </div>
+          <p class="text-dark-blue font-semibold">
+            “ If
+    you want to lay the best foundation possible I’d recommend taking this
+    course. The depth the instructors go into is incredible. I now feel so
+    confident about starting up as a professional developer. ”
+          </p>
+          <div class="user-data mt-4">
+            <b class="text-dark-blue font-bold">John Tarkpor</b>
+            <p class="text-grayish-blue">Junior Front-end Developer</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <div class="attribution z-10 absolute bottom-0 bg-transparent hidden">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/yashbabani0">Yash Babani</a>.
+    </div>
+  </body>
+</html>

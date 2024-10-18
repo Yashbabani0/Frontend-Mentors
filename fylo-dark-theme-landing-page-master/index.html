@@ -1,26 +1,58 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Fylo landing page with dark theme and features grid</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-  <main></main>
-  Features
-  Team
-  Sign In
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  All your files in one secure location, accessible anywhere.
+    <title>
+      Frontend Mentor | Fylo landing page with dark theme and features grid
+    </title>
+    <link rel="stylesheet" href="output.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="bg-primary-dark-blue-intro">
+    <header class="h-screen">
+      <nav class="p-6 flex items-center justify-between">
+        <div class="logo w-[30%]">
+          <img src="./images/logo.svg" alt="" />
+        </div>
+        <div class="links text-[#c3cddb] flex gap-6">
+          <a class="hover:text-white hover:underline duration-300" href="#"
+            >Features</a
+          ><a class="hover:text-white hover:underline duration-300" href="#"
+            >Team</a
+          ><a class="hover:text-white hover:underline duration-300" href="#"
+            >Sign In</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <div class="bg_curvy_desktop">
+      <img src="./images/bg-curvy-desktop.svg" alt="" />
+    </div>
+    <div class="bg_curvy_mobile w-full h-full">
+      <img class="w-full h-full" src="./images/bg-curvy-mobile.svg" alt="" />
+    </div>
+    <main></main>
+    <!-- All your files in one secure location, accessible anywhere.
 
   Fylo stores all your most important files in one secure location. Access them wherever 
   you need, share and collaborate with friends family, and co-workers.
@@ -95,13 +127,15 @@
 
   Contact Us
   Terms
-  Privacy 
+  Privacy  -->
 
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </p>
-  </footer>
-</body>
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Your Name Here</a>.
+      </p>
+    </footer>
+  </body>
 </html>
