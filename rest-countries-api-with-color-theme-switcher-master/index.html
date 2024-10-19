@@ -9,7 +9,6 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="output.css" />
-    <script src="script.js" defer></script>
   </head>
   <body
     class="bg-very-light-gray text-very-dark-blue dark:bg-very-dark-blue-bg"
@@ -44,53 +43,111 @@
         />
       </div>
       <div class="filter">
-          <select
-            name="Filter by region"
-            id="regionFilter"
-            class="w-[15em] h-[3em] p-4 bg-transparent shadow rounded-md cursor-pointer bg-white text-very-dark-blue-text dark:bg-dark-blue dark:text-white border-none outline-none"
+        <select
+          name="Filter by region"
+          id="regionFilter"
+          class="w-[15em] h-[3em] p-4 bg-transparent shadow rounded-md cursor-pointer bg-white text-very-dark-blue-text dark:bg-dark-blue dark:text-white border-none outline-none"
+        >
+          <option value="" class="bg-white dark:bg-dark-blue">
+            Filter by region
+          </option>
+          <option value="Africa" class="bg-white dark:bg-dark-blue">
+            Africa
+          </option>
+          <option value="America" class="bg-white dark:bg-dark-blue">
+            America
+          </option>
+          <option value="Asia" class="bg-white dark:bg-dark-blue">Asia</option>
+          <option
+            value="Europe"
+            class="bg-white dark:bg-dark-blue dark:text-very-light-gray"
           >
-            <option
-              value=""
-              class="bg-white dark:bg-dark-blue"
-            >
-              Filter by region
-            </option>
-            <option
-              value="Africa"
-              class="bg-white dark:bg-dark-blue"
-            >
-              Africa
-            </option>
-            <option
-              value="America"
-              class="bg-white dark:bg-dark-blue"
-            >
-              America
-            </option>
-            <option
-              value="Asia"
-              class="bg-white dark:bg-dark-blue"
-            >
-              Asia
-            </option>
-            <option
-              value="Europe"
-              class="bg-white dark:bg-dark-blue dark:text-very-light-gray"
-            >
-              Europe
-            </option>
-            <option
-              value="Oceania"
-              class="bg-white dark:bg-dark-blue"
-            >
-              Oceania
-            </option>
-          </select>
+            Europe
+          </option>
+          <option value="Oceania" class="bg-white dark:bg-dark-blue">
+            Oceania
+          </option>
+        </select>
       </div>
     </header>
     <main
       class="flex flex-col items-center justify-center gap-12 flex-wrap md:flex-row"
-    >
-    </main>
+    ></main>
+
+    <script>
+      const themeToggle = document.getElementById("theme-toggle");
+      const htmlElement = document.documentElement;
+
+      // Check for saved theme in localStorage
+      if (localStorage.getItem("theme") === "dark") {
+        htmlElement.classList.add("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+      }
+
+      // Toggle theme on click and save the preference in localStorage
+      themeToggle.addEventListener("click", () => {
+        if (htmlElement.classList.contains("dark")) {
+          htmlElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          htmlElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+      });
+
+      fetch("https://restcountries.com/v3.1/all")
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data); // Moved inside this .then block to correctly log the data
+
+          data.forEach((country) => {
+            const main = document.querySelector("main");
+            const countryCard = document.createElement("a");
+            countryCard.href = `/country.html?Name:${country.name.common}`;
+            countryCard.classList.add(
+              "card",
+              "w-[20em]",
+              "shadow-md",
+              "rounded-md",
+              "h-[20em]",
+              "overflow-hidden",
+              "bg-white",
+              "dark:bg-dark-blue",
+              "transition-colors",
+              "duration-300",
+              "cursor-pointer"
+            );
+
+            countryCard.innerHTML = `
+        <div class="img max-h-[10em] overflow-hidden">
+          <img
+            class="h-full w-full"
+            src="${country.flags.svg}"
+            alt="Flag of ${country.name.common}"
+          />
+        </div>
+        <div class="h-[10em] w-full flex flex-col items-start justify-center p-8 dark:text-very-light-gray">
+          <div class="name mb-2">
+            <h3 class="font-extrabold text-xl dark:text-very-light-gray">${
+              country.name.common
+            }</h3>
+          </div>
+          <div class="data text-very-dark-blue-text dark:text-very-light-gray text-base">
+            <p><b class="font-semibold">Population: </b><span class="font-light">${country.population.toLocaleString()}</span></p>
+            <p><b class="font-semibold">Region: </b><span class="font-light">${
+              country.region
+            }</span></p>
+            <p><b class="font-semibold">Capital: </b><span class="font-light">${
+              country.capital ? country.capital[0] : "N/A"
+            }</span></p>
+          </div>
+        </div>
+      `;
+
+            main.append(countryCard);
+          });
+        });
+    </script>
   </body>
 </html>
