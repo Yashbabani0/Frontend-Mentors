@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country Information</title>
+    <script
+      src="https://kit.fontawesome.com/c3581291b4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="output.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body
+    class="bg-very-light-gray text-very-dark-blue dark:bg-very-dark-blue-bg"
+  >
+    <nav
+      class="flex items-center justify-between p-6 md:px-12 md:py-6 shadow bg-white dark:bg-dark-blue dark:text-very-light-gray"
+    >
+      <h1 class="font-extrabold text-sm md:text-3xl">Where in the world?</h1>
+      <div
+        class="flex items-center justify-center gap-2 hover:cursor-pointer hover:scale-110 transition-transform duration-300 ease-out text-xs md:text-base font-semibold"
+        id="theme-toggle"
+      >
+        <i class="fa-regular fa-moon dark:hidden"></i>
+        <i class="fa-regular fa-sun hidden dark:inline"></i>
+        <p class="dark:hidden">Dark Mode</p>
+        <p class="hidden dark:inline">Light Mode</p>
+      </div>
+    </nav>
+    <header
+      class="search_filter w-full h-[10em] p-6 mb-8 flex flex-col md:flex-row md:p-10 items-start justify-between"
+    >
+      <div class="search shadow-md rounded-md bg-white dark:bg-dark-blue">
+        <button class="w-[4em] bg-white dark:bg-dark-blue">
+          <i
+            class="fa-solid fa-magnifying-glass text-dark-gray dark:text-very-light-gray"
+          ></i>
+        </button>
+        <input
+          type="text"
+          class="w-[16em] h-[3em] outline-none dark:bg-dark-blue dark:text-very-light-gray font-light"
+          placeholder="Search for a country"
+        />
+      </div>
+      <div class="filter">
+          <select
+            name="Filter by region"
+            id="regionFilter"
+            class="w-[15em] h-[3em] p-4 bg-transparent shadow rounded-md cursor-pointer bg-white text-very-dark-blue-text dark:bg-dark-blue dark:text-white border-none outline-none"
+          >
+            <option
+              value=""
+              class="bg-white dark:bg-dark-blue"
+            >
+              Filter by region
+            </option>
+            <option
+              value="Africa"
+              class="bg-white dark:bg-dark-blue"
+            >
+              Africa
+            </option>
+            <option
+              value="America"
+              class="bg-white dark:bg-dark-blue"
+            >
+              America
+            </option>
+            <option
+              value="Asia"
+              class="bg-white dark:bg-dark-blue"
+            >
+              Asia
+            </option>
+            <option
+              value="Europe"
+              class="bg-white dark:bg-dark-blue dark:text-very-light-gray"
+            >
+              Europe
+            </option>
+            <option
+              value="Oceania"
+              class="bg-white dark:bg-dark-blue"
+            >
+              Oceania
+            </option>
+          </select>
+      </div>
+    </header>
+    <main
+      class="flex flex-col items-center justify-center gap-12 flex-wrap md:flex-row"
+    >
+    </main>
+  </body>
+</html>
