@@ -666,10 +666,6 @@ video {
   width: 4em;
 }
 
-.w-\[7em\]{
-  width: 7em;
-}
-
 .w-full{
   width: 100%;
 }
@@ -742,11 +738,6 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: hsl(0 0% 100% / var(--tw-bg-opacity));
-}
-
-.bg-red-50{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
 }
 
 .p-4{
@@ -915,10 +906,6 @@ body {
 
   .md\:flex{
     display: flex;
-  }
-
-  .md\:h-\[20em\]{
-    height: 20em;
   }
 
   .md\:max-h-\[20em\]{

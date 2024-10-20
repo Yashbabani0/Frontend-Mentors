@@ -106,6 +106,11 @@ fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
           .then((data) => {
             const borderCountryName = data[0].name.common;
             borderCountryButton.innerText = borderCountryName;
+
+            borderCountryButton.addEventListener("click", () => {
+              // Update the URL with the selected country's name
+              window.location.href = `?name=${borderCountryName}`;
+            });
           })
           .catch((error) => {
             console.error(`Error fetching border country data: ${error}`);

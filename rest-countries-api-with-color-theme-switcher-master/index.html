@@ -16,7 +16,9 @@
     <nav
       class="flex items-center justify-between p-6 md:px-12 md:py-6 shadow bg-white dark:bg-dark-blue dark:text-very-light-gray"
     >
-      <a href="/index.html" class="font-extrabold text-sm md:text-3xl">Where in the world?</a>
+      <a href="/index.html" class="font-extrabold text-sm md:text-3xl"
+        >Where in the world?</a
+      >
       <div
         class="flex items-center justify-center gap-2 hover:cursor-pointer hover:scale-110 transition-transform duration-300 ease-out text-xs md:text-base font-semibold"
         id="theme-toggle"
@@ -42,7 +44,7 @@
           placeholder="Search for a country"
         />
       </div>
-      <div class="filter">
+      <div>
         <select
           name="Filter by region"
           id="regionFilter"
@@ -148,6 +150,63 @@
             main.append(countryCard);
           });
         });
+
+      regionFilter.addEventListener("change", (e) => {
+        fetch(`https://restcountries.com/v3.1/region/${e.target.value}`)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+
+            const main = document.querySelector("main");
+            main.innerHTML = ""; // Clear the main container before appending new content
+
+            data.forEach((country) => {
+              const countryCard = document.createElement("a");
+              countryCard.href = `/country.html?name=${country.name.common}`;
+              countryCard.classList.add(
+                "card",
+                "w-[20em]",
+                "shadow-md",
+                "rounded-md",
+                "h-[20em]",
+                "overflow-hidden",
+                "bg-white",
+                "dark:bg-dark-blue",
+                "transition-colors",
+                "duration-300",
+                "cursor-pointer"
+              );
+
+              countryCard.innerHTML = `
+  <div class="img max-h-[10em] overflow-hidden">
+    <img
+      class="h-full w-full"
+      src="${country.flags.svg}"
+      alt="Flag of ${country.name.common}"
+    />
+  </div>
+  <div class="h-[10em] w-full flex flex-col items-start justify-center p-8 dark:text-very-light-gray">
+    <div class="name mb-2">
+      <h3 class="font-extrabold text-xl dark:text-very-light-gray">${
+        country.name.common
+      }</h3>
+    </div>
+    <div class="data text-very-dark-blue-text dark:text-very-light-gray text-base">
+      <p><b class="font-semibold">Population: </b><span class="font-light">${country.population.toLocaleString()}</span></p>
+      <p><b class="font-semibold">Region: </b><span class="font-light">${
+        country.region
+      }</span></p>
+      <p><b class="font-semibold">Capital: </b><span class="font-light">${
+        country.capital ? country.capital[0] : "N/A"
+      }</span></p>
+    </div>
+  </div>
+`;
+
+              main.append(countryCard);
+            });
+          });
+      });
     </script>
   </body>
 </html>
