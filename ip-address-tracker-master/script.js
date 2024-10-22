@@ -8,7 +8,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
-let marker = null; // Initialize the marker variable
+let marker = null;
 
 const getData = function () {
   fetch(
@@ -37,6 +37,16 @@ const getData = function () {
         marker = L.marker([data.location.lat, data.location.lng]);
         marker.addTo(map);
 
+        marker.bindPopup(
+          data.location.city +
+            ", " +
+            data.location.region +
+            ", " +
+            data.location.country
+        );
+        marker.addEventListener("click", () => {
+          map.flyTo([data.location.lat, data.location.lng], 13);
+        });
         console.log(data);
       }
     });
@@ -48,4 +58,5 @@ document.addEventListener("keypress", (e) => {
     getData();
   }
 });
+
 getData();
