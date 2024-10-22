@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | IP Address Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="output.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="script.js" defer></script>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 16px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <header
+      class="z-[9999] w-screen h-100 flex flex-col items-center justify-center gap-8 overflow-visible pt-8 absolute top-0"
+    >
+      <h1 class="text-3xl font-medium text-white">IP Address Tracker</h1>
+      <div class="input flex w-[80vw] md:w-[40vw] min-h-[3em]">
+        <input
+          type="text"
+          class="w-[85%] md:w-[90%] min-h-full rounded-l-[1em] rounded-bl-[1em] outline-none pl-4"
+          placeholder="Search for any IP addres or domain"
+        />
+        <button
+          type="submit"
+          class="md:w-[10%] w-[15%] flex items-center justify-center bg-black rounded-ee-[1em] rounded-r-[1em] hover:bg-slate-800"
+        >
+          <img src="./images/icon-arrow.svg" alt="" />
+        </button>
+      </div>
+      <div
+        class="data_view w-[80vw] md:w-[50vw] lg:w-[60vw] max-w-[80vw] overflow-visible min-h-[20em] bg-white relative z-[9999] mx-auto rounded-lg flex flex-col lg:flex-row items-center justify-center md:min-h-[10em] lg:h-[6em] md:px-8 text-center gap-0 px-4"
+      >
+        <div
+          class="lg:border-r-2 h-[5em] md:min-w-[5em] lg:min-w-[15em] max-w-[20em] flex flex-col items-center justify-center flex-wrap overflow-hidden px-1"
+        >
+          <h3 class="text-dark-gray text-base font-medium">IP Address</h3>
+          <p class="view text-very-dark-gray font-bold"></p>
+        </div>
+        <div
+          class="lg:border-r-2 h-[5em] md:min-w-[5em] lg:min-w-[15em] max-w-[20em] flex flex-col items-center justify-center flex-wrap overflow-hidden px-1"
+        >
+          <h3 class="text-dark-gray text-base font-medium">Location</h3>
+          <p class="view text-very-dark-gray font-bold"></p>
+        </div>
+        <div
+          class="lg:border-r-2 h-[5em] md:min-w-[5em] lg:min-w-[15em] max-w-[20em] flex flex-col items-center justify-center flex-wrap overflow-hidden px-1"
+        >
+          <h3 class="text-dark-gray text-base font-medium">Timezone</h3>
+          <p class="view text-very-dark-gray font-bold"></p>
+        </div>
+        <div
+          class="md:min-w-[5em] h-[5em] lg:min-w-[10em] max-w-[20em] flex flex-col items-center justify-center flex-wrap overflow-hidden px-1"
+        >
+          <h3 class="text-dark-gray text-base font-medium">ISP</h3>
+          <p class="view text-very-dark-gray font-bold"></p>
+        </div>
+      </div>
+    </header>
+    <div class="bg_img">
+      <img
+        src="./images/pattern-bg-desktop.png"
+        class="hidden lg:block w-full bg-cover max-h-[60vh]"
+        alt=""
+      />
+      <img
+        src="./images/pattern-bg-mobile.png"
+        class="lg:hidden w-full bg-cover max-h-[60vh]"
+        alt=""
+      />
+    </div>
+    <main class="relative w-screen h-full">
+      <div
+        class="map_view h-[70vh] absolute right-0 w-full"
+        style="z-index: 1000"
+        id="map"
+      ></div>
+    </main>
+
+    <!-- IP Address Tracker Search for any IP address or domain IP Address Location
+    Timezone UTC -->
+    <!-- add offset value dynamically using the API -->
+    <!-- ISP -->
+
+    <div
+      class="attribution absolute bottom-0 z-[9999] left-[50%] translate-x-[-50%]"
+    >
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/Yashbabani0">Yash Babani</a>.
+    </div>
+  </body>
+</html>
