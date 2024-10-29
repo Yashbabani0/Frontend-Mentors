@@ -1,5 +1,5 @@
 import React from "react";
-import Completeoverbox from "./Completeoverbox";
+import Completeoverbox from "/Completeoverbox";
 
 export default function Completeoverview() {
   return (

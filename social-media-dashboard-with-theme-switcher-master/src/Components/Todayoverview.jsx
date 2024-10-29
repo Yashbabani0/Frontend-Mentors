@@ -1,5 +1,5 @@
 import React from 'react'
-import Todayoverbox from './Todayoverbox'
+import Todayoverbox from '/Todayoverbox'
 
 export default function Todayoverview() {
   return (

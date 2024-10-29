@@ -1,5 +1,5 @@
 import React from "react";
-import Toggle from './Toggle.jsx';
+import Toggle from '/Toggle.jsx';
 
 export default function Nav() {
   return (
