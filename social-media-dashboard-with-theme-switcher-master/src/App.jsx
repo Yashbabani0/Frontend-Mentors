@@ -5,7 +5,7 @@ import "./index.css";
 
 function App() {
   return (
-    <div>
+    <div className="dark:bg-neutral-darkTheme-bg bg-white -z-20">
       <Nav />
       <Completeoverview />
       <Todayoverview />

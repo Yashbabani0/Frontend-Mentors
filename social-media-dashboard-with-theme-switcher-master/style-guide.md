@@ -13,21 +13,21 @@ The designs were created to the following widths:
 
 ### Primary
 
-- Lime Green: hsl(163, 72%, 41%)
-- Bright Red: hsl(356, 69%, 56%)
+- 'Lime Green': 'hsl(163, 72%, 41%)'
+- 'Bright Red':'hsl(356, 69%, 56%)'
 
-- Facebook: hsl(208, 92%, 53%)
-- Twitter: hsl(203, 89%, 53%)
-- Instagram: linear gradient hsl(37, 97%, 70%) to hsl(329, 70%, 58%)
-- YouTube: hsl(348, 97%, 39%)
+- 'Facebook': 'hsl(208, 92%, 53%)'
+- 'Twitter': 'hsl(203, 89%, 53%)'
+- 'Instagram': linear gradient 'hsl(37, 97%, 70%)' to 'hsl(329, 70%, 58%)'
+- 'YouTube': 'hsl(348, 97%, 39%)'
 
 #### Dark Theme
 
-- Toggle: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%)
+- Toggle: linear gradient'hsl(210, 78%, 56%)' to 'hsl(146, 68%, 55%)'
 
 #### Light Theme
 
-- Toggle: hsl(230, 22%, 74%)
+- Toggle: 'hsl(230, 22%, 74%)'
 
 ### Neutral
 
