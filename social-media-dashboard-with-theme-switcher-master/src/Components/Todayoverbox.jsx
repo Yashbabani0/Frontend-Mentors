@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export default function Todayoverbox({
   PageViews,
@@ -11,7 +11,9 @@ export default function Todayoverbox({
   return (
     <div className="flex flex-col items-center justify-center mt-4 w-[20em] bg-neutral-lightTheme-cardBg dark:bg-neutral-darkTheme-cardBg rounded p-8 gap-8">
       <div className="flex items-center justify-between w-full">
-        <b className="text-neutral-lightTheme-text dark:text-neutral-darkTheme-text">{PageViews}</b>
+        <b className="text-neutral-lightTheme-text dark:text-neutral-darkTheme-text">
+          {PageViews}
+        </b>
         <img src={icon} alt="Social Media Icon" />
       </div>
       <div className="flex items-center justify-between w-full">

@@ -1,7 +1,7 @@
-import Completeoverview from "/Components/Completeoverview";
-import Nav from "/Components/Nav";
-import Todayoverview from "/Components/Todayoverview";
-import "/index.css";
+import Completeoverview from "./Components/Completeoverview";
+import Nav from "./Components/Nav";
+import Todayoverview from "./Components/Todayoverview";
+import "./index.css";
 
 function App() {
   return (

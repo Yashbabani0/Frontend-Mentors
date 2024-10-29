@@ -1,9 +1,23 @@
-import iconDown from './images/icon-down.svg';
-import iconFacebook from './images/icon-facebook.svg';
-import iconInstagram from './images/icon-instagram.svg';
-import iconTwitter from './images/icon-twitter.svg';
-import iconUp from './images/icon-up.svg';
-import iconYoutube from './images/icon-youtube.svg';
+// Instead of importing images from the public directory, you can define them like this:
+const iconDown = "/images/icon-down.svg";
+const iconFacebook = "/images/icon-facebook.svg";
+const iconInstagram = "/images/icon-instagram.svg";
+const iconTwitter = "/images/icon-twitter.svg";
+const iconUp = "/images/icon-up.svg";
+const iconYoutube = "/images/icon-youtube.svg";
+
+function test() {
+  console.log(
+    iconDown,
+    iconFacebook,
+    iconInstagram,
+    iconTwitter,
+    iconUp,
+    iconYoutube
+  );
+}
+
+test();
 
 export {
   iconDown,
@@ -13,3 +27,4 @@ export {
   iconUp,
   iconYoutube,
 };
+  
