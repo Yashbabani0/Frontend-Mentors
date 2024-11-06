@@ -6,15 +6,25 @@
 
 body {
   font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+  font-family: "Raleway", sans-serif;
 }
 @media (min-width: 768px) {
- .bg_curvy_mobile {
-  display: none;
- }
+  .bg_curvy_mobile {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
   .bg_curvy_desktop {
-   display: none;
+    display: none;
   }
- }
+}

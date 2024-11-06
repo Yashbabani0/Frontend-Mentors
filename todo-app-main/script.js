@@ -1,27 +1,47 @@
-// // script.js
+const images = {
+    bgDesktopDark: '/public/bg-desktop-dark.jpg',
+    bgDesktopLight: '/public/bg-desktop-light.jpg',
+    bgMobileDark: '/public/bg-mobile-dark.jpg',
+    bgMobileLight: '/public/bg-mobile-light.jpg',
+};
 
-// const lightModeImages = {
-//   mobile: 'images/bg-mobile-light.jpg',
-//   pc: 'images/bg-desktop-light.jpg'
-// };
+async function cacheImage(path) {
+    const response = await fetch(path);
+    const blob = await response.blob();
+    const reader = new FileReader();
+    return new Promise((resolve) => {
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+    });
+}
 
-// const darkModeImages = {
-//   mobile: 'images/bg-mobile-dark.jpg',
-//   pc: 'images/bg-desktop-dark.jpg'
-// };
+async function cacheImages() {
+    for (const [id, path] of Object.entries(images)) {
+        if (!localStorage.getItem(path)) {
+            const base64Image = await cacheImage(path);
+            localStorage.setItem(path, base64Image);
+        }
+    }
+}
 
-// function updateBackgroundImage() {
-//   const isMobile = window.innerWidth <= 767;
-//   const isDarkMode = document.body.classList.contains('dark-mode');
+function loadCachedImages() {
+    for (const [id, path] of Object.entries(images)) {
+        const cachedImage = localStorage.getItem(path);
+        if (cachedImage) {
+            const pictureElement = document.getElementById(id);
+            if (pictureElement) {
+                pictureElement.innerHTML = `<img src="${cachedImage}" alt="${id} background">`;
+            }
+        } else {
+            const pictureElement = document.getElementById(id);
+            if (pictureElement) {
+                pictureElement.innerHTML = `<img src="${path}" alt="${id} background">`;
+            }
+        }
+    }
+}
 
-//   const images = isDarkMode ? darkModeImages : lightModeImages;
-//   document.body.style.backgroundImage = `url(${isMobile ? images.mobile : images.pc})`;
-// }
-
-// function toggleMode() {
-//   document.body.classList.toggle('dark-mode');
-//   updateBackgroundImage();
-// }
-
-// window.addEventListener('resize', updateBackgroundImage);
-// window.addEventListener('load', updateBackgroundImage);
+window.addEventListener('load', async () => {
+    await cacheImages();
+    loadCachedImages();
+});
