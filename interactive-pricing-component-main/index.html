@@ -1,50 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive pricing component</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-  <div class="background_main_img">
-    <img src="./images/bg-pattern.svg" alt="">
-  </div>
-  <div class="background_circle_img">
-    <img src="./images/pattern-circles.svg" alt="">
-  </div>
-  <main>
-    <nav>
-      <h1>Simple, traffic-based pricing</h1>
-      <p>Sign-up for our 30-day trial. No credit card required.</p>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive pricing component</title>
+    <link rel="stylesheet" href="output.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="flex flex-col items-center bg-neutral-veryPaleBlue">
+
+    <!-- BG Img -->
+    <div class="background_main_img">
+      <img src="./images/bg-pattern.svg" alt="" />
+    </div>
+    <div class="background_circle_img">
+      <img src="./images/pattern-circles.svg" class="w-32" alt="" />
+    </div>
+
+    <!-- Nav -->
+    <nav class="w-full pt-20 relative text-center flex flex-col items-center">
+      <h1 class="text-neutral-darkDesaturatedBlue font-extrabold mb-4 text-2xl">
+        Simple, traffic-based pricing
+      </h1>
+      <p class="text-neutral-grayishBlue font-semibold">
+        Sign-up for our 30-day trial. <br class="lg:hidden" />
+        No credit card required.
+      </p>
     </nav>
-  </main>
-<!-- 
-  
-  Pageviews
-  $ /month
 
-  Monthly Billing
-  Yearly Billing 25% discount
+    <!-- Main -->
+    <main
+      class="w-[20em] flex items-center justify-center text-center flex-col mt-14 py-8 bg-white rounded-lg shadow mb-4 lg:w-[40em]"
+    >
+      <!-- Slider -->
+      <div class="flex flex-col items-center justify-center gap-7 px-4 lg:grid lg:grid-rows-2 lg:grid-cols-2">
+        <b class="font-bold text-sm uppercase text-neutral-grayishBlue lg:col-span-1 lg:col-start-1"
+          ><span class="page_views"></span> &nbsp; Pageviews</b
+        >
+        <div class="lg:row-start-2 lg:col-span-2">
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            value="3"
+            class="w-[17em] lg:w-[35em] changePrice appearance-none bg-primary-strongCyan h-2 rounded-full outline-none border-none"
+          />
+        </div>
+        <div class="md:row-start-1 lg:col-span-1 lg:col-start-2">
+          <h2
+            class="text-3xl font-extrabold text-neutral-darkDesaturatedBlue flex items-center justify-center"
+          >
+            $<span class="price">16.00 &nbsp;</span
+            ><span
+              class="font-semibold text-base text-neutral-grayishBlue month_year"
+            >
+              / month</span
+            >
+          </h2>
+        </div>
+      </div>
 
-  Unlimited websites
-  100% data ownership
-  Email reports
+      <!-- Toggle -->
+      <div class="flex gap-3 items-center justify-center mt-6 px-4">
+        <p class="text-neutral-grayishBlue text-xs font-semibold">
+          Monthly Billing
+        </p>
+        <div class="relative flex items-center">
+          <input type="checkbox" id="billingToggle" class="sr-only peer" />
+          <label
+            for="billingToggle"
+            class="w-12 h-6 bg-neutral-lightGrayishBlueToggle rounded-full cursor-pointer transition-colors duration-300 peer-checked:bg-primary-strongCyan"
+          ></label>
+          <div
+            class="w-4 h-4 bg-neutral-veryPaleBlue rounded-full absolute left-[3px] top-[4px] transition-transform duration-300 peer-checked:translate-x-[27px]"
+          ></div>
+        </div>
 
-  Start my trial
-   -->
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-  <script src="script.js"></script>
-</body>
+        <p class="text-neutral-grayishBlue text-xs font-semibold lg:flex lg:items-center lg:justify-center gap-2">
+          Yearly Billing
+          <span
+            class="bg-primary-lightGrayishRed rounded-full py-[0.4em] px-[0.8em] lg:w-[9em] text-[0.8em] font-bold text-primary-lightRed lg:flex lg:items-center lg:justify-center lg:gap-1"
+            >-25% <span class="hidden lg:flex">discount</span></span
+          >
+        </p>
+      </div>
+
+      <!-- Points -->
+      <div
+        class="w-full border-t mt-8 pt-4 flex flex-col gap-6 items-center justify-center lg:flex-row lg:justify-between lg:px-8 lg:pt-8"
+      >
+        <div class="flex flex-col items-center justify-center gap-4 px-4">
+          <span class="flex items-center justify-center gap-4"
+            ><img src="./images/icon-check.svg" alt="" />
+            <p class="text-sm text-neutral-grayishBlue">
+              Unlimited websites
+            </p></span
+          >
+          <span class="flex items-center justify-center gap-4"
+            ><img src="./images/icon-check.svg" alt="" />
+            <p class="text-sm text-neutral-grayishBlue">
+              100% data ownership
+            </p></span
+          >
+          <span class="flex items-center justify-center gap-4"
+            ><img src="./images/icon-check.svg" alt="" />
+            <p class="text-sm text-neutral-grayishBlue">Email reports</p></span
+          >
+        </div>
+        <button
+          class="bg-neutral-darkDesaturatedBlue text-primary-paleBlue rounded-full text-sm font-bold py-2 w-[15em]"
+        >
+          Start my trial
+        </button>
+      </div>
+    </main>
+    <div class="attribution pb-8">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/yashbabani0">Yash Babani</a>.
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
