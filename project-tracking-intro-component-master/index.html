@@ -1,39 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Project tracking intro component</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-  Product
-  Features
-  Pricing
-  Login
-
-  New
-  Monograph Dashboard
-
-  Powerful insights into your team
-  Project planning and time tracking for agile teams
-
-  Schedule a demo
-  to see a live preview
-  
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </p>
-  </footer>
-</body>
+    <title>Frontend Mentor | Project tracking intro component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="output.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 1em;
+        text-align: center;
+        margin-top: 2em;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="w-screen h-screen bg-white">
+    <nav
+      class="flex items-center justify-between lg:w-screen z-10 p-8 lg:px-32 lg:py-16"
+    >
+      <img src="./images/logo.svg" alt="" />
+      <img
+        src="./images/icon-hamburger.svg"
+        class="mobile_menu_open cursor-pointer lg:hidden"
+        alt=""
+      />
+      <img
+        src="./images/icon-close.svg"
+        class="mobile_menu_close hidden cursor-pointer lg:hidden"
+        alt=""
+      />
+      <div
+        class="mobile_menu lg:hidden hidden uppercase flex-col items-center justify-center absolute w-[20em] h-[12em] top-[15%] left-[50%] translate-x-[-50%] bg-white text-center rounded-lg shadow-lg px-8"
+      >
+        <div
+          class="links flex flex-col items-center justify-center w-full gap-4 h-[70%] tracking-wider text-very-dark-blue"
+        >
+          <b class="hover:underline hover:underline-offset-2 cursor-pointer"
+            >product</b
+          >
+          <b class="hover:underline hover:underline-offset-2 cursor-pointer"
+            >features</b
+          >
+          <b class="hover:underline hover:underline-offset-2 cursor-pointer"
+            >pricing</b
+          >
+        </div>
+        <div
+          class="login w-full h-[30%] text-grayish-blue font-medium border-t-2 pt-4"
+        >
+          <b class="hover:underline hover:underline-offset-2 cursor-pointer"
+            >login</b
+          >
+        </div>
+      </div>
+      <div class="pc_menu hidden lg:flex">
+        <div
+          class="links flex flex-row items-center justify-center w-full gap-8 uppercase tracking-widest text-very-dark-blue"
+        >
+          <b class="hover:underline hover:underline-offset-2 cursor-pointer"
+            >product</b
+          >
+          <b class="hover:underline hover:underline-offset-2 cursor-pointer"
+            >features</b
+          >
+          <b class="hover:underline hover:underline-offset-2 cursor-pointer"
+            >pricing</b
+          >
+        </div>
+        <div
+          class="login text-grayish-blue uppercase ml-10 font-medium w-[8em] h-full flex justify-between items-center flex-row"
+        >
+          <p
+            class="text-6xl font-bold bg-grayish-blue rounded-full w-2 h-2"
+          ></p>
+          <b
+            class="hover:underline hover:underline-offset-2 cursor-pointer font-medium tracking-wider"
+            >login</b
+          >
+        </div>
+      </div>
+    </nav>
+    <div
+      class="bg_pattern bg-light-grayish-blue w-[50%] h-[60%] absolute top-0 right-0 rounded-bl-[3em] -z-10"
+    ></div>
+    <div
+      class="bg_img absolute top-[20%] -right-[48.5%] lg:translate-x-[-50%] -z-10 overflow-hidden"
+    >
+      <img
+        src="./images/illustration-devices.svg"
+        class="w-[80%] lg:w-auto overflow-hidden"
+        alt=""
+      />
+    </div>
+    <main
+      class="z-50 lg:w-[50%] lg:flex lg:items-start lg:justify-center lg:flex-col lg:pt-28 pt-[20em] p-8 lg:px-32 lg:py-16"
+    >
+      <div class="flex gap-4 items-center justify-start">
+        <div
+          class="text-light-grayish-blue bg-very-dark-blue py-1 px-3 text-[1em] rounded-full font-semibold"
+        >
+          NEW
+        </div>
+        <div class="tracking-[3px] uppercase text-dark-grayish-blue">
+          Monograph Dashboard
+        </div>
+      </div>
+      <div>
+        <h1
+          class="font-extrabold mt-4 text-very-dark-blue text-3xl lg:text-6xl uppercase"
+        >
+          Powerful insights <br class="hidden lg:flex" />
+          into your team
+        </h1>
+        <p class="text-dark-grayish-blue mt-4 mb-6">
+          Project planning and time tracking for agile teams
+        </p>
+      </div>
+      <div class="flex gap-4 items-center justify-center">
+        <button
+          class="uppercase bg-red text-light-grayish-blue text-sm py-2 px-6 rounded-md hover:opacity-80 lg:text-base lg:py-3 lg:px-8"
+        >
+          Schedule a demo
+        </button>
+        <p
+          class="text-sm lg:text-base text-grayish-blue tracking-[3px] uppercase"
+        >
+          to see a preview
+        </p>
+      </div>
+    </main>
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. <br class="lg:hidden" />
+        Coded by <a href="https://github.com/yashbabani0">Yash Babani</a>.
+      </p>
+    </footer>
+  </body>
 </html>
