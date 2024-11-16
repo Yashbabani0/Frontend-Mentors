@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | News homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./output.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 16px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="p-4 py-8 lg:px-28 lg:py-16">
+    <nav class="flex items-center justify-between">
+      <img src="./assets/images/logo.svg" alt="" />
+      <div class="pc_menu hidden lg:flex items-center justify-between gap-8">
+        <a
+          href="#"
+          class="text-darkGrayishBlue hover:text-softRed transition-colors duration-300"
+          >Home</a
+        >
+        <a
+          href="#"
+          class="text-darkGrayishBlue hover:text-softRed transition-colors duration-300"
+          >New</a
+        >
+        <a
+          href="#"
+          class="text-darkGrayishBlue hover:text-softRed transition-colors duration-300"
+          >Popular</a
+        >
+        <a
+          href="#"
+          class="text-darkGrayishBlue hover:text-softRed transition-colors duration-300"
+          >Trending</a
+        >
+        <a
+          href="#"
+          class="text-darkGrayishBlue hover:text-softRed transition-colors duration-300"
+          >Categories</a
+        >
+      </div>
+      <img
+        src="./assets/images/icon-menu.svg"
+        alt=""
+        class="lg:hidden open cursor-pointer"
+      />
+      <div
+        class="lg:hidden w-screen mobile_menu fixed top-0 right-0 translate-x-[100%] transition-all duration-1000"
+      >
+        <div
+          class="w-screen min-h-screen top-0 absolute transition-all duration-500 ease-out right-0 bg-black opacity-60"
+        ></div>
+        <div
+          class="flex items-start justify-start flex-col bg-white w-[70%] min-h-screen absolute top-0 right-0 opacity-100"
+        >
+          <div class="flex items-center justify-end w-full h-[5em] pt-8 pr-8">
+            <img
+              src="./assets/images/icon-menu-close.svg"
+              class="close cursor-pointer"
+              alt=""
+            />
+          </div>
+          <div
+            class="pl-8 pt-14 flex flex-col items-start justify-start gap-8 font-semibold text-veryDarkBlue"
+          >
+            <a href="#">Home</a>
+            <a href="#">New</a>
+            <a href="#">Popular</a>
+            <a href="#">Trending</a>
+            <a href="#">Categories</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="mt-8">
+      <div class="w-full mb-6">
+        <img
+          src="./assets/images/image-web-3-desktop.jpg"
+          alt=""
+          class="hidden md:flex"
+        />
+        <img
+          src="./assets/images/image-web-3-mobile.jpg"
+          class="md:hidden h-[17em] w-full"
+          alt=""
+        />
+      </div>
+      <div>
+        <div>
+          <h1 class="text-5xl font-extrabold text-veryDarkBlue pr-8">
+            The Bright Future of Web 3.0?
+          </h1>
+        </div>
+        <div>
+          <p class="mt-4 text-darkGrayishBlue text-base leading-6">
+            We dive into the next evolution of the web that claims to put the
+            power of the platforms back into the hands of the people. But is it
+            really fulfilling its promise?
+          </p>
+          <button
+            class="mt-4 mb-12 py-2 px-10 uppercase tracking-widest bg-softRed text-veryDarkBlue font-semibold text-base"
+          >
+            Read more
+          </button>
+        </div>
+      </div>
+      <div class="bg-veryDarkBlue w-full p-4 mb-12">
+        <h2 class="text-softOrange text-3xl font-bold">New</h2>
+        <div class="mt-8">
+          <div class="border-b mb-6 border-darkGrayishBlue">
+            <h3 class="text-offWhite font-semibold text-[1.3em]">
+              Hydrogen VS Electric Cars
+            </h3>
+            <p class="text-grayishBlue text-sm pt-2 pb-6">
+              Will hydrogen-fueled cars ever catch up to EVs?
+            </p>
+          </div>
+          <div class="border-b mb-6 border-darkGrayishBlue">
+            <h3 class="text-offWhite font-semibold text-[1.3em]">
+              The Downsides of AI Artistry
+            </h3>
+            <p class="text-grayishBlue text-sm pt-2 pb-6">
+              What are the possible adverse effects of on-demand AI image
+              generation?
+            </p>
+          </div>
+          <div>
+            <h3 class="text-offWhite font-semibold text-[1.3em]">
+              Is VC Funding Drying Up?
+            </h3>
+            <p class="text-grayishBlue text-sm pt-2 pb-6">
+              Private funding by VC firms is down 50% YOY. We take a look at
+              what that means.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col items-center justify-center gap-8 mb-8">
+        <div class="flex items-center justify-start gap-8 h-40">
+          <div class="w-[15em] h-[10em]">
+            <img
+              class="min-w-full h-full"
+              src="./assets/images/image-retro-pcs.jpg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col items-start justify-start h-full gap-2">
+            <h2 class="text-softRed text-3xl font-bold">01</h2>
+            <b class="font-extrabold text-veryDarkBlue">Reviving Retro PCs</b>
+            <p class="text-darkGrayishBlue leading-6 text-sm">What happens when old PCs are given modern upgrades?</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-start gap-8 h-40">
+          <div class="w-[13em] h-[10em]">
+            <img
+              class="w-full h-full"
+              src="./assets/images/image-top-laptops.jpg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col items-start justify-start h-full gap-2">
+            <h2 class="text-softRed text-3xl font-bold">02</h2>
+            <b class="font-extrabold text-veryDarkBlue">Top 10 Laptops of 2022</b>
+            <p class="text-darkGrayishBlue leading-6 text-sm">Our best picks for various needs and budgets.</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-8 h-40">
+          <div class="w-[14em] h-[10em]">
+            <img
+              class="w-full h-full"
+              src="./assets/images/image-gaming-growth.jpg"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col items-start justify-start h-full gap-2">
+            <h2 class="text-softRed text-3xl font-bold">03</h2>
+            <b class="font-extrabold text-veryDarkBlue">The Growth of Gaming</b>
+            <p class="text-darkGrayishBlue leading-6 text-sm">How the pandemic has sparked fresh opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/yashbabani0">Yash Babani</a>.
+    </div>
+  </body>
+</html>
