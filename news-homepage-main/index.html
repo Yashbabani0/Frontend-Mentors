@@ -32,7 +32,7 @@
       }
     </style>
   </head>
-  <body class="p-4 py-8 lg:px-28 lg:py-16">
+  <body class="p-4 py-8 lg:px-32 lg:py-20">
     <nav class="flex items-center justify-between">
       <img src="./assets/images/logo.svg" alt="" />
       <div class="pc_menu hidden lg:flex items-center justify-between gap-8">
@@ -95,12 +95,12 @@
         </div>
       </div>
     </nav>
-    <main class="mt-8">
-      <div class="w-full mb-6">
+    <main class="mt-8 lg:grid lg:grid-cols-3 lg:order-1 lg:grid-rows-3 lg:gap-6 lg:mt-12">
+      <div class="w-full mb-6 lg:mb-0 lg:col-span-2">
         <img
           src="./assets/images/image-web-3-desktop.jpg"
           alt=""
-          class="hidden md:flex"
+          class="hidden md:flex h-[25em]"
         />
         <img
           src="./assets/images/image-web-3-mobile.jpg"
@@ -108,57 +108,57 @@
           alt=""
         />
       </div>
-      <div>
-        <div>
-          <h1 class="text-5xl font-extrabold text-veryDarkBlue pr-8">
+      <div class="lg:order-3 lg:flex lg:items-start lg:justify-center lg:col-span-2 lg:row-span-1">
+        <div class="lg:min-w-[50%]">
+          <h1 class="text-5xl lg:leading-[1.3em] lg:text-6xl font-extrabold text-veryDarkBlue pr-8">
             The Bright Future of Web 3.0?
           </h1>
         </div>
-        <div>
-          <p class="mt-4 text-darkGrayishBlue text-base leading-6">
+        <div class="lg:min-w-[50%]">
+          <p class="mt-4 lg:mt-0 text-darkGrayishBlue text-base leading-6 lg:leading-[2em] lg:text-xl">
             We dive into the next evolution of the web that claims to put the
             power of the platforms back into the hands of the people. But is it
             really fulfilling its promise?
           </p>
           <button
-            class="mt-4 mb-12 py-2 px-10 uppercase tracking-widest bg-softRed text-veryDarkBlue font-semibold text-base"
+            class="mt-4 mb-12 py-2 px-10 uppercase tracking-widest bg-softRed text-veryDarkBlue font-semibold text-base lg:mt-8"
           >
             Read more
           </button>
         </div>
       </div>
-      <div class="bg-veryDarkBlue w-full p-4 mb-12">
-        <h2 class="text-softOrange text-3xl font-bold">New</h2>
+      <div class="bg-veryDarkBlue w-full p-4 mb-12 lg:mb-0 lg:order-2 lg:row-span-2 lg:p-8">
+        <h2 class="text-softOrange text-3xl font-bold lg:text-5xl lg:font-semibold">New</h2>
         <div class="mt-8">
           <div class="border-b mb-6 border-darkGrayishBlue">
-            <h3 class="text-offWhite font-semibold text-[1.3em]">
+            <h3 class="text-offWhite font-semibold text-[1.3em] lg:text-[1.6em]">
               Hydrogen VS Electric Cars
             </h3>
-            <p class="text-grayishBlue text-sm pt-2 pb-6">
+            <p class="text-grayishBlue text-sm pt-2 pb-6 lg:pb-20 lg:text-lg">
               Will hydrogen-fueled cars ever catch up to EVs?
             </p>
           </div>
           <div class="border-b mb-6 border-darkGrayishBlue">
-            <h3 class="text-offWhite font-semibold text-[1.3em]">
+            <h3 class="text-offWhite font-semibold text-[1.3em] lg:text-[1.6em]">
               The Downsides of AI Artistry
             </h3>
-            <p class="text-grayishBlue text-sm pt-2 pb-6">
+            <p class="text-grayishBlue text-sm pt-2 pb-6 lg:pb-20 lg:text-lg">
               What are the possible adverse effects of on-demand AI image
               generation?
             </p>
           </div>
           <div>
-            <h3 class="text-offWhite font-semibold text-[1.3em]">
+            <h3 class="text-offWhite font-semibold text-[1.3em] lg:text-[1.6em]">
               Is VC Funding Drying Up?
             </h3>
-            <p class="text-grayishBlue text-sm pt-2 pb-6">
+            <p class="text-grayishBlue text-sm pt-2 pb-6 lg:text-lg">
               Private funding by VC firms is down 50% YOY. We take a look at
               what that means.
             </p>
           </div>
         </div>
       </div>
-      <div class="flex flex-col items-center justify-center gap-8 mb-8">
+      <div class="flex flex-col items-center justify-center gap-8 mb-8 lg:mb-0 lg:order-4 lg:flex-row lg:col-span-3 lg:mt-[-10em]">
         <div class="flex items-center justify-start gap-8 h-40">
           <div class="w-[15em] h-[10em]">
             <img
