@@ -890,9 +890,24 @@ body {
   font-size: 15px;
 }
 
+.hover\:bg-veryDarkBlue:hover {
+  --tw-bg-opacity: 1;
+  background-color: hsl(240 100% 5% / var(--tw-bg-opacity, 1));
+}
+
 .hover\:text-softRed:hover {
   --tw-text-opacity: 1;
   color: hsl(5 85% 63% / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-grayishBlue:hover {
+  --tw-text-opacity: 1;
+  color: hsl(233 8% 79% / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-softOrange:hover {
+  --tw-text-opacity: 1;
+  color: hsl(35 77% 62% / var(--tw-text-opacity, 1));
 }
 
 @media (min-width: 768px) {
@@ -952,14 +967,6 @@ body {
 
   .lg\:mt-8 {
     margin-top: 2rem;
-  }
-
-  .lg\:mt-\[-1em\] {
-    margin-top: -1em;
-  }
-
-  .lg\:mt-\[-4em\] {
-    margin-top: -4em;
   }
 
   .lg\:mt-\[-10em\] {
@@ -1052,16 +1059,8 @@ body {
     font-weight: 600;
   }
 
-  .lg\:leading-8 {
-    line-height: 2rem;
-  }
-
   .lg\:leading-\[1\.3em\] {
     line-height: 1.3em;
-  }
-
-  .lg\:leading-\[\] {
-    line-height: ;
   }
 
   .lg\:leading-\[2em\] {
