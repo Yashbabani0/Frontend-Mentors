@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Overpass", serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b {
+  font-family: "Ubuntu", serif;
+}
+@media (min-width: 800px) {
+  .hero {
+    background-image: url("../public/images/bg-pattern-intro-desktop.svg"),
+      linear-gradient(hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+    background-position: 25%;
+    background-repeat: no-repeat;
+    background-size: 200%;
+    border-radius: 0 0 0 10em;
+  }
+}
+
+@media (max-width: 799px) {
+  .hero {
+    background-image: url("../public/images/bg-pattern-intro-mobile.svg"),
+      linear-gradient(hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+    background-position: 40%;
+    background-repeat: no-repeat;
+    background-size: 300%;
+    border-radius: 0 0 0 10em;
+  }
+}
+.mobileSignUpButton {
+  background: linear-gradient(hsl(13, 100%, 72%), hsl(353, 100%, 62%));
+}
+.mobileSignUpButton:hover {
+  background: none;
+  background-color: hsl(355, 100%, 74%);
+}
+.StateoftheartInfrastructure {
+  background: url(../public/images/bg-pattern-circles.svg),
+    linear-gradient(hsl(237, 17%, 21%), hsl(237, 23%, 32%));
+    background-size: 120%;
+    background-position: 40% -100%;
+}

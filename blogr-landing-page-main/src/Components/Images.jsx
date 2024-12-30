@@ -1,0 +1,15 @@
+export const images = {
+  bgPatternCircles: "/images/bg-pattern-circles.svg",
+  bgPatternIntroDesktop: "/images/bg-pattern-intro-desktop.svg",
+  bgPatternIntroMobile: "/images/bg-pattern-intro-mobile.svg",
+  iconArrowDark: "/images/icon-arrow-dark.svg",
+  iconArrowLight: "/images/icon-arrow-light.svg",
+  iconClose: "/images/icon-close.svg",
+  iconHamburger: "/images/icon-hamburger.svg",
+  illustrationEditorDesktop: "/images/illustration-editor-desktop.svg",
+  illustrationEditorMobile: "/images/illustration-editor-mobile.svg",
+  illustrationLaptopDesktop: "/images/illustration-laptop-desktop.svg",
+  illustrationLaptopMobile: "/images/illustration-laptop-mobile.svg",
+  illustrationPhones: "/images/illustration-phones.svg",
+  logo: "/images/logo.svg",
+};
