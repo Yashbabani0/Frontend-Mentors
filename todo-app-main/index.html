@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Todo app</title>
+    <link rel="stylesheet" href="output.css" />
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 1em;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body
+    class="light bg-neutral-lightTheme-veryLightGrayishBlue dark:bg-neutral-darkTheme-veryDarkBlue"
+  >
+    <!-- Desktop Backgrounds -->
+    <div class="hidden md:block absolute top-0 left-0 -z-10">
+      <img
+        class="light-mode w-screen h-full dark:hidden"
+        src="./images/bg-desktop-light.jpg"
+        alt="Light Background"
+      />
+      <img
+        class="dark-mode hidden w-screen h-full dark:flex"
+        src="./images/bg-desktop-dark.jpg"
+        alt="Dark Background"
+      />
+    </div>
+
+    <!-- Mobile Backgrounds -->
+    <div class="block md:hidden absolute top-0 left-0 -z-10">
+      <img
+        class="light-mode w-screen h-full dark:hidden"
+        src="./images/bg-mobile-light.jpg"
+        alt="Light Background"
+      />
+      <img
+        class="dark-mode hidden w-screen h-full dark:flex"
+        src="./images/bg-mobile-dark.jpg"
+        alt="Dark Background"
+      />
+    </div>
+
+    <main class="mt-8 w-full md:w-3/4 mx-auto lg:w-[45%] lg:mt-12 px-6 py-4">
+      <nav class="flex items-center justify-between my-8">
+        <h1 class="text-white font-bold text-2xl lg:text-3xl tracking-[16px]">
+          TODO
+        </h1>
+        <div id="theme-toggle" class="cursor-pointer">
+          <img
+            id="dark-mode-icon"
+            src="./images/icon-moon.svg"
+            alt="Dark Mode"
+          />
+          <img
+            id="light-mode-icon"
+            src="./images/icon-sun.svg"
+            alt="Light Mode"
+            class="hidden"
+          />
+        </div>
+      </nav>
+      <div
+        class="w-full mx-auto bg-neutral-lightTheme-veryLightGray flex items-center justify-start px-4 py-1 rounded-md focus-within:outline focus-within:outline-2 text-xl text-neutral-lightTheme-veryDarkGrayishBlue dark:text-neutral-darkTheme-lightGrayishBlue dark:bg-neutral-darkTheme-veryDarkDesaturatedBlue"
+      >
+        <div
+          class="rounded-full border-2 dark:border-neutral-darkTheme-lightGrayishBlue w-4 h-4 flex items-center justify-center"
+        ></div>
+        <input
+          type="text"
+          name="todoInput"
+          id="todoInput"
+          class="w-full px-4 py-2 outline-none bg-transparent"
+        />
+      </div>
+
+      <div class="w-full mt-8">
+        <section class="w-full">
+          <div class="w-full rounded-md overflow-hidden">
+            <ul class="todoLists">
+              <!-- <div
+                class="flex items-center justify-between p-4 text-neutral-lightTheme-veryDarkGrayishBlue text-lg bg-neutral-lightTheme-veryLightGray border-b-2 border-neutral-lightTheme-darkGrayishBlue dark:bg-neutral-darkTheme-veryDarkDesaturatedBlue dark:text-neutral-darkTheme-lightGrayishBlue dark:border-neutral-darkTheme-veryDarkGrayishBlue1"
+              >
+                <div class="flex items-center justify-start gap-4">
+                  <label class="flex items-center cursor-pointer relative">
+                    <input
+                      type="checkbox"
+                      class="appearance-none w-6 h-6 rounded-full border-2 cursor-pointer taskCompleted"
+                    />
+                    <img
+                      src="./images/icon-check.svg"
+                      alt="tick for checkbox"
+                      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 z-10"
+                    />
+                  </label>
+                  <span
+                    class="taskText dark:hover:text-neutral-darkTheme-lightGrayishBlueHover"
+                  >
+                  </span>
+                </div>
+                <span class="cursor-pointer taskDelete">
+                  <img src="./images/icon-cross.svg" alt="delete" />
+                </span>
+              </div> -->
+            </ul>
+            <!-- Filter Bar for Desktop -->
+            <section
+              class="flex items-center justify-between p-4 text-neutral-lightTheme-darkGrayishBlue bg-neutral-lightTheme-veryLightGray dark:bg-neutral-darkTheme-veryDarkDesaturatedBlue dark:text-neutral-darkTheme-lightGrayishBlue text-sm"
+            >
+              <!-- Task's Left -->
+              <span
+                class="hover:text-neutral-lightTheme-veryDarkGrayishBlue dark:hover:text-neutral-darkTheme-lightGrayishBlueHover cursor-pointer dark:text-neutral-darkTheme-darkGrayishBlue tasksLeft"
+                >0 items left</span
+              >
+              <span class="hidden items-center justify-center gap-2 md:flex">
+                <b
+                  class="hover:text-neutral-lightTheme-veryDarkGrayishBlue dark:text-neutral-darkTheme-darkGrayishBlue dark:hover:text-neutral-darkTheme-lightGrayishBlueHover cursor-pointer showAllTasks"
+                  >All</b
+                >
+                <b
+                  class="hover:text-neutral-lightTheme-veryDarkGrayishBlue dark:text-neutral-darkTheme-darkGrayishBlue dark:hover:text-neutral-darkTheme-lightGrayishBlueHover cursor-pointer showActiveTasks"
+                  >Active</b
+                >
+                <b
+                  class="hover:text-neutral-lightTheme-veryDarkGrayishBlue dark:text-neutral-darkTheme-darkGrayishBlue dark:hover:text-neutral-darkTheme-lightGrayishBlueHover cursor-pointer showCompletedTasks"
+                  >Completed</b
+                >
+              </span>
+              <b
+                class="hover:text-neutral-lightTheme-veryDarkGrayishBlue dark:text-neutral-darkTheme-darkGrayishBlue dark:hover:text-neutral-darkTheme-lightGrayishBlueHover cursor-pointer clearCompletedTasksFromList"
+                >Clear Completed</b
+              >
+            </section>
+          </div>
+
+          <!-- Mobile View Filter Bar -->
+          <section
+            class="p-4 flex items-center justify-center gap-4 mt-4 rounded-md text-neutral-lightTheme-darkGrayishBlue bg-neutral-lightTheme-veryLightGray dark:bg-neutral-darkTheme-veryDarkDesaturatedBlue dark:text-neutral-darkTheme-lightGrayishBlue text-sm md:hidden"
+          >
+            <b
+              class="hover:text-neutral-lightTheme-veryDarkGrayishBlue showAllTasks"
+              >All</b
+            >
+            <b
+              class="hover:text-neutral-lightTheme-veryDarkGrayishBlue showActiveTasks"
+              >Active</b
+            >
+            <b
+              class="hover:text-neutral-lightTheme-veryDarkGrayishBlue showCompletedTasks"
+              >Completed</b
+            >
+          </section>
+        </section>
+      </div>
+
+      <!-- Drag and Drop Text -->
+      <section
+        class="flex items-center justify-center my-4 text-xs dark:text-neutral-darkTheme-darkGrayishBlue text-neutral-lightTheme-darkGrayishBlue"
+      >
+        <b>Drag and drop to reorder list</b>
+      </section>
+    </main>
+
+    <div class="attribution dark:text-white">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. <br />
+      Coded by <a href="https://github.com/yashbabani">Yash Babani</a>.
+    </div>
+  </body>
+</html>

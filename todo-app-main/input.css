@@ -1,0 +1,38 @@
+:root {
+  /* Light mode variables */
+  --text-line-through-color: hsl(233, 11%, 84%);
+  --text-color: hsl(233, 11%, 84%);
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Josefin Sans", serif;
+  font-weight: 400;
+}
+body.dark {
+  --text-line-through-color: hsl(234, 11%, 52%);
+  --text-color: hsl(233, 14%, 35%);
+}
+
+.checked {
+  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.line-through {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-line-through-color);
+  color: var(--text-color);
+}
+@media (min-width: 768px) {
+  li {
+    position: relative;
+  }
+
+  .taskDelete {
+    display: none;
+  }
+  li:hover .taskDelete {
+    display: block;
+  }
+}
