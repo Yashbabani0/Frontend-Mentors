@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <!-- Title -->
+    <title>Frontend Mentor | Conference ticket generator</title>
+
+    <!-- Css Link for Tailwind to Output.css -->
+    <link rel="stylesheet" href="src/output.css" />
+
+    <!-- Javascript Link -->
+    <script src="src/script.js" defer></script>
+
+    <!-- Styles for Attribution -->
+    <style>
+      .attribution {
+        font-size: 1em;
+        text-align: center;
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body class="bg-Neutral-900 w-screen h-screen">
+    <!-- Background Images -->
+    <img
+      src="./assets/images/pattern-squiggly-line-top.svg"
+      class="fixed top-0 right-0 -z-10"
+      alt=""
+    />
+    <img
+      src="./assets/images/pattern-lines.svg"
+      class="absolute top-0 -z-10 w-screen h-screen"
+      alt=""
+    />
+    <img
+      src="./assets/images/pattern-circle.svg"
+      class="absolute left-1/2 top-1/2 -translate-y-1/2 -z-10"
+      alt=""
+    />
+    <img
+      src="./assets/images/background-desktop.png"
+      class="absolute -z-20 hidden lg:block h-[115vh] w-screen"
+      alt=""
+    />
+    <img
+      src="./assets/images/background-tablet.png"
+      class="-z-20 hidden lg:hidden md:block w-screen absolute h-screen"
+      alt=""
+    />
+    <img
+      src="./assets/images/background-mobile.png"
+      class="absolute -z-20 block md:hidden lg:hidden -top-60"
+      alt=""
+    />
+
+    <!-- Main Content -->
+    <main
+      class="flex items-center justify-center flex-col lg:w-1/2 mx-auto text-center"
+    >
+      <!-- Logo -->
+      <img src="./assets/images/logo-full.svg" alt="" class="pt-10 lg:pt-5" />
+
+      <!-- Heading -->
+      <h1
+        class="py-4 text-3xl md:text-4xl lg:text-5xl px-4 text-Neutral-0 font-bold"
+      >
+        Your Journey to Coding Conf 2025 Starts Here!
+      </h1>
+
+      <!-- Paragraph -->
+      <p class="text-Neutral-300">
+        Secure your spot at next year's biggest coding conference.
+      </p>
+
+      <!-- Form For Ticket Generate -->
+      <form
+        class="flex items-start justify-center flex-col text-left my-0 w-[20em] gap-4"
+      >
+        <!-- Input for Avatar -->
+        <label for="avatar" class="w-full z-10">
+          Upload Avatar
+          <div
+            class="bg-Neutral-700 w-full border-2 border-dashed border-Neutral-300 rounded-md p-6 gap-4 opacity-80 text-Neutral-300 flex flex-col items-center justify-center cursor-pointer hover:bg-Neutral-500 z-10"
+          >
+            <img
+              src="/assets/images/logo-mark.svg"
+              class="w-10 p-2 border-[1px] border-Neutral-300 bg-Neutral-500 rounded-xl showAddedAvatar"
+              alt=""
+            />
+            <input
+              type="file"
+              id="avatar"
+              class="hidden"
+              accept="image/png, image/jpeg"
+            />
+            <p class="avatarInfo">Drag and drop or click to upload</p>
+            <div class="flex items-center justify-center gap-4">
+              <button
+                class="w-24 rounded-md h-8 flex gap-2 text-[12px] items-center justify-center text-white bg-Neutral-300/50 underline hidden removeImage z-50 cursor-pointer"
+              >
+                Remove image
+              </button>
+              <button
+                class="w-24 rounded-md h-8 flex gap-2 text-[12px] items-center justify-center text-white bg-Neutral-300/50 underline hidden changeImage z-50 cursor-pointer"
+              >
+                Change image
+              </button>
+            </div>
+          </div>
+          <p
+            class="text-Neutral-300 flex gap-2 text-[10px] mt-2 avatarWarningAboutImgInfo"
+          >
+            <img src="./assets/images/icon-info.svg" alt="" /> Upload your photo
+            (JPG or PNG, max size: 500KB).
+          </p>
+          <p
+            class="text-Orange-700 flex gap-2 text-[10px] items-center mt-2 avatarErrorForImgSizeTooLarge hidden"
+          >
+            <img src="./assets/images/icon-info.svg" alt="" />File too large.
+            Please upload photo less than 500kb.
+          </p>
+          <p
+            class="text-Orange-700 flex gap-2 text-[10px] items-center mt-2 avatarImgFileTypeError hidden"
+          >
+            <img src="./assets/images/icon-info.svg" alt="" />File type error.
+            please upload only ('JPG' or 'PNg')
+          </p>
+        </label>
+
+        <!-- Input for Name -->
+        <label for="name" class="text-Neutral-0 flex flex-col gap-2 w-full"
+          >Full Name
+          <input
+            type="text"
+            id="name"
+            class="bg-Neutral-700 hover:bg-Neutral-500 w-full py-2 border-2 border-Neutral-300 opacity-80 rounded-md px-4"
+            placeholder="Full Name"
+            required
+          />
+        </label>
+
+        <!-- Input for Email Id -->
+        <label for="email" class="text-Neutral-0 flex flex-col gap-2 w-full"
+          >Email Address
+          <input
+            type="email"
+            id="email"
+            class="bg-Neutral-700 w-full py-2 border-2 border-Neutral-300 opacity-80 rounded-md px-4 hover:bg-Neutral-500"
+            placeholder="example@email.com"
+            required
+          />
+          <p class="text-sm text-Orange-700 emailIdIsInvalid hidden">
+            Please enter a valid Email Id
+          </p>
+        </label>
+
+        <!-- Input for Github Username -->
+        <label for="github" class="text-Neutral-0 flex flex-col gap-2 w-full"
+          >GitHub Username
+          <input
+            type="text"
+            id="github"
+            class="bg-Neutral-700 w-full py-2 border-2 border-Neutral-300 opacity-80 rounded-md px-4 hover:bg-Neutral-500"
+            placeholder="@yourusername"
+            required
+          />
+          <p class="text-sm text-Orange-700 githubUserNameError hidden">
+            Please enter a valid Github Username
+          </p>
+          <p class="text-sm text-green-500 validUserName hidden">Valid username! You can submit</p>
+        </label>
+        <button
+          type="submit"
+          id="submitBtn"
+          class="w-[20em] py-2 bg-Orange-500 my-4 rounded-md text-Neutral-900 font-bold hover:bg-Orange-700 cursor-pointer"
+        >
+          Generate My Ticket
+        </button>
+      </form>
+      <!-- Submit Button -->
+    </main>
+
+    <!-- Attribution -->
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="https://github.com/yashbabani0">Yash babani</a>.
+    </div>
+
+    <!-- Background Images -->
+    <img
+      src="./assets/images/pattern-squiggly-line-bottom-desktop.svg"
+      alt=""
+      class="fixed bottom-0 left-0 -z-10 hidden lg:flex pattern-squiggly-line-bottom-desktop"
+    />
+    <img
+      src="./assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg"
+      class="fixed lg:hidden bottom-0 left-0"
+      alt=""
+    />
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket</title>
+    <link rel="stylesheet" href="./src/output.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // This Imports from ticket.html
+        // Display Full Name of User
+        const displayFullName = document.querySelectorAll(".displayFullName");
+
+        // Display Email Id Of User
+        const displayEmailId = document.querySelector("#displayEmailId");
+
+        // Display Avatar of User
+        const displayUserAvatar = document.querySelector("#displayUserAvatar");
+
+        // Display Github Username
+        const displayGithubUsername = document.querySelector(
+          "#displayGithubUsername"
+        );
+
+        // Display Ticket Id of User
+        const ticketId = document.querySelector(".ticketId");
+        function generateTicketID() {
+          const randomNum = Math.floor(10000 + Math.random() * 90000);
+          return `#${randomNum}`;
+        }
+        ticketId.textContent = generateTicketID();
+
+        // Retrieve user data from localStorage
+        const userAvatar =
+          localStorage.getItem("avatar") || "./assets/images/image-avatar.jpg";
+        const userName = localStorage.getItem("name") || "Guest";
+        const userEmail = localStorage.getItem("EmailId") || "N/A";
+        const userGithubId =
+          localStorage.getItem("githubUserName") || "@unknown";
+
+        // Display ticket Data
+        displayEmailId.textContent = userEmail;
+        displayGithubUsername.textContent = userGithubId;
+        displayUserAvatar.src = userAvatar;
+        displayFullName.forEach((e) => {
+          e.textContent = userName;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <img
+      src="./assets/images/pattern-squiggly-line-top.svg"
+      class="absolute top-0 right-0 -z-10"
+      alt=""
+    />
+    <img
+      src="./assets/images/pattern-lines.svg"
+      class="absolute top-0 -z-10 w-screen h-screen"
+      alt=""
+    />
+    <img
+      src="./assets/images/pattern-circle.svg"
+      class="absolute left-1/2 top-1/2 -translate-y-1/2 -z-10"
+      alt=""
+    />
+    <img
+      src="./assets/images/background-desktop.png"
+      class="absolute -z-20 hidden lg:block h-full w-screen"
+      alt=""
+    />
+    <img
+      src="./assets/images/background-tablet.png"
+      class="-z-20 hidden lg:hidden md:block w-screen background-tablet"
+      alt=""
+    />
+    <img
+      src="./assets/images/background-mobile.png"
+      class="absolute -z-20 block md:hidden lg:hidden -top-60"
+      alt=""
+    />
+    <main class="flex items-center justify-center flex-col px-8 lg:px-0">
+      <img src="./assets/images/logo-full.svg" alt="" class="mt-8" />
+      <h1
+        class="text-Neutral-0 text-3xl md:text-4xl lg:text-5xl font-bold lg:w-1/2 xl:w-1/3 text-center my-8"
+      >
+        Congrats,
+        <span class="displayFullName" id="displayFullName"></span>! Your ticket
+        is ready.
+      </h1>
+      <p class="text-Neutral-0 text-center lg:w-1/4 text-lg">
+        We've emailed your ticket to
+        <span id="displayEmailId" class="text-Orange-700 font-medium"></span>
+        and will send updates in the run up to the event.
+      </p>
+      <div
+        class="ticket w-[22em] md:w-[26em] lg:w-[30em] xlw-[34em] p-4 gap-8 h-full relative my-8 flex flex-col items-start justify-between lg:h-[14em]"
+      >
+        <img
+          src="./assets/images/pattern-ticket.svg"
+          class="absolute top-0 left-0 -z-10 min-w-full min-h-full"
+          alt=""
+        />
+        <section class="flex flex-col items-start justify-items-center h-full">
+          <img src="./assets/images/logo-full.svg" alt="" class="w-40" />
+          <p class="pl-8 text-Neutral-0 text-sm md:text-lg">
+            Jan 31, 2025 / Austin, TX
+          </p>
+        </section>
+        <section class="flex items-center justify-between gap-4">
+          <section>
+            <img
+              src="./assets/images/image-avatar.jpg"
+              class="w-12 rounded-lg md:w-18"
+              id="displayUserAvatar"
+              alt=""
+            />
+          </section>
+          <section>
+            <b class="text-Neutral-0 font-medium text-xl displayFullName"></b>
+            <small class="flex items-center justify-center gap-2 text-Neutral-0"
+              ><img src="./assets/images/icon-github.svg" alt="" />
+              <span id="displayGithubUsername"
+                >@jonatankristonf0101</span
+              ></small
+            >
+          </section>
+        </section>
+        <p
+          class="text-Neutral-300 font-semibold absolute right-[5%] top-[50%] rotate-90 -translate-y-[50%] ticketId"
+        >
+          #01609
+        </p>
+      </div>
+    </main>
+    <img
+      src="./assets/images/pattern-squiggly-line-bottom-desktop.svg"
+      alt=""
+      class="absolute bottom-0 left-0 -z-10 hidden lg:block"
+    />
+    <img
+      src="./assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg"
+      class="absolute lg:hidden bottom-0 left-0"
+      alt=""
+    />
+  </body>
+</html>
