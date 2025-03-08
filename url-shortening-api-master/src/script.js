@@ -10,14 +10,14 @@ menuOpen.addEventListener("click", () => {
   menuClose.classList.remove("hidden!");
   mobileMenu.classList.remove("hidden");
 });
+
 menuClose.addEventListener("click", () => {
   menuClose.classList.add("hidden!");
   menuOpen.classList.remove("hidden!");
   mobileMenu.classList.add("hidden");
 });
 
-// Api Call for Url short
-// Input and submit btn
+// API Call for URL Shortening
 const error = document.querySelector(".error");
 const submit = document.querySelector(".submit");
 
@@ -31,17 +31,16 @@ submit.addEventListener("click", async (e) => {
     error.classList.add("hidden");
   }
 
-  // API call to shorten the URL
   try {
-    const response = await fetch("https://cleanuri.com/api/v1/shorten", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ url: longUrlvalue }),
-    });
+    const response = await fetch(
+      `https://tinyurl.com/api-create.php?url=${encodeURIComponent(
+        longUrlvalue
+      )}`
+    );
 
-    const data = await response.json();
+    const shortUrl = await response.text(); // TinyURL returns plain text, not JSON
 
-    if (data.result_url) {
+    if (shortUrl.includes("http")) {
       // Retrieve existing links or create an empty array
       const storedLinks =
         JSON.parse(localStorage.getItem("shortenedLinks")) || [];
@@ -49,7 +48,7 @@ submit.addEventListener("click", async (e) => {
       // Add the new link
       storedLinks.push({
         longUrl: longUrlvalue,
-        shortUrl: data.result_url,
+        shortUrl: shortUrl,
       });
 
       // Save updated links array
@@ -60,22 +59,22 @@ submit.addEventListener("click", async (e) => {
     } else {
       error.classList.remove("hidden");
     }
-  } catch (error) {
-    console.error("Error:", error);
+  } catch (err) {
+    console.error("Error:", err);
+    error.classList.remove("hidden");
   }
 });
 
+// Function to display links from localStorage
 function displayLinksFromLocal() {
   const displayContainer = document.querySelector(".displayLinksHere");
   displayContainer.innerHTML = ""; // Clear previous content
 
-  // Retrieve stored links array
   const storedLinks = JSON.parse(localStorage.getItem("shortenedLinks")) || [];
 
   if (storedLinks.length === 0) return;
 
   storedLinks.forEach(({ longUrl, shortUrl }) => {
-    // Create a container for each link
     const linkElement = document.createElement("div");
     linkElement.className =
       "flex items-center justify-center flex-col lg:flex-row lg:justify-between w-[90%] lg:w-[70%] bg-white rounded-lg p-6 gap-8";
@@ -94,10 +93,8 @@ function displayLinksFromLocal() {
       </div>
     `;
 
-    // Append to the container
     displayContainer.appendChild(linkElement);
 
-    // Add copy functionality
     const copyButton = linkElement.querySelector(".copyBtn");
     copyButton.addEventListener("click", () =>
       copyToClipboard(copyButton, shortUrl)
