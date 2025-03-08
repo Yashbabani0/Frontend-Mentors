@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+    <link rel="stylesheet" href="/src/output.css" />
+    <script
+      src="https://kit.fontawesome.com/c3581291b4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="src/script.js" defer></script>
+    <style>
+      .attribution {
+        font-size: 1em;
+        text-align: center;
+        color: aliceblue;
+        padding-bottom: 2em;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="flex items-center justify-between py-8 px-4 md:px-10 lg:px-16 relative w-screen"
+    >
+      <section class="flex items-center justify-between lg:gap-16">
+        <img src="./images/logo.svg" alt="logo" />
+        <div
+          class="desktopNavBar hidden lg:flex items-center justify-center gap-8"
+        >
+          <a
+            href="#"
+            class="text-Grayish-Violet hover:text-Very-Dark-Violet font-semibold"
+            >Features</a
+          >
+          <a
+            href="#"
+            class="text-Grayish-Violet hover:text-Very-Dark-Violet font-semibold"
+            >Pricing</a
+          >
+          <a
+            href="#"
+            class="text-Grayish-Violet hover:text-Very-Dark-Violet font-semibold"
+            >Resources</a
+          >
+        </div>
+      </section>
+      <section class="lg:flex gap-4 items-center justify-center hidden">
+        <button
+          class="font-semibold text-lg text-Grayish-Violet hover:text-Gray cursor-pointer"
+        >
+          Login
+        </button>
+        <button
+          class="font-semibold text-lg text-white bg-Cyan cursor-pointer py-2 px-8 rounded-full hover:opacity-60"
+        >
+          Sign Up
+        </button>
+      </section>
+      <i
+        class="fa-solid fa-bars cursor-pointer text-2xl lg:hidden! mobileMenuOpen"
+      ></i>
+      <i
+        class="fa-solid fa-xmark cursor-pointer text-2xl hidden! lg:hidden! mobileMenuClose"
+      ></i>
+      <section
+        class="absolute bg-dark-violet w-80 top-20 rounded-xl p-8 hidden items-center justify-between text-center flex-col text-white lg:hidden! left-1/2 -translate-x-1/2 mobileMenu z-50"
+      >
+        <section class="flex items-center justify-center flex-col gap-4">
+          <a href="#">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">Resources</a>
+        </section>
+        <section
+          class="flex flex-col border-t-2 border-t-Gray w-full py-4 mt-4 gap-4"
+        >
+          <button class="cursor-pointer">Login</button>
+          <button
+            class="bg-Cyan rounded-full py-2 cursor-pointer hover:opacity-70"
+          >
+            Sign Up
+          </button>
+        </section>
+      </section>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+      <div class="pt-16 lg:pt-0 hero bg-base-200 min-h-screen relative">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+          <img src="./images/illustration-working.svg" class="pl-16 w-[80%]" />
+          <div class="text-center text-balance lg:text-left">
+            <h1
+              class="text-5xl lg:text-7xl font-bold text-Very-Dark-Blue mt-8 lg:mt-0"
+            >
+              More than just shorter links
+            </h1>
+            <p class="py-6 text-Grayish-Violet">
+              Build your brand’s recognition and get detailed insights on how
+              your links are performing.
+            </p>
+            <button
+              class="bg-Cyan text-white rounded-full py-2 px-8 hover:opacity-70 cursor-pointer lg:mb-0 mb-36"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Advanced Statistics -->
+    <section
+      class="flex items-center justify-center flex-col bg-[#f0f1f6] pb-16 lg:pb- relative"
+    >
+      <!-- Add Your Long Url -->
+      <div
+        class="linkShortnerInput bg-dark-violet absolute flex items-center justify-center flex-col px-4 lg:px-16 gap-4 lg:flex-row lg:min-w-2/3!"
+      >
+        <!-- Input -->
+        <input
+          type="text"
+          placeholder="Shorten a link here..."
+          class="bg-white py-2 px-6 border-0 outline-0 rounded-lg w-full longUrlvalue"
+        />
+
+        <!-- Error -->
+        <p class="error text-Red lg:absolute lg:left-16 lg:top-32 hidden">
+          Please add a link
+        </p>
+
+        <!-- Submit -->
+        <button
+          class="text-white bg-Cyan rounded-lg w-full py-3 font-bold lg:font-semibold text-sm cursor-pointer hover:opacity-70 lg:w-1/4 submit"
+        >
+          Shorten It!
+        </button>
+      </div>
+
+      <!-- Display Links -->
+      <section
+        class="displayLinksHere w-screen flex flex-col items-center justify-center mb-8 mt-36 gap-8"
+      >
+        <!-- only display when links are available -->
+        <div
+          class="flex items-center justify-center flex-col lg:flex-row lg:justify-between w-[90%] lg:w-[70%] bg-white rounded-lg p-6 gap-8"
+        >
+          <div>
+            <a
+              href="#"
+              class="text-Very-Dark-Blue font-semibold longLinkDisplay"
+              >longUrl</a
+            >
+          </div>
+          <div
+            class="flex items-center justify-center flex-col gap-4 lg:gap-8 lg:flex-row lg:justify-between border-t-2 lg:border-t-0 w-full pt-4 lg:pt-0 border-Gray lg:w-fit"
+          >
+            <a href="#" class="text-Cyan shortLinkDisplay">shortLink</a>
+            <button
+              class="bg-Cyan text-white py-3 px-6 rounded-lg cursor-pointer hover:opacity-80"
+            >
+              copy
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- h2 -->
+      <h2 class="text-3xl text-Very-Dark-Blue font-bold">
+        Advanced Statistics
+      </h2>
+      <!-- Paragraph -->
+      <p
+        class="text-Grayish-Violet py-4 text-center lg:w-[24em] leading-[1.7em]"
+      >
+        Track how your links are performing across the web with our advanced
+        statistics dashboard.
+      </p>
+
+      <section
+        class="flex gap-16 lg:gap-8 lg:mx-24 mt-12 lg:flex-row flex-col mx-8"
+      >
+        <!-- Box One -->
+        <div class="relative rounded-lg px-6 py-16 bg-white z-20 max-h-64">
+          <div
+            class="absolute -top-8 bg-dark-violet rounded-full p-4 w-16 left-8"
+          >
+            <img
+              src="./images/icon-brand-recognition.svg"
+              alt=""
+              class="w-full"
+            />
+          </div>
+          <h3 class="text-Very-Dark-Violet text-xl font-bold">
+            Brand Recognition
+          </h3>
+          <p class="text-Grayish-Violet pt-4">
+            Boost your brand recognition with each click. Generic links don’t
+            mean a thing. Branded links help instil confidence in your content.
+          </p>
+        </div>
+
+        <!-- Box Two -->
+        <div class="relative z-10 lg:mt-16 max-h-52">
+          <div
+            class="absolute min-w-[40em] min-h-2 bg-Cyan -z-[1] -left-1/2 top-20 hidden lg:block"
+          ></div>
+          <div
+            class="absolute bg-Cyan w-4 h-[30em] -top-1/2 left-1/2 -z-1 lg:hidden"
+          ></div>
+          <div class="rounded-lg px-6 pt-16 pb-10 bg-white z-10">
+            <div
+              class="absolute -top-8 bg-dark-violet rounded-full p-4 w-16 left-8"
+            >
+              <img
+                src="./images/icon-detailed-records.svg"
+                alt=""
+                class="w-full"
+              />
+            </div>
+            <h3 class="text-Very-Dark-Violet text-xl font-bold">
+              Detailed Records
+            </h3>
+            <p class="text-Grayish-Violet pt-4">
+              Gain insights into who is clicking your links. Knowing when and
+              where people engage with your content helps inform better
+              decisions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Box Three -->
+        <div
+          class="relative rounded-lg px-6 py-16 mt-16 md:mt-4 bg-white z-30 max-h-64 lg:mt-28"
+        >
+          <div
+            class="absolute -top-8 bg-dark-violet rounded-full p-4 w-16 left-8"
+          >
+            <img
+              src="./images/icon-fully-customizable.svg"
+              alt=""
+              class="w-full"
+            />
+          </div>
+          <h3 class="text-Very-Dark-Violet text-xl font-bold">
+            Fully Customizable
+          </h3>
+          <p class="text-Grayish-Violet pt-4">
+            Improve brand awareness and content discoverability through
+            customizable links, supercharging audience engagement.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <!-- Boost Your Links -->
+    <div
+      class="w-screen boostLinks h-80 bg-dark-violet flex flex-col items-center justify-center gap-8"
+    >
+      <h2 class="text-white text-3xl font-bold">Boost your links today</h2>
+      <button
+        class="bg-Cyan rounded-full py-2 px-8 text-white font-bold lg:font-semibold cursor-pointer"
+      >
+        Get Started
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-Very-Dark-Violet w-screen">
+      <div
+        class="flex items-center lg:items-start justify-center gap-12 lg:justify-between lg:px-20 py-10 lg:py-20 flex-col lg:flex-row"
+      >
+        <img src="./images/footer-logo.svg" class="" alt="footer logo" />
+        <section
+          class="text-center lg:text-left flex flex-col lg:flex-row items-center lg:items-start justify-center gap-16 lg:gap-20"
+        >
+          <div>
+            <b class="text-white">Features</b>
+            <p class="text-Gray mt-4 cursor-pointer">Link Shortening</p>
+            <p class="text-Gray mt-2 cursor-pointer">Branded Links</p>
+            <p class="text-Gray mt-2 cursor-pointer">Analytics</p>
+          </div>
+          <div>
+            <b class="text-white">Resources</b>
+            <p class="text-Gray mt-4 cursor-pointer">Blog</p>
+            <p class="text-Gray mt-2 cursor-pointer">Developers</p>
+            <p class="text-Gray mt-2 cursor-pointer">Support</p>
+          </div>
+          <div>
+            <b class="text-white">Company</b>
+            <p class="text-Gray mt-4 cursor-pointer">About</p>
+            <p class="text-Gray mt-2 cursor-pointer">Our Team</p>
+            <p class="text-Gray mt-2 cursor-pointer">Careers</p>
+            <p class="text-Gray mt-2 cursor-pointer">Contact</p>
+          </div>
+          <div class="flex items-center justify-start min-h-full gap-8">
+            <img
+              src="./images/icon-facebook.svg"
+              class="cursor-pointer"
+              alt=""
+            />
+            <img
+              src="./images/icon-twitter.svg"
+              class="cursor-pointer"
+              alt=""
+            />
+            <img
+              src="./images/icon-pinterest.svg"
+              class="cursor-pointer"
+              alt=""
+            />
+            <img
+              src="./images/icon-instagram.svg"
+              class="cursor-pointer"
+              alt=""
+            />
+          </div>
+        </section>
+      </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. <br class="lg:hidden" />
+        Coded by <a href="https://github.com/yashbabani0">Yash Babani</a>.
+      </div>
+    </footer>
+  </body>
+</html>
