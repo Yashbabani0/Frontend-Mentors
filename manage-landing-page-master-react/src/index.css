@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@theme {
+  --color-Bright-Red: hsl(12, 88%, 59%);
+  --color-Dark-Blue: hsl(228, 39%, 23%);
+  --color-Dark-Grayish-Blue: hsl(227, 12%, 61%);
+  --color-Very-Dark-Blue: hsl(233, 12%, 13%);
+  --color-Very-Pale-Red: hsl(13, 100%, 96%);
+  --color-Very-Light-Gray: hsl(0, 0%, 98%);
+}
+
+body {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.Getstarted {
+  background-image: url("./images/bg-simplify-section-mobile.svg");
+  background-size: contain;
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 1024px) {
+  .Getstarted {
+    background-image: url("./images/bg-simplify-section-desktop.svg");
+    background-size: cover;
+    background-position: center;
+  }
+}
