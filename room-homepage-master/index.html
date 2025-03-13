@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Room homepage</title>
+    <script src="src/script.js" defer></script>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 16px;
+        text-align: center;
+        padding: 1em;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="/src/output.css" />
+  </head>
+  <body class="bg-Black">
+    <nav
+      class="w-screen lg:w-[40em] xl:w-[50em] flex items-center justify-between p-12 absolute top-0 left-0 z-10"
+    >
+      <img src="/images/logo.svg" alt="" />
+      <ul class="lg:flex items-center justify-center gap-12 hidden">
+        <li class="text-white hover:underline underline-offset-8">
+          <a href="#">home</a>
+        </li>
+        <li class="text-white hover:underline underline-offset-8">
+          <a href="#">shop</a>
+        </li>
+        <li class="text-white hover:underline underline-offset-8">
+          <a href="#">about</a>
+        </li>
+        <li class="text-white hover:underline underline-offset-8">
+          <a href="#">contact</a>
+        </li>
+      </ul>
+      <img
+        src="./images/icon-hamburger.svg"
+        class="lg:hidden cursor-pointer menuOpen"
+        alt=""
+      />
+      <div
+        class="absolute top-0 left-0 w-screen h-full z-50 bg-white hidden items-center justify-between px-12 menu"
+      >
+        <img
+          src="./images/icon-close.svg"
+          class="cursor-pointer menuClose"
+          alt=""
+        />
+        <ul class="flex items-center justify-center gap-4 md:gap-12">
+          <li class="text-balance"><a href="#">home</a></li>
+          <li class="text-balance"><a href="#">shop</a></li>
+          <li class="text-balance"><a href="#">about</a></li>
+          <li class="text-balance"><a href="#">contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main
+      class="min-w-screen min-h-screen flex flex-col items-center justify-center"
+    >
+      <div
+        class="transition-transform duration-500 ease-in-out flex carousel min-w-screen max-w-screen relative"
+      >
+        <section class="flex flex-col lg:flex-row">
+          <div class="lg:min-w-1/2 lg:max-w-1/2 relative">
+            <img
+              src="./images/desktop-image-hero-1.jpg"
+              class="hidden md:block min-w-screen lg:min-w-auto lg:min-h-full"
+              alt=""
+            />
+            <img
+              src="./images/mobile-image-hero-1.jpg"
+              class="min-w-screen md:hidden max-h-[60vh]"
+              alt=""
+            />
+            <div class="lg:hidden absolute right-0 bottom-0 flex gap-0">
+              <button
+                class="left bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-left.svg" alt="" />
+              </button>
+              <button
+                class="right bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-right.svg" alt="" />
+              </button>
+            </div>
+          </div>
+          <div
+            class="lg:min-w-1/2 lg:max-w-1/2 relative p-12 flex flex-col gap-4 lg:p-24 lg:gap-8"
+          >
+            <h1 class="text-4xl lg:text-5xl">
+              Discover innovative ways to decorate
+            </h1>
+            <p>
+              We provide unmatched quality, comfort, and style for property
+              owners across the country. Our experts combine form and function
+              in bringing your vision to life. Create a room in your own style
+              with our collection and make your property a reflection of you and
+              what you love.
+            </p>
+            <button
+              class="hover:text-Dark-Gray flex items-center justify-start gap-4 tracking-[12px] uppercase pb-8 cursor-pointer"
+            >
+              shop now <img src="./images/icon-arrow.svg" alt="" />
+            </button>
+            <div class="hidden absolute left-0 bottom-0 lg:flex gap-0">
+              <button
+                class="left bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-left.svg" alt="" />
+              </button>
+              <button
+                class="right bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-right.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="flex flex-col lg:flex-row">
+          <div class="lg:min-w-1/2 lg:max-w-1/2 relative">
+            <img
+              src="./images/desktop-image-hero-2.jpg"
+              class="hidden md:block min-w-screen lg:min-w-auto lg:min-h-full"
+              alt=""
+            />
+            <img
+              src="./images/mobile-image-hero-2.jpg"
+              class="min-w-screen md:hidden max-h-[60vh]"
+              alt=""
+            />
+            <div class="lg:hidden absolute right-0 bottom-0 flex gap-0">
+              <button
+                class="left bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-left.svg" alt="" />
+              </button>
+              <button
+                class="right bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-right.svg" alt="" />
+              </button>
+            </div>
+          </div>
+          <div
+            class="lg:min-w-1/2 lg:max-w-1/2 relative p-12 flex flex-col gap-4 lg:p-24 lg:gap-8"
+          >
+            <h1 class="text-4xl lg:text-5xl">
+              We are available all across the globe
+            </h1>
+            <p>
+              With stores all over the world, it's easy for you to find
+              furniture for your home or place of business. Locally, we're in
+              most major cities throughout the country. Find the branch nearest
+              you using our store locator. Any questions? Don't hesitate to
+              contact us today.
+            </p>
+            <button
+              class="hover:text-Dark-Gray flex items-center justify-start gap-4 tracking-[12px] uppercase pb-8 cursor-pointer"
+            >
+              shop now <img src="./images/icon-arrow.svg" alt="" />
+            </button>
+            <div class="hidden absolute left-0 bottom-0 lg:flex gap-0">
+              <button
+                class="left bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-left.svg" alt="" />
+              </button>
+              <button
+                class="right bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-right.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="flex flex-col lg:flex-row">
+          <div class="lg:min-w-1/2 lg:max-w-1/2 relative">
+            <img
+              src="./images/desktop-image-hero-3.jpg"
+              class="hidden md:block min-w-screen lg:min-w-auto lg:min-h-full"
+              alt=""
+            />
+            <img
+              src="./images/mobile-image-hero-3.jpg"
+              class="min-w-screen md:hidden max-h-[60vh]"
+              alt=""
+            />
+            <div class="lg:hidden absolute right-0 bottom-0 flex gap-0">
+              <button
+                class="left bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-left.svg" alt="" />
+              </button>
+              <button
+                class="right bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-right.svg" alt="" />
+              </button>
+            </div>
+          </div>
+          <div
+            class="lg:min-w-1/2 lg:max-w-1/2 relative p-12 flex flex-col gap-4 lg:p-24 lg:gap-8"
+          >
+            <h1 class="text-4xl lg:text-5xl">
+              Manufactured with the best materials
+            </h1>
+            <p>
+              Our modern furniture store provide a high level of quality. Our
+              company has invested in advanced technology to ensure that every
+              product is made as perfect and as consistent as possible. With
+              three decades of experience in this industry, we understand what
+              customers want for their home and office.
+            </p>
+            <button
+              class="hover:text-Dark-Gray flex items-center justify-start gap-4 tracking-[12px] uppercase pb-8 cursor-pointer"
+            >
+              shop now <img src="./images/icon-arrow.svg" alt="" />
+            </button>
+            <div class="hidden absolute left-0 bottom-0 lg:flex gap-0">
+              <button
+                class="left bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-left.svg" alt="" />
+              </button>
+              <button
+                class="right bg-Black hover:bg-Very-Dark-Gray cursor-pointer p-4"
+              >
+                <img src="./images/icon-angle-right.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="flex items-center justify-center flex-col lg:flex-row">
+        <img src="./images/image-about-dark.jpg" alt="" />
+        <section class="p-12 flex flex-col gap-4">
+          <b class="uppercase tracking-[4px] text-xl">About our furniture</b>
+          <p>
+            Our multifunctional collection blends design and function to suit
+            your individual taste. Make each room unique, or pick a cohesive
+            theme that best express your interests and what inspires you. Find
+            the furniture pieces you need, from traditional to contemporary
+            styles or anything in between. Product specialists are available to
+            help you create your dream space.
+          </p>
+        </section>
+        <img src="./images/image-about-light.jpg" alt="" />
+      </div>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. <br class="lg:hidden" />
+      Coded by <a href="https://github.com/yashbabani0">Yash Babani</a>.
+    </div>
+  </body>
+</html>
