@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Notifications page</title>
+    <link rel="stylesheet" href="./src/output.css" />
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <script src="src/script.js" defer></script>
+  </head>
+  <body
+    class="md:bg-Very-light-grayish-blue flex flex-col md:items-center md:justify-center w-screen min-h-screen gap-4"
+  >
+    <main
+      class="bg-white w-screen md:w-2/3 lg:w-2/4 h-full md:rounded-lg md:shadow pt-8 p-4 md:p-8 flex flex-col gap-4 md:mt-16"
+    >
+      <section class="flex items-center justify-between">
+        <h1 class="font-bold text-xl md:text-2xl text-Very-dark-blue">
+          Notifications &nbsp;
+          <span class="bg-Blue numberOfUnreadNote px-3 rounded-md text-Light-grayish-blue-1"
+            >3</span
+          >
+        </h1>
+        <button
+          class="text-Dark-grayish-blue cursor-pointer hover:text-Blue transition-colors duration-200 clearAllNot"
+        >
+          Mark all as read
+        </button>
+      </section>
+      <section class="flex flex-col gap-4">
+        <div
+          class="p-4 rounded-lg bg-Light-grayish-blue-1 flex gap-4 w-full cursor-pointer notefi1"
+        >
+          <img
+            src="/assets/images/avatar-mark-webber.webp"
+            alt=""
+            class="w-14 h-14"
+          />
+          <div class="flex flex-col gap-1">
+            <p class="text-Dark-grayish-blue">
+              <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                >MarK Webber</b
+              >
+              &nbsp; reacted to your recent post &nbsp;
+              <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                >My first tournament today!</b
+              >
+              <span
+                class="text-[1px] p-1 bg-Red rounded-full text-transparent align-middle redDotFornot1"
+                >0</span
+              >
+            </p>
+            <p class="text-Grayish-blue">1m ago</p>
+          </div>
+        </div>
+        <div
+          class="p-4 rounded-lg bg-Light-grayish-blue-1 flex gap-4 w-full cursor-pointer notefi2"
+        >
+          <img
+            src="/assets/images/avatar-angela-gray.webp"
+            alt=""
+            class="w-14 h-14"
+          />
+          <div class="flex flex-col gap-1">
+            <p class="text-Dark-grayish-blue">
+              <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                >Angela Gray</b
+              >
+              &nbsp; followed you
+              <span
+                class="text-[1px] p-1 bg-Red rounded-full text-transparent align-middle redDotFornot2"
+                >0</span
+              >
+            </p>
+            <p class="text-Grayish-blue">5m ago</p>
+          </div>
+        </div>
+        <div
+          class="p-4 rounded-lg bg-Light-grayish-blue-1 flex gap-4 w-full cursor-pointer notefi3"
+        >
+          <img
+            src="/assets/images/avatar-jacob-thompson.webp"
+            alt=""
+            class="w-14 h-14"
+          />
+          <div class="flex flex-col gap-1">
+            <p class="text-Dark-grayish-blue">
+              <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                >Jacob Thompson</b
+              >
+              &nbsp; has joined your group
+              <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                >Chess Club</b
+              >
+              <span
+                class="text-[1px] p-1 bg-Red rounded-full text-transparent align-middle redDotFornot3"
+                >0</span
+              >
+            </p>
+            <p class="text-Grayish-blue">1 day ago</p>
+          </div>
+        </div>
+        <div class="p-4 rounded-lg flex gap-4 w-full">
+          <img
+            src="/assets/images/avatar-rizky-hasanuddin.webp"
+            alt=""
+            class="w-14 h-14"
+          />
+          <div class="flex flex-col gap-1">
+            <p class="text-Dark-grayish-blue">
+              <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                >Rizky Hasanuddin</b
+              >
+              &nbsp; sent you a private message
+            </p>
+            <p class="text-Grayish-blue">5 days ago</p>
+
+            <p
+              class="rounded-lg hover:bg-Light-grayish-blue-2 p-4 cursor-pointer transition-colors duration-200 border-2 border-Light-grayish-blue-2"
+            >
+              Hello, thanks for setting up the Chess Club. I've been a member
+              for a few weeks now and I'm already having lots of fun and
+              improving my game.
+            </p>
+          </div>
+        </div>
+        <div class="p-4 rounded-lg flex gap-4 w-full">
+          <img
+            src="/assets/images/avatar-kimberly-smith.webp"
+            alt=""
+            class="w-14 h-14"
+          />
+          <div class="flex justify-between gap-1 w-full">
+            <div>
+              <p class="text-Dark-grayish-blue">
+                <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                  >Kimberly Smith</b
+                >
+                &nbsp; commented on your picture
+              </p>
+              <p class="text-Grayish-blue">1 week ago</p>
+            </div>
+            <img src="./assets/images/image-chess.webp" class="w-12" alt="" />
+          </div>
+        </div>
+        <div class="p-4 rounded-lg flex gap-4 w-full">
+          <img
+            src="/assets/images/avatar-nathan-peterson.webp"
+            alt=""
+            class="w-14 h-14"
+          />
+          <div class="flex flex-col gap-1">
+            <p class="text-Dark-grayish-blue">
+              <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                >Nathan Peterson</b
+              >
+              &nbsp; reacted to your recent post &nbsp;
+              <b class="text-Dark-grayish-blue"
+                >5 end-game strategies to increase your win rate</b
+              >
+            </p>
+            <p class="text-Grayish-blue">2 week ago</p>
+          </div>
+        </div>
+        <div class="p-4 rounded-lg flex gap-4 w-full">
+          <img
+            src="/assets/images/avatar-anna-kim.webp"
+            alt=""
+            class="w-14 h-14"
+          />
+          <div class="flex flex-col gap-1">
+            <p class="text-Dark-grayish-blue">
+              <b class="text-Very-dark-blue hover:text-Blue cursor-pointer"
+                >Anna Kim</b
+              >
+              &nbsp; left the group &nbsp;
+              <b
+                class="text-Dark-grayish-blue hover:text-Blue cursor-pointer transition-colors duration-200"
+                >Chess Club</b
+              >
+            </p>
+            <p class="text-Grayish-blue">2 week ago</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="attribution mb-4">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. <br class="md:hidden" />
+      Coded by <a href="https://github.com/yashbabani0">Yash Babani</a>.
+    </div>
+  </body>
+</html>
