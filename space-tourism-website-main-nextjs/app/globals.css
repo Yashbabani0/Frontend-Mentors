@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bellefair&display=swap");
+@import "tailwindcss";
+@theme {
+  --color-blue-900: #0b0d17;
+  --color-blue-300: #d0d6f9;
+  --font-bellefair: "Bellefair", serif;
+  --font-barlow-condensed: "Barlow Condensed", sans-serif;
+}
+.navbar {
+  @apply flex items-center justify-between p-8 md:p-0 text-white absolute top-0 bg-transparent w-full z-[9999];
+}
+.title {
+  @apply text-center md:text-left text-white uppercase tracking-widest font-barlow-condensed text-base sm:text-[1.2em] flex gap-4 items-center justify-center md:justify-start mb-8 lg:pb-8 max-w-6xl mx-auto;
+}
+.crew_main {
+  @apply relative pt-28 lg:pt-36 pb-0 container mx-auto px-6 min-h-screen;
+}
+
