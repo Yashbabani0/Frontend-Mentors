@@ -3,6 +3,8 @@ import { Sora } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Nav from "@/components/Nav/Nav";
+import ConvexClientProvider from "./ConvexClientProvider";
+import SyncUser from "@/components/SyncUser";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -25,8 +27,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${sora.variable} antialiased `}>
-          <Nav />
-          {children}
+          <ConvexClientProvider>
+            <SyncUser />
+            <Nav />
+            {children}
+          </ConvexClientProvider>
         </body>
       </html>
     </ClerkProvider>
