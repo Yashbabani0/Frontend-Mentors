@@ -2,6 +2,15 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import EmptyState from "./EmptyState";
 import RangeSelector, { type HistoryRange } from "./RangeSelector";
 import StatCard from "./StatCard";
@@ -16,6 +25,12 @@ type HistoryTabProps = {
   base: string;
   target: string;
   rate: number;
+};
+
+type HistoryTooltipProps = {
+  active?: boolean;
+  payload?: { value?: number }[];
+  label?: string | number;
 };
 
 const rangeDays: Record<HistoryRange, number> = {
@@ -141,7 +156,12 @@ export default function HistoryTab({ base, target, rate }: HistoryTabProps) {
         </div>
       </div>
 
-      <div className="rounded-xl bg-surface p-4">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+        className="rounded-xl border border-surface-raised bg-surface p-4"
+      >
         <div className="mb-4 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-text">
           <p>
             {base}/{target}
@@ -157,95 +177,90 @@ export default function HistoryTab({ base, target, rate }: HistoryTabProps) {
         ) : (
           <HistoryChart points={points.length > 1 ? points : mockPoints(rate)} />
         )}
-      </div>
+      </motion.div>
     </section>
   );
 }
 
 function HistoryChart({ points }: { points: HistoryPoint[] }) {
-  const width = 900;
-  const height = 260;
-  const padding = 18;
   const rates = points.map((point) => point.rate);
   const minRate = Math.min(...rates);
   const maxRate = Math.max(...rates);
-  const range = maxRate - minRate || 1;
-
-  const coordinates = points.map((point, index) => {
-    const x =
-      padding +
-      (index / Math.max(points.length - 1, 1)) * (width - padding * 2);
-    const y =
-      height -
-      padding -
-      ((point.rate - minRate) / range) * (height - padding * 2);
-
-    return `${x},${y}`;
-  });
-
-  const line = coordinates.join(" ");
-  const area = `${padding},${height - padding} ${line} ${width - padding},${
-    height - padding
-  }`;
+  const yPadding = (maxRate - minRate || maxRate || 1) * 0.08;
+  const domainMin = minRate - yPadding;
+  const domainMax = maxRate + yPadding;
 
   return (
-    <svg
-      viewBox={`0 0 ${width} ${height}`}
-      className="h-64 w-full overflow-visible"
-      role="img"
-      aria-label="Rate history chart"
-    >
-      <defs>
-        <linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="#cef739" stopOpacity="0.45" />
-          <stop offset="100%" stopColor="#cef739" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-      <line
-        x1={padding}
-        x2={width - padding}
-        y1={padding}
-        y2={padding}
-        stroke="#2e2e2e"
-        strokeDasharray="2 6"
-      />
-      <line
-        x1={padding}
-        x2={width - padding}
-        y1={height / 2}
-        y2={height / 2}
-        stroke="#2e2e2e"
-        strokeDasharray="2 6"
-      />
-      <line
-        x1={padding}
-        x2={width - padding}
-        y1={height - padding}
-        y2={height - padding}
-        stroke="#2e2e2e"
-        strokeDasharray="2 6"
-      />
-      <motion.polygon
-        key={`area-${line}`}
-        points={area}
-        fill="url(#chart-fill)"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.35 }}
-      />
-      <motion.polyline
-        key={`line-${line}`}
-        points={line}
-        fill="none"
-        stroke="#cef739"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="3"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      />
-    </svg>
+    <div className="h-[22rem] w-full" role="img" aria-label="Rate history chart">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart
+          data={points}
+          margin={{ top: 14, right: 8, bottom: 10, left: 0 }}
+        >
+          <defs>
+            <linearGradient id="history-chart-fill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="#cef739" stopOpacity={0.52} />
+              <stop offset="72%" stopColor="#cef739" stopOpacity={0.08} />
+              <stop offset="100%" stopColor="#cef739" stopOpacity={0} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid
+            vertical={false}
+            stroke="#2e2e2e"
+            strokeDasharray="2 8"
+          />
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tickLine={false}
+            minTickGap={54}
+            tick={{ fill: "#9a9a9a", fontSize: 11 }}
+            tickFormatter={formatChartDate}
+          />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            width={54}
+            domain={[domainMin, domainMax]}
+            tick={{ fill: "#9a9a9a", fontSize: 11 }}
+            tickFormatter={(value) => formatNumber(Number(value), 4)}
+          />
+          <Tooltip content={<HistoryTooltip />} cursor={{ stroke: "#cef739" }} />
+          <Area
+            type="monotone"
+            dataKey="rate"
+            stroke="#cef739"
+            strokeWidth={3}
+            fill="url(#history-chart-fill)"
+            dot={false}
+            activeDot={{
+              r: 4,
+              stroke: "#cef739",
+              strokeWidth: 2,
+              fill: "#171719",
+            }}
+            isAnimationActive
+            animationDuration={650}
+            animationEasing="ease-out"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+function HistoryTooltip({ active, payload, label }: HistoryTooltipProps) {
+  if (!active || !payload?.length) return null;
+
+  const rate = payload[0]?.value;
+
+  return (
+    <div className="rounded-lg border border-surface-raised bg-surface px-3 py-2 text-xs shadow-2xl">
+      <p className="text-text-muted">{formatChartDate(String(label))}</p>
+      <p className="mt-1 font-semibold text-lime">
+        {typeof rate === "number" ? formatNumber(rate, 4) : "—"}
+      </p>
+    </div>
   );
 }
 
@@ -309,4 +324,13 @@ function mockPoints(rate: number): HistoryPoint[] {
 
 function formatDate(date: Date) {
   return date.toISOString().slice(0, 10);
+}
+
+function formatChartDate(date: string) {
+  const parsedDate = new Date(`${date}T00:00:00`);
+
+  return new Intl.DateTimeFormat("en-US", {
+    day: "2-digit",
+    month: "short",
+  }).format(parsedDate);
 }

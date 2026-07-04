@@ -118,17 +118,24 @@ export default function FxTabs(props: FxTabsProps) {
               onKeyDown={(event) => handleTabKeyDown(event, index)}
               whileHover={{ y: -1 }}
               whileTap={{ scale: 0.98 }}
-              className={`relative flex shrink-0 items-center gap-2 px-3 py-3 text-xs uppercase tracking-[0.22em] transition focus:outline-none focus:ring-2 focus:ring-lime/60 ${
+              className={`relative flex shrink-0 items-center gap-2 rounded-lg px-5 py-4 text-xs uppercase tracking-[0.22em] transition focus:outline-none focus:ring-2 focus:ring-lime/60 ${
                 isActive ? "text-text" : "text-text hover:text-text"
               }`}
             >
-              {tab.label}
+              {isActive ? (
+                <motion.span
+                  layoutId="fx-active-tab-border"
+                  className="absolute inset-0 rounded-lg border-2 border-lime"
+                  transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                />
+              ) : null}
+              <span className="relative z-10">{tab.label}</span>
               {count !== null ? (
                 <motion.span
                   key={count}
                   initial={{ scale: 0.85 }}
                   animate={{ scale: 1 }}
-                  className="rounded-full bg-lime/20 px-1.5 py-0.5 text-[9px] tracking-normal text-lime"
+                  className="relative z-10 rounded-full bg-lime/20 px-1.5 py-0.5 text-[9px] tracking-normal text-lime"
                 >
                   {count}
                 </motion.span>
@@ -136,7 +143,7 @@ export default function FxTabs(props: FxTabsProps) {
               {isActive ? (
                 <motion.span
                   layoutId="fx-active-tab-underline"
-                  className="absolute bottom-[-1px] left-0 h-px w-full bg-lime"
+                  className="absolute bottom-[-1px] left-0 h-0.5 w-full bg-lime"
                   transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
                 />
               ) : null}

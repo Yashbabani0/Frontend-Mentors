@@ -1,6 +1,6 @@
 # FX Checker
 
-A Frontend Mentor FX Checker solution built with Next.js, TypeScript, Tailwind CSS v4, Motion, and the Frankfurter exchange-rate API.
+A Frontend Mentor FX Checker solution built with Next.js, TypeScript, Tailwind CSS v4, Motion, Recharts, and the Frankfurter exchange-rate API.
 
 ## Overview
 
@@ -14,7 +14,7 @@ FX Checker is a dark, keyboard-accessible currency converter with live rates, se
 - Favorite the active pair and persist pinned pairs in the browser.
 - Log conversions and persist the conversion log in the browser.
 - View a live markets ticker with recent percentage movement.
-- View rate history for the active pair with range controls.
+- View rate history for the active pair with range controls, responsive axes, tooltip, and animated area chart.
 - Compare the send amount against multiple currencies.
 - Pin and unpin comparison rows.
 - Load a pinned favorite pair back into the converter.
@@ -29,6 +29,7 @@ FX Checker is a dark, keyboard-accessible currency converter with live rates, se
 - TypeScript
 - Tailwind CSS v4
 - Motion for React
+- Recharts
 - Frankfurter API
 - Browser `localStorage`
 
@@ -71,11 +72,10 @@ Motion is used for interaction polish across the app:
 - Animated active underline for the FX tabs.
 - Smooth tab panel transitions.
 - Staggered row entrances in Compare, Favorites, and Log.
-- Lightweight SVG chart draw/fade animation in History.
+- Recharts area-chart animation and tooltip interactions in History.
 
 ## Known Limitations
 
-- The chart is a lightweight SVG implementation, not a full charting library.
 - Only flags included in `public/flags` render as images. Other currencies fall back to a small code badge.
 - Favorite pair changes are derived from recent available time-series points, which may represent the most recent provider update rather than exactly 24 hours.
 
