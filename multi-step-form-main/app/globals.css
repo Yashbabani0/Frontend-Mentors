@@ -8,7 +8,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Ubuntu", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono:
+    "Ubuntu", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --font-heading: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
   --color-blue-950: var(--blue-950);
   --color-purple-600: var(--purple-600);
@@ -92,7 +93,7 @@
   --chart-3: var(--blue-300);
   --chart-4: var(--blue-200);
   --chart-5: var(--red-500);
-  --radius: 0.625rem;
+  --radius: 0.3rem;
   --sidebar: var(--blue-950);
   --sidebar-foreground: var(--white);
   --sidebar-primary: var(--blue-200);
@@ -144,7 +145,8 @@
   body {
     @apply bg-background text-foreground;
   }
-  button:not(:disabled), [role="button"]:not(:disabled) {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
     cursor: pointer;
   }
   html {
