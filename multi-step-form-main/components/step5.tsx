@@ -51,7 +51,7 @@ export default function Step5({ onRestart }: Step5Props) {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="mx-auto flex h-full w-full max-w-xl flex-col items-center justify-center px-4 py-12 text-center"
+      className="mx-auto flex h-full w-full max-w-xl flex-col items-center justify-center px-2 py-16 text-center md:px-4 md:py-12"
     >
       <motion.div variants={itemVariants}>
         <Image
@@ -60,27 +60,27 @@ export default function Step5({ onRestart }: Step5Props) {
           width={80}
           height={80}
           priority
-          className="mx-auto"
+          className="mx-auto size-14 md:size-20"
         />
       </motion.div>
 
       <motion.h1
         variants={itemVariants}
-        className="mt-8 text-3xl font-bold text-blue-950"
+        className="mt-6 text-2xl font-bold text-blue-950 md:mt-8 md:text-3xl"
       >
         Thank you!
       </motion.h1>
 
       <motion.p
         variants={itemVariants}
-        className="mt-4 max-w-md leading-7 text-grey-500"
+        className="mt-3 max-w-md leading-7 text-grey-500 md:mt-4"
       >
         Thanks for confirming your subscription! We hope you have fun using our
         platform. If you ever need support, please feel free to email us at
         support@loremgaming.com.
       </motion.p>
 
-      <motion.div variants={itemVariants} className="mt-8">
+      <motion.div variants={itemVariants} className="mt-8 hidden md:block">
         <Button
           type="button"
           onClick={onRestart}

@@ -1,9 +1,7 @@
 "use client";
-
 import React from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-
 import Step1 from "@/components/step1";
 import Step2 from "@/components/step2";
 import Step3 from "@/components/step3";
@@ -168,8 +166,17 @@ const steps = [
 ] as const;
 
 export default function Page() {
-  const [savedState, setSavedState] =
-    React.useState<SavedFormState>(getInitialFormState);
+  const [savedState, setSavedState] = React.useState<SavedFormState>(
+    createDefaultSavedState,
+  );
+
+  React.useEffect(() => {
+    const restoreSavedState = window.setTimeout(() => {
+      setSavedState(getInitialFormState());
+    }, 0);
+
+    return () => window.clearTimeout(restoreSavedState);
+  }, []);
 
   const activeStep = savedState.activeStep;
   const isComplete = savedState.isComplete;
@@ -256,7 +263,25 @@ export default function Page() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-100">
+    <main
+      className="
+    min-h-screen
+    md:flex
+    md:items-center
+    md:justify-center
+    md:bg-slate-100
+    md:bg-none
+  "
+    >
+      <div className="absolute inset-x-0 top-0 h-43 md:hidden">
+        <Image
+          src={mobileSidebar}
+          alt=""
+          fill
+          priority
+          className="object-cover"
+        />
+      </div>
       <motion.div
         initial={{
           opacity: 0,
@@ -272,19 +297,10 @@ export default function Page() {
           duration: 0.45,
           ease: "easeOut",
         }}
-        className="w-full max-w-4xl rounded-2xl bg-white p-4 md:flex md:min-h-150 md:gap-8"
+        className="relative min-h-screen w-full pb-24 md:flex md:min-h-150 md:max-w-4xl md:gap-8 md:rounded-2xl md:bg-white md:p-4 md:pb-4"
       >
         {/* Sidebar */}
-        <div className="relative h-43 w-full overflow-hidden rounded-xl md:h-auto md:w-68.5 md:shrink-0">
-          <Image
-            src={mobileSidebar}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover md:hidden"
-          />
-
+        <div className="absolute inset-x-0 top-0 h-43 w-full overflow-hidden md:relative md:inset-auto md:h-auto md:w-68.5 md:shrink-0 md:rounded-xl">
           <Image
             src={desktopSidebar}
             alt=""
@@ -343,7 +359,7 @@ export default function Page() {
         </div>
 
         {/* Form content */}
-        <div className="flex flex-1 flex-col px-2 py-8 md:px-12 md:py-10">
+        <div className="relative z-10 mx-auto mt-25 flex w-[calc(100%-2rem)] max-w-[343px] flex-1 flex-col rounded-lg bg-white px-6 py-8 shadow-xl shadow-blue-950/5 md:mx-0 md:mt-0 md:w-auto md:max-w-none md:rounded-none md:bg-transparent md:px-12 md:py-10 md:shadow-none">
           <AnimatePresence mode="wait">
             {isComplete ? (
               <Step5 key="step-5" onRestart={handleRestart} />

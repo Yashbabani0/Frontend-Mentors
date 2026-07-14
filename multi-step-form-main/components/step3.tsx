@@ -113,17 +113,19 @@ export default function Step3({
       className="mx-auto flex h-full w-full max-w-xl flex-col"
     >
       <motion.section variants={itemVariants}>
-        <h1 className="text-3xl font-bold text-blue-950">Pick add-ons</h1>
-        <p className="mt-2 text-grey-500">
+        <h1 className="text-2xl font-bold text-blue-950 md:text-3xl">
+          Pick add-ons
+        </h1>
+        <p className="mt-2 leading-6 text-grey-500">
           Add-ons help enhance your gaming experience.
         </p>
       </motion.section>
 
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex h-full flex-col justify-between"
+        className="mt-6 flex h-full flex-col justify-between md:mt-10"
       >
-        <motion.section variants={itemVariants} className="space-y-4">
+        <motion.section variants={itemVariants} className="space-y-3 md:space-y-4">
           {addons.map((addon) => {
             const inputId = `addon-${addon.id}`;
             const isSelected = selectedAddonIds.includes(addon.id);
@@ -136,7 +138,7 @@ export default function Step3({
                 htmlFor={inputId}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.99 }}
-                className={`flex w-full cursor-pointer items-center gap-4 rounded-lg border p-4 text-left transition-colors ${
+                className={`flex w-full cursor-pointer items-center gap-3 rounded-lg border p-4 text-left transition-colors md:gap-4 ${
                   isSelected
                     ? "border-purple-600 bg-slate-50"
                     : "border-gray-300 bg-white hover:border-purple-600 hover:bg-slate-50"
@@ -164,12 +166,12 @@ export default function Step3({
                   <span className="block font-bold text-blue-950">
                     {addon.name}
                   </span>
-                  <span className="mt-1 block text-sm font-medium text-grey-500">
+                  <span className="mt-0.5 block text-xs font-medium text-grey-500 md:mt-1 md:text-sm">
                     {addon.description}
                   </span>
                 </span>
 
-                <span className="text-sm font-medium text-purple-600">
+                <span className="shrink-0 text-xs font-medium text-purple-600 md:text-sm">
                   +${price}/{suffix}
                 </span>
               </motion.label>
@@ -179,7 +181,7 @@ export default function Step3({
 
         <motion.section
           variants={itemVariants}
-          className="flex w-full items-center justify-between pt-8"
+          className="fixed inset-x-0 bottom-0 z-20 flex w-full items-center justify-between bg-white px-4 py-4 md:static md:bg-transparent md:px-0 md:pt-8 md:pb-0"
         >
           <Button
             type="button"
@@ -192,7 +194,7 @@ export default function Step3({
 
           <Button
             type="submit"
-            className="bg-blue-950 px-6 py-5 text-blue-100 transition hover:bg-blue-900"
+            className="rounded-sm bg-blue-950 px-5 py-5 text-blue-100 transition hover:bg-blue-900 md:rounded-lg md:px-6"
           >
             Next Step
           </Button>

@@ -81,17 +81,19 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
       className="mx-auto flex h-full w-full max-w-xl flex-col"
     >
       <motion.section variants={itemVariants}>
-        <h1 className="text-3xl font-bold text-blue-950">Personal info</h1>
-        <p className="mt-2 text-grey-500">
+        <h1 className="text-2xl font-bold text-blue-950 md:text-3xl">
+          Personal info
+        </h1>
+        <p className="mt-2 leading-6 text-grey-500">
           Please provide your name, email address, and phone number.
         </p>
       </motion.section>
 
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex h-full flex-col justify-between"
+        className="mt-6 flex h-full flex-col justify-between md:mt-10"
       >
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <motion.section
             variants={itemVariants}
             className="flex w-full flex-col gap-2"
@@ -105,7 +107,7 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full rounded-lg border-2 border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500"
+              className="w-full rounded-sm border border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2"
               placeholder="e.g. Stephen King"
               required
             />
@@ -124,7 +126,7 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full rounded-lg border-2 border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500"
+              className="w-full rounded-sm border border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2"
               placeholder="e.g. stephenking@lorem.com"
               required
             />
@@ -143,7 +145,7 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full rounded-lg border-2 border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500"
+              className="w-full rounded-sm border border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2"
               placeholder="e.g. +1 234 567 890"
               minLength={10}
               maxLength={15}
@@ -154,11 +156,11 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
 
         <motion.section
           variants={itemVariants}
-          className="flex w-full items-center justify-end pt-8"
+          className="fixed inset-x-0 bottom-0 z-20 flex w-full items-center justify-end bg-white px-4 py-4 md:static md:bg-transparent md:px-0 md:pt-8 md:pb-0"
         >
           <Button
             type="submit"
-            className="bg-blue-950 px-6 py-5 text-blue-100 transition hover:bg-blue-900"
+            className="rounded-sm bg-blue-950 px-5 py-5 text-blue-100 transition hover:bg-blue-900 md:rounded-lg md:px-6"
           >
             Next Step
           </Button>

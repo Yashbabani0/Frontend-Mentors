@@ -138,8 +138,10 @@ export default function Step4({
       className="mx-auto flex h-full w-full max-w-xl flex-col"
     >
       <motion.section variants={itemVariants}>
-        <h1 className="text-3xl font-bold text-blue-950">Finishing up</h1>
-        <p className="mt-2 text-grey-500">
+        <h1 className="text-2xl font-bold text-blue-950 md:text-3xl">
+          Finishing up
+        </h1>
+        <p className="mt-2 leading-6 text-grey-500">
           Double-check everything looks OK before confirming.
         </p>
       </motion.section>
@@ -149,12 +151,12 @@ export default function Step4({
           event.preventDefault();
           onConfirm();
         }}
-        className="mt-10 flex h-full flex-col justify-between"
+        className="mt-6 flex h-full flex-col justify-between md:mt-10"
       >
         <div>
           <motion.section
             variants={itemVariants}
-            className="rounded-lg bg-slate-50 p-6"
+            className="rounded-lg bg-slate-50 p-4 md:p-6"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -204,11 +206,11 @@ export default function Step4({
 
           <motion.section
             variants={itemVariants}
-            className="mt-6 flex items-center justify-between px-6"
+            className="mt-6 flex items-center justify-between px-4 md:px-6"
           >
             <p className="text-sm font-medium text-grey-500">{totalLabel}</p>
 
-            <p className="text-xl font-bold text-purple-500">
+            <p className="text-base font-bold text-purple-500 md:text-xl">
               +${total}/{suffix}
             </p>
           </motion.section>
@@ -216,7 +218,7 @@ export default function Step4({
 
         <motion.section
           variants={itemVariants}
-          className="flex w-full items-center justify-between pt-8"
+          className="fixed inset-x-0 bottom-0 z-20 flex w-full items-center justify-between bg-white px-4 py-4 md:static md:bg-transparent md:px-0 md:pt-8 md:pb-0"
         >
           <Button
             type="button"
@@ -229,7 +231,7 @@ export default function Step4({
 
           <Button
             type="submit"
-            className="bg-purple-500 px-7 py-5 text-white transition hover:bg-purple-600"
+            className="rounded-sm bg-purple-500 px-6 py-5 text-white transition hover:bg-purple-600 md:rounded-lg md:px-7"
           >
             Confirm
           </Button>

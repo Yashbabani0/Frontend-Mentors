@@ -117,17 +117,19 @@ export default function Step2({ defaultValues, onBack, onSubmit }: Step2Props) {
       className="mx-auto flex h-full w-full max-w-xl flex-col"
     >
       <motion.section variants={itemVariants}>
-        <h1 className="text-3xl font-bold text-blue-950">Select your plan</h1>
-        <p className="mt-2 text-grey-500">
+        <h1 className="text-2xl font-bold text-blue-950 md:text-3xl">
+          Select your plan
+        </h1>
+        <p className="mt-2 leading-6 text-grey-500">
           You have the option of monthly or yearly billing.
         </p>
       </motion.section>
 
       <form
         onSubmit={handleSubmit}
-        className="mt-10 flex h-full flex-col justify-between"
+        className="mt-6 flex h-full flex-col justify-between md:mt-10"
       >
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           <motion.section
             variants={itemVariants}
             className="grid grid-cols-1 gap-4 md:grid-cols-3"
@@ -142,7 +144,7 @@ export default function Step2({ defaultValues, onBack, onSubmit }: Step2Props) {
                   onClick={() => setSelectedPlanId(plan.id)}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`flex min-h-35 flex-row items-center gap-4 rounded-lg border p-4 text-left transition-colors md:flex-col md:items-start md:justify-between ${
+                  className={`flex min-h-19 flex-row items-center gap-4 rounded-lg border p-4 text-left transition-colors md:min-h-35 md:flex-col md:items-start md:justify-between ${
                     isSelected
                       ? "border-purple-500 bg-slate-50"
                       : "border-gray-300 bg-white hover:border-purple-500 hover:bg-slate-50"
@@ -204,7 +206,7 @@ export default function Step2({ defaultValues, onBack, onSubmit }: Step2Props) {
 
         <motion.section
           variants={itemVariants}
-          className="flex w-full items-center justify-between pt-8"
+          className="fixed inset-x-0 bottom-0 z-20 flex w-full items-center justify-between bg-white px-4 py-4 md:static md:bg-transparent md:px-0 md:pt-8 md:pb-0"
         >
           <Button
             type="button"
@@ -217,7 +219,7 @@ export default function Step2({ defaultValues, onBack, onSubmit }: Step2Props) {
 
           <Button
             type="submit"
-            className="bg-blue-950 px-6 py-5 text-blue-100 transition hover:bg-blue-900"
+            className="rounded-sm bg-blue-950 px-5 py-5 text-blue-100 transition hover:bg-blue-900 md:rounded-lg md:px-6"
           >
             Next Step
           </Button>
