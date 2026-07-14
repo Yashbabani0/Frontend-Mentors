@@ -32,7 +32,10 @@ export function WeatherApp() {
     }
   }, [location, units]);
 
-  useEffect(() => { void loadWeather(); }, [loadWeather]);
+  useEffect(() => {
+    const timer = window.setTimeout(() => { void loadWeather(); }, 0);
+    return () => window.clearTimeout(timer);
+  }, [loadWeather]);
 
   return (
     <main className="app-shell">
@@ -48,7 +51,7 @@ export function WeatherApp() {
           {status === "loading" || !weather ? (
             <StatusView type="loading" />
           ) : (
-            <WeatherDashboard location={location} weather={weather} />
+            <WeatherDashboard key={`${location.id}-${units}`} location={location} weather={weather} />
           )}
         </>
       )}

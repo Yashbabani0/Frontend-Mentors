@@ -11,7 +11,7 @@ export function SearchBox({ onSelect }: { onSelect: (location: LocationResult) =
   const [searched, setSearched] = useState(false);
 
   useEffect(() => {
-    if (query.trim().length < 3) { setResults([]); setSearched(false); return; }
+    if (query.trim().length < 3) return;
     const controller = new AbortController();
     const timer = window.setTimeout(async () => {
       setSearching(true);
@@ -29,7 +29,7 @@ export function SearchBox({ onSelect }: { onSelect: (location: LocationResult) =
     <form className="search" onSubmit={submit} role="search">
       <div className="search-field-wrap">
         <Image className="search-icon" src="/icon-search.svg" alt="" width={21} height={21} />
-        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search for a place..." aria-label="Search for a place" autoComplete="off" />
+        <input value={query} onChange={(event) => { const value = event.target.value; setQuery(value); if (value.trim().length < 3) { setResults([]); setSearched(false); } }} placeholder="Search for a place..." aria-label="Search for a place" autoComplete="off" />
         {(searching || (searched && query.length >= 3)) && (
           <div className="search-results" role="listbox">
             {searching ? <p className="search-message"><Image src="/icon-loading.svg" alt="" width={20} height={20} /> Search in progress</p> : results.length ? results.map((result) => (
