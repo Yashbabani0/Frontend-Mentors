@@ -78,3 +78,41 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .error-state button { display: flex; align-items: center; gap: 7px; margin-top: 24px; border: 0; border-radius: 8px; background: var(--neutral-800); padding: 10px 14px; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; animation-duration: .01ms !important; } }
+
+@media (min-width: 760px) {
+  .app-shell { width: min(100%, 1218px); padding: 46px 24px 70px; }
+  .app-header > img { width: 197px; }
+  .units-button { padding: 12px 16px; font-size: 16px; }
+  .units-menu { width: 250px; }
+  .hero { padding-top: 64px; }
+  .hero h1 { max-width: none; margin-bottom: 54px; font-size: 52px; }
+  .search { grid-template-columns: minmax(300px, 526px) 114px; justify-content: center; gap: 14px; }
+  .search input, .search-button { height: 56px; }
+  .dashboard { display: grid; grid-template-columns: minmax(0, 800px) minmax(320px, 384px); gap: 32px; margin-top: 48px; }
+  .current-card { min-height: 286px; flex-direction: row; justify-content: space-between; padding: 24px; background-image: url('/bg-today-large.svg'); text-align: left; }
+  .current-card h2 { font-size: 28px; }
+  .current-temperature { height: auto; }
+  .current-temperature img { width: 115px; height: 115px; }
+  .current-temperature strong { font-size: 96px; }
+  .metrics { grid-template-columns: repeat(4, 1fr); gap: 23px; margin-top: 32px; }
+  .metric-card { min-height: 118px; padding: 18px; }
+  .metric-card h3 { font-size: 18px; }
+  .metric-card p { font-size: clamp(23px, 2vw, 30px); }
+  .daily { margin-top: 47px; }
+  .daily-grid { grid-template-columns: repeat(7, 1fr); gap: 15px; }
+  .day-card { min-height: 166px; padding: 13px 10px; }
+  .day-card h3 { font-size: 17px; }
+  .day-card p { font-size: 15px; }
+  .hourly { height: 694px; margin-top: 0; padding: 23px; overflow: hidden; }
+  .hourly h2 { font-size: 20px; }
+  .hourly select { max-width: 130px; }
+  .hour-list { max-height: 610px; gap: 15px; overflow-y: auto; padding-right: 1px; }
+  .hour-row { height: 60px; padding-inline: 15px; }
+  .error-state { min-height: 500px; }
+  .error-state h1 { font-size: 48px; }
+}
+
+@media (min-width: 1100px) {
+  .current-card { padding: 25px 24px; }
+  .current-card > div:first-child { padding-left: 0; }
+}
