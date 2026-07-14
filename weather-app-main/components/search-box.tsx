@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { locationLabel, searchLocations, type LocationResult } from "@/lib/weather";
 
 export function SearchBox({ onSelect }: { onSelect: (location: LocationResult) => void }) {
@@ -9,9 +9,11 @@ export function SearchBox({ onSelect }: { onSelect: (location: LocationResult) =
   const [results, setResults] = useState<LocationResult[]>([]);
   const [searching, setSearching] = useState(false);
   const [searched, setSearched] = useState(false);
+  const [selectedQuery, setSelectedQuery] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (query.trim().length < 3) return;
+    if (query.trim().length < 3 || query === selectedQuery) return;
     const controller = new AbortController();
     const timer = window.setTimeout(async () => {
       setSearching(true);
@@ -20,16 +22,35 @@ export function SearchBox({ onSelect }: { onSelect: (location: LocationResult) =
       finally { setSearching(false); }
     }, 350);
     return () => { window.clearTimeout(timer); controller.abort(); };
-  }, [query]);
+  }, [query, selectedQuery]);
 
-  const choose = (location: LocationResult) => { setQuery(locationLabel(location)); setResults([]); setSearched(false); onSelect(location); };
+  useEffect(() => {
+    const closeResults = (event: MouseEvent) => {
+      if (!formRef.current?.contains(event.target as Node)) {
+        setResults([]);
+        setSearched(false);
+      }
+    };
+    document.addEventListener("mousedown", closeResults);
+    return () => document.removeEventListener("mousedown", closeResults);
+  }, []);
+
+  const choose = (location: LocationResult) => {
+    const label = locationLabel(location);
+    setSelectedQuery(label);
+    setQuery(label);
+    setResults([]);
+    setSearched(false);
+    setSearching(false);
+    onSelect(location);
+  };
   const submit = (event: FormEvent) => { event.preventDefault(); if (results[0]) choose(results[0]); };
 
   return (
-    <form className="search" onSubmit={submit} role="search">
+    <form className="search" onSubmit={submit} role="search" ref={formRef}>
       <div className="search-field-wrap">
         <Image className="search-icon" src="/icon-search.svg" alt="" width={21} height={21} />
-        <input value={query} onChange={(event) => { const value = event.target.value; setQuery(value); if (value.trim().length < 3) { setResults([]); setSearched(false); } }} placeholder="Search for a place..." aria-label="Search for a place" autoComplete="off" />
+        <input value={query} onChange={(event) => { const value = event.target.value; setSelectedQuery(null); setQuery(value); if (value.trim().length < 3) { setResults([]); setSearched(false); } }} onKeyDown={(event) => { if (event.key === "Escape") { setResults([]); setSearched(false); } }} placeholder="Search for a place..." aria-label="Search for a place" autoComplete="off" />
         {(searching || (searched && query.length >= 3)) && (
           <div className="search-results" role="listbox">
             {searching ? <p className="search-message"><Image src="/icon-loading.svg" alt="" width={20} height={20} /> Search in progress</p> : results.length ? results.map((result) => (
