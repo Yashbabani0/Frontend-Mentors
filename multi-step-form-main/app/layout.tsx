@@ -28,6 +28,15 @@ const ubuntu = localFont({
 export const metadata: Metadata = {
   title: "Multi-step form",
   description: "Frontend Mentor multi-step form challenge",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

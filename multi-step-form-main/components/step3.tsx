@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { Check } from "lucide-react";
 import { motion, type Variants } from "motion/react";
@@ -139,8 +138,8 @@ export default function Step3({
                 whileTap={{ scale: 0.99 }}
                 className={`flex w-full cursor-pointer items-center gap-4 rounded-lg border p-4 text-left transition-colors ${
                   isSelected
-                    ? "border-purple-500 bg-slate-50"
-                    : "border-gray-300 bg-white hover:border-purple-500 hover:bg-slate-50"
+                    ? "border-purple-600 bg-slate-50"
+                    : "border-gray-300 bg-white hover:border-purple-600 hover:bg-slate-50"
                 }`}
               >
                 <input
@@ -154,7 +153,7 @@ export default function Step3({
                 <span
                   className={`flex size-5 shrink-0 items-center justify-center rounded border transition-colors ${
                     isSelected
-                      ? "border-purple-500 bg-purple-500"
+                      ? "border-purple-600 bg-purple-600"
                       : "border-gray-300 bg-white"
                   }`}
                 >
@@ -170,7 +169,7 @@ export default function Step3({
                   </span>
                 </span>
 
-                <span className="text-sm font-medium text-purple-500">
+                <span className="text-sm font-medium text-purple-600">
                   +${price}/{suffix}
                 </span>
               </motion.label>

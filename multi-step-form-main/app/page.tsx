@@ -1,13 +1,17 @@
 "use client";
 
+import React from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "motion/react";
+
 import Step1 from "@/components/step1";
 import Step2 from "@/components/step2";
 import Step3 from "@/components/step3";
-import Image from "next/image";
+import Step4 from "@/components/step4";
+import Step5 from "@/components/step5";
+
 import desktopSidebar from "@/public/bg-sidebar-desktop.svg";
 import mobileSidebar from "@/public/bg-sidebar-mobile.svg";
-import React from "react";
-import { AnimatePresence, motion, type Variants } from "motion/react";
 
 const STORAGE_KEY = "multi-step-form";
 
@@ -30,6 +34,7 @@ export type Step3FormData = {
 
 type SavedFormState = {
   activeStep: number;
+  isComplete: boolean;
   step1Data: Step1FormData;
   step2Data: Step2FormData;
   step3Data: Step3FormData;
@@ -50,28 +55,40 @@ const defaultStep3Data: Step3FormData = {
   selectedAddonIds: [1, 2],
 };
 
-const defaultSavedState: SavedFormState = {
-  activeStep: 1,
-  step1Data: defaultStep1Data,
-  step2Data: defaultStep2Data,
-  step3Data: defaultStep3Data,
-};
+function createDefaultSavedState(): SavedFormState {
+  return {
+    activeStep: 1,
+    isComplete: false,
+    step1Data: {
+      ...defaultStep1Data,
+    },
+    step2Data: {
+      ...defaultStep2Data,
+    },
+    step3Data: {
+      selectedAddonIds: [...defaultStep3Data.selectedAddonIds],
+    },
+  };
+}
 
 function getInitialFormState(): SavedFormState {
+  const defaultState = createDefaultSavedState();
+
   if (typeof window === "undefined") {
-    return defaultSavedState;
+    return defaultState;
   }
 
   const savedData = window.localStorage.getItem(STORAGE_KEY);
 
   if (!savedData) {
-    return defaultSavedState;
+    return defaultState;
   }
 
   try {
     const parsedData = JSON.parse(savedData) as Partial<SavedFormState>;
 
     const savedStep = parsedData.activeStep;
+    const savedPlanId = parsedData.step2Data?.selectedPlanId;
     const savedBillingCycle = parsedData.step2Data?.billingCycle;
     const savedAddonIds = parsedData.step3Data?.selectedAddonIds;
 
@@ -81,17 +98,31 @@ function getInitialFormState(): SavedFormState {
           ? savedStep
           : 1,
 
+      // Completed state is not restored from localStorage.
+      // After refresh, the form starts again from the saved step or Step 1.
+      isComplete: false,
+
       step1Data: {
-        name: parsedData.step1Data?.name || "",
-        email: parsedData.step1Data?.email || "",
-        phone: parsedData.step1Data?.phone || "",
+        name:
+          typeof parsedData.step1Data?.name === "string"
+            ? parsedData.step1Data.name
+            : "",
+        email:
+          typeof parsedData.step1Data?.email === "string"
+            ? parsedData.step1Data.email
+            : "",
+        phone:
+          typeof parsedData.step1Data?.phone === "string"
+            ? parsedData.step1Data.phone
+            : "",
       },
 
       step2Data: {
         selectedPlanId:
-          typeof parsedData.step2Data?.selectedPlanId === "number"
-            ? parsedData.step2Data.selectedPlanId
+          typeof savedPlanId === "number" && [1, 2, 3].includes(savedPlanId)
+            ? savedPlanId
             : 1,
+
         billingCycle:
           savedBillingCycle === "monthly" || savedBillingCycle === "yearly"
             ? savedBillingCycle
@@ -99,12 +130,17 @@ function getInitialFormState(): SavedFormState {
       },
 
       step3Data: {
-        selectedAddonIds: Array.isArray(savedAddonIds) ? savedAddonIds : [1, 2],
+        selectedAddonIds: Array.isArray(savedAddonIds)
+          ? savedAddonIds.filter(
+              (id): id is number =>
+                typeof id === "number" && [1, 2, 3].includes(id),
+            )
+          : [1, 2],
       },
     };
   } catch {
     window.localStorage.removeItem(STORAGE_KEY);
-    return defaultSavedState;
+    return defaultState;
   }
 }
 
@@ -129,36 +165,14 @@ const steps = [
     label: "Step 4",
     title: "Summary",
   },
-];
-
-const pageVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    x: 24,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.35,
-      ease: "easeOut",
-    },
-  },
-  exit: {
-    opacity: 0,
-    x: -24,
-    transition: {
-      duration: 0.2,
-      ease: "easeIn",
-    },
-  },
-};
+] as const;
 
 export default function Page() {
   const [savedState, setSavedState] =
     React.useState<SavedFormState>(getInitialFormState);
 
   const activeStep = savedState.activeStep;
+  const isComplete = savedState.isComplete;
   const step1Data = savedState.step1Data;
   const step2Data = savedState.step2Data;
   const step3Data = savedState.step3Data;
@@ -169,9 +183,14 @@ export default function Page() {
   }
 
   function goToStep(step: number) {
+    if (isComplete) {
+      return;
+    }
+
     saveState({
       ...savedState,
       activeStep: step,
+      isComplete: false,
     });
   }
 
@@ -179,6 +198,7 @@ export default function Page() {
     saveState({
       ...savedState,
       activeStep: 2,
+      isComplete: false,
       step1Data: nextStep1Data,
     });
   }
@@ -187,6 +207,7 @@ export default function Page() {
     saveState({
       ...savedState,
       activeStep: 3,
+      isComplete: false,
       step2Data: nextStep2Data,
     });
   }
@@ -195,7 +216,16 @@ export default function Page() {
     saveState({
       ...savedState,
       activeStep: 4,
+      isComplete: false,
       step3Data: nextStep3Data,
+    });
+  }
+
+  function handleChangePlan() {
+    saveState({
+      ...savedState,
+      activeStep: 2,
+      isComplete: false,
     });
   }
 
@@ -203,17 +233,48 @@ export default function Page() {
     saveState({
       ...savedState,
       activeStep: Math.max(activeStep - 1, 1),
+      isComplete: false,
     });
+  }
+
+  function handleConfirm() {
+    setSavedState({
+      ...savedState,
+      activeStep: 4,
+      isComplete: true,
+    });
+
+    // Remove all saved form data after successful confirmation.
+    window.localStorage.removeItem(STORAGE_KEY);
+  }
+
+  function handleRestart() {
+    const freshState = createDefaultSavedState();
+
+    setSavedState(freshState);
+    window.localStorage.removeItem(STORAGE_KEY);
   }
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-100">
       <motion.div
-        initial={{ opacity: 0, scale: 0.96, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
+        initial={{
+          opacity: 0,
+          scale: 0.96,
+          y: 20,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.45,
+          ease: "easeOut",
+        }}
         className="w-full max-w-4xl rounded-2xl bg-white p-4 md:flex md:min-h-150 md:gap-8"
       >
+        {/* Sidebar */}
         <div className="relative h-43 w-full overflow-hidden rounded-xl md:h-auto md:w-68.5 md:shrink-0">
           <Image
             src={mobileSidebar}
@@ -233,18 +294,20 @@ export default function Page() {
             className="hidden object-cover md:block"
           />
 
-          <div className="absolute left-1/2 top-8 flex -translate-x-1/2 gap-4 md:left-10 md:top-10 md:translate-x-0 md:flex-col md:gap-7">
+          <div className="absolute top-8 left-1/2 flex -translate-x-1/2 gap-4 md:top-10 md:left-10 md:translate-x-0 md:flex-col md:gap-7">
             {steps.map((item) => {
-              const isActive = activeStep === item.id;
+              const isActive =
+                activeStep === item.id || (isComplete && item.id === 4);
 
               return (
                 <motion.button
                   key={item.id}
                   type="button"
                   onClick={() => goToStep(item.id)}
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="flex items-center gap-4 text-left"
+                  disabled={isComplete}
+                  whileHover={isComplete ? undefined : { scale: 1.03 }}
+                  whileTap={isComplete ? undefined : { scale: 0.96 }}
+                  className="flex items-center gap-4 text-left disabled:cursor-default"
                 >
                   <motion.span
                     animate={{
@@ -265,12 +328,13 @@ export default function Page() {
                   </motion.span>
 
                   <span className="hidden md:block">
-                    <p className="text-[0.7em] font-medium uppercase text-grey-500">
+                    <span className="block text-[0.7em] font-medium text-grey-500 uppercase">
                       {item.label}
-                    </p>
-                    <b className="text-[0.9em] uppercase text-blue-200">
+                    </span>
+
+                    <span className="block text-[0.9em] font-bold text-blue-200 uppercase">
                       {item.title}
-                    </b>
+                    </span>
                   </span>
                 </motion.button>
               );
@@ -278,62 +342,51 @@ export default function Page() {
           </div>
         </div>
 
+        {/* Form content */}
         <div className="flex flex-1 flex-col px-2 py-8 md:px-12 md:py-10">
           <AnimatePresence mode="wait">
-            {activeStep === 1 && (
-              <Step1
-                key="step-1"
-                defaultValues={step1Data}
-                onSubmit={handleStep1Submit}
-              />
-            )}
+            {isComplete ? (
+              <Step5 key="step-5" onRestart={handleRestart} />
+            ) : (
+              <>
+                {activeStep === 1 && (
+                  <Step1
+                    key="step-1"
+                    defaultValues={step1Data}
+                    onSubmit={handleStep1Submit}
+                  />
+                )}
 
-            {activeStep === 2 && (
-              <Step2
-                key="step-2"
-                defaultValues={step2Data}
-                onBack={handleBack}
-                onSubmit={handleStep2Submit}
-              />
-            )}
+                {activeStep === 2 && (
+                  <Step2
+                    key="step-2"
+                    defaultValues={step2Data}
+                    onBack={handleBack}
+                    onSubmit={handleStep2Submit}
+                  />
+                )}
 
-            {activeStep === 3 && (
-              <Step3
-                key="step-3"
-                billingCycle={step2Data.billingCycle}
-                defaultValues={step3Data}
-                onBack={handleBack}
-                onSubmit={handleStep3Submit}
-              />
-            )}
+                {activeStep === 3 && (
+                  <Step3
+                    key="step-3"
+                    billingCycle={step2Data.billingCycle}
+                    defaultValues={step3Data}
+                    onBack={handleBack}
+                    onSubmit={handleStep3Submit}
+                  />
+                )}
 
-            {activeStep === 4 && (
-              <motion.div
-                key="step-4"
-                variants={pageVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="mx-auto flex h-full w-full max-w-xl flex-col"
-              >
-                <section>
-                  <h1 className="text-3xl font-bold text-blue-950">
-                    Finishing up
-                  </h1>
-                  <p className="mt-2 text-grey-500">
-                    Double-check everything looks OK before confirming.
-                  </p>
-
-                  <div className="mt-8 space-y-2 rounded-lg bg-slate-100 p-4 text-blue-950">
-                    <p>Name: {step1Data.name}</p>
-                    <p>Email: {step1Data.email}</p>
-                    <p>Phone: {step1Data.phone}</p>
-                    <p>Plan ID: {step2Data.selectedPlanId}</p>
-                    <p>Billing: {step2Data.billingCycle}</p>
-                    <p>Add-ons: {step3Data.selectedAddonIds.join(", ")}</p>
-                  </div>
-                </section>
-              </motion.div>
+                {activeStep === 4 && (
+                  <Step4
+                    key="step-4"
+                    step2Data={step2Data}
+                    step3Data={step3Data}
+                    onBack={handleBack}
+                    onChangePlan={handleChangePlan}
+                    onConfirm={handleConfirm}
+                  />
+                )}
+              </>
             )}
           </AnimatePresence>
         </div>
