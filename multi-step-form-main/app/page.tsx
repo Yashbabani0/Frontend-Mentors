@@ -30,6 +30,8 @@ export type Step3FormData = {
   selectedAddonIds: number[];
 };
 
+export type Step1Errors = Partial<Record<keyof Step1FormData, string>>;
+
 type SavedFormState = {
   activeStep: number;
   isComplete: boolean;
@@ -45,7 +47,7 @@ const defaultStep1Data: Step1FormData = {
 };
 
 const defaultStep2Data: Step2FormData = {
-  selectedPlanId: 1,
+  selectedPlanId: null,
   billingCycle: "monthly",
 };
 
@@ -69,6 +71,36 @@ function createDefaultSavedState(): SavedFormState {
   };
 }
 
+function getStep1Errors(data: Step1FormData): Step1Errors {
+  const errors: Step1Errors = {};
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneDigits = data.phone.replace(/\D/g, "");
+
+  if (!data.name.trim()) errors.name = "This field is required";
+  if (!data.email.trim()) errors.email = "This field is required";
+  else if (!emailPattern.test(data.email.trim())) {
+    errors.email = "Enter a valid email address";
+  }
+  if (!data.phone.trim()) errors.phone = "This field is required";
+  else if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+    errors.phone = "Enter a valid phone number";
+  }
+
+  return errors;
+}
+
+function hasValidPlan(data: Step2FormData) {
+  return data.selectedPlanId !== null && [1, 2, 3].includes(data.selectedPlanId);
+}
+
+function safelyRemoveSavedState() {
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Storage can be unavailable in private or restricted browsing contexts.
+  }
+}
+
 function getInitialFormState(): SavedFormState {
   const defaultState = createDefaultSavedState();
 
@@ -90,7 +122,7 @@ function getInitialFormState(): SavedFormState {
     const savedBillingCycle = parsedData.step2Data?.billingCycle;
     const savedAddonIds = parsedData.step3Data?.selectedAddonIds;
 
-    return {
+    const restoredState: SavedFormState = {
       activeStep:
         typeof savedStep === "number" && savedStep >= 1 && savedStep <= 4
           ? savedStep
@@ -119,7 +151,7 @@ function getInitialFormState(): SavedFormState {
         selectedPlanId:
           typeof savedPlanId === "number" && [1, 2, 3].includes(savedPlanId)
             ? savedPlanId
-            : 1,
+            : null,
 
         billingCycle:
           savedBillingCycle === "monthly" || savedBillingCycle === "yearly"
@@ -136,8 +168,17 @@ function getInitialFormState(): SavedFormState {
           : [1, 2],
       },
     };
+
+    // Never restore a later step when its prerequisite data is invalid.
+    if (Object.keys(getStep1Errors(restoredState.step1Data)).length > 0) {
+      restoredState.activeStep = 1;
+    } else if (restoredState.activeStep > 2 && !hasValidPlan(restoredState.step2Data)) {
+      restoredState.activeStep = 2;
+    }
+
+    return restoredState;
   } catch {
-    window.localStorage.removeItem(STORAGE_KEY);
+    safelyRemoveSavedState();
     return defaultState;
   }
 }
@@ -169,6 +210,8 @@ export default function Page() {
   const [savedState, setSavedState] = React.useState<SavedFormState>(
     createDefaultSavedState,
   );
+  const [step1Errors, setStep1Errors] = React.useState<Step1Errors>({});
+  const [step2Error, setStep2Error] = React.useState("");
 
   React.useEffect(() => {
     const restoreSavedState = window.setTimeout(() => {
@@ -184,67 +227,81 @@ export default function Page() {
   const step2Data = savedState.step2Data;
   const step3Data = savedState.step3Data;
 
-  function saveState(nextState: SavedFormState) {
-    setSavedState(nextState);
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
+  function saveState(update: (current: SavedFormState) => SavedFormState) {
+    setSavedState((current) => {
+      const nextState = update(current);
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
+      } catch {
+        // Keep the in-memory form usable if persistence is unavailable or full.
+      }
+      return nextState;
+    });
   }
 
-  function goToStep(step: number) {
-    if (isComplete) {
-      return;
+  function validateStep1(data: Step1FormData) {
+    const errors = getStep1Errors(data);
+    setStep1Errors(errors);
+    return Object.keys(errors).length === 0;
+  }
+
+  function validateStep2(data: Step2FormData) {
+    const error = hasValidPlan(data) ? "" : "Select a plan to continue";
+    setStep2Error(error);
+    return !error;
+  }
+
+  function navigateToStep(targetStep: number) {
+    if (isComplete || targetStep < 1 || targetStep > 4) return;
+
+    if (targetStep > activeStep) {
+      if (activeStep <= 1 && !validateStep1(step1Data)) {
+        if (activeStep !== 1) saveState((state) => ({ ...state, activeStep: 1 }));
+        return;
+      }
+      if (targetStep > 2 && !validateStep2(step2Data)) {
+        if (activeStep !== 2) saveState((state) => ({ ...state, activeStep: 2 }));
+        return;
+      }
     }
 
-    saveState({
-      ...savedState,
-      activeStep: step,
+    saveState((state) => ({
+      ...state,
+      activeStep: targetStep,
       isComplete: false,
-    });
+    }));
   }
 
-  function handleStep1Submit(nextStep1Data: Step1FormData) {
-    saveState({
-      ...savedState,
-      activeStep: 2,
-      isComplete: false,
-      step1Data: nextStep1Data,
+  function updateStep1Data(data: Step1FormData) {
+    setStep1Errors((errors) => {
+      const next = { ...errors };
+      for (const key of Object.keys(data) as (keyof Step1FormData)[]) {
+        if (data[key] !== step1Data[key]) delete next[key];
+      }
+      return next;
     });
+    saveState((state) => ({ ...state, step1Data: data }));
   }
 
-  function handleStep2Submit(nextStep2Data: Step2FormData) {
-    saveState({
-      ...savedState,
-      activeStep: 3,
-      isComplete: false,
-      step2Data: nextStep2Data,
-    });
+  function updateStep2Data(data: Step2FormData) {
+    if (data.selectedPlanId) setStep2Error("");
+    saveState((state) => ({ ...state, step2Data: data }));
   }
 
-  function handleStep3Submit(nextStep3Data: Step3FormData) {
-    saveState({
-      ...savedState,
-      activeStep: 4,
-      isComplete: false,
-      step3Data: nextStep3Data,
-    });
-  }
-
-  function handleChangePlan() {
-    saveState({
-      ...savedState,
-      activeStep: 2,
-      isComplete: false,
-    });
-  }
-
-  function handleBack() {
-    saveState({
-      ...savedState,
-      activeStep: Math.max(activeStep - 1, 1),
-      isComplete: false,
-    });
+  function updateStep3Data(data: Step3FormData) {
+    saveState((state) => ({ ...state, step3Data: data }));
   }
 
   function handleConfirm() {
+    if (!validateStep1(step1Data)) {
+      saveState((state) => ({ ...state, activeStep: 1 }));
+      return;
+    }
+    if (!validateStep2(step2Data)) {
+      saveState((state) => ({ ...state, activeStep: 2 }));
+      return;
+    }
+
     setSavedState({
       ...savedState,
       activeStep: 4,
@@ -252,14 +309,14 @@ export default function Page() {
     });
 
     // Remove all saved form data after successful confirmation.
-    window.localStorage.removeItem(STORAGE_KEY);
+    safelyRemoveSavedState();
   }
 
   function handleRestart() {
     const freshState = createDefaultSavedState();
 
     setSavedState(freshState);
-    window.localStorage.removeItem(STORAGE_KEY);
+    safelyRemoveSavedState();
   }
 
   return (
@@ -300,7 +357,7 @@ export default function Page() {
         className="relative min-h-screen w-full pb-24 md:flex md:min-h-150 md:max-w-4xl md:gap-8 md:rounded-2xl md:bg-white md:p-4 md:pb-4"
       >
         {/* Sidebar */}
-        <div className="absolute inset-x-0 top-0 h-43 w-full overflow-hidden md:relative md:inset-auto md:h-auto md:w-68.5 md:shrink-0 md:rounded-xl">
+        <div className="absolute inset-x-0 top-0 z-20 h-43 w-full overflow-hidden md:relative md:inset-auto md:h-auto md:w-68.5 md:shrink-0 md:rounded-xl">
           <Image
             src={desktopSidebar}
             alt=""
@@ -319,8 +376,9 @@ export default function Page() {
                 <motion.button
                   key={item.id}
                   type="button"
-                  onClick={() => goToStep(item.id)}
+                  onClick={() => navigateToStep(item.id)}
                   disabled={isComplete}
+                  aria-current={isActive ? "step" : undefined}
                   whileHover={isComplete ? undefined : { scale: 1.03 }}
                   whileTap={isComplete ? undefined : { scale: 0.96 }}
                   className="flex items-center gap-4 text-left disabled:cursor-default"
@@ -369,7 +427,9 @@ export default function Page() {
                   <Step1
                     key="step-1"
                     defaultValues={step1Data}
-                    onSubmit={handleStep1Submit}
+                    errors={step1Errors}
+                    onChange={updateStep1Data}
+                    onSubmit={() => navigateToStep(2)}
                   />
                 )}
 
@@ -377,8 +437,10 @@ export default function Page() {
                   <Step2
                     key="step-2"
                     defaultValues={step2Data}
-                    onBack={handleBack}
-                    onSubmit={handleStep2Submit}
+                    error={step2Error}
+                    onChange={updateStep2Data}
+                    onBack={() => navigateToStep(1)}
+                    onSubmit={() => navigateToStep(3)}
                   />
                 )}
 
@@ -387,8 +449,9 @@ export default function Page() {
                     key="step-3"
                     billingCycle={step2Data.billingCycle}
                     defaultValues={step3Data}
-                    onBack={handleBack}
-                    onSubmit={handleStep3Submit}
+                    onChange={updateStep3Data}
+                    onBack={() => navigateToStep(2)}
+                    onSubmit={() => navigateToStep(4)}
                   />
                 )}
 
@@ -397,8 +460,8 @@ export default function Page() {
                     key="step-4"
                     step2Data={step2Data}
                     step3Data={step3Data}
-                    onBack={handleBack}
-                    onChangePlan={handleChangePlan}
+                    onBack={() => navigateToStep(3)}
+                    onChangePlan={() => navigateToStep(2)}
                     onConfirm={handleConfirm}
                   />
                 )}

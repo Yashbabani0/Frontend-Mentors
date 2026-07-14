@@ -17,8 +17,10 @@ type Step2FormData = {
 
 type Step2Props = {
   defaultValues: Step2FormData;
+  error: string;
+  onChange: (data: Step2FormData) => void;
   onBack: () => void;
-  onSubmit: (data: Step2FormData) => void;
+  onSubmit: () => void;
 };
 
 const plans = [
@@ -80,32 +82,36 @@ const stepVariants: Variants = {
   },
 };
 
-export default function Step2({ defaultValues, onBack, onSubmit }: Step2Props) {
-  const [selectedPlanId, setSelectedPlanId] = React.useState<number | null>(
-    () => defaultValues.selectedPlanId,
-  );
-
-  const [billingCycle, setBillingCycle] = React.useState<BillingCycle>(
-    () => defaultValues.billingCycle,
-  );
+export default function Step2({ defaultValues, error, onChange, onBack, onSubmit }: Step2Props) {
+  const selectedPlanId = defaultValues.selectedPlanId;
+  const billingCycle = defaultValues.billingCycle;
 
   const isYearly = billingCycle === "yearly";
 
+  React.useEffect(() => {
+    if (error) {
+      document.querySelector<HTMLButtonElement>("#plan-options [role='radio']")?.focus();
+    }
+  }, [error]);
+
+  function handlePlanKeyDown(event: React.KeyboardEvent<HTMLElement>) {
+    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+    event.preventDefault();
+    const currentIndex = plans.findIndex((plan) => plan.id === selectedPlanId);
+    const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : -1;
+    const nextIndex = (Math.max(currentIndex, 0) + direction + plans.length) % plans.length;
+    onChange({ ...defaultValues, selectedPlanId: plans[nextIndex].id });
+    document.querySelectorAll<HTMLButtonElement>("#plan-options [role='radio']")[nextIndex]?.focus();
+  }
+
   function handleBillingChange(checked: boolean) {
-    setBillingCycle(checked ? "yearly" : "monthly");
+    onChange({ ...defaultValues, billingCycle: checked ? "yearly" : "monthly" });
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!selectedPlanId) {
-      return;
-    }
-
-    onSubmit({
-      selectedPlanId,
-      billingCycle,
-    });
+    onSubmit();
   }
 
   return (
@@ -132,16 +138,24 @@ export default function Step2({ defaultValues, onBack, onSubmit }: Step2Props) {
         <div className="space-y-6 md:space-y-8">
           <motion.section
             variants={itemVariants}
+            id="plan-options"
+            role="radiogroup"
+            aria-label="Subscription plan"
+            aria-describedby={error ? "plan-error" : undefined}
+            onKeyDown={handlePlanKeyDown}
             className="grid grid-cols-1 gap-4 md:grid-cols-3"
           >
-            {plans.map((plan) => {
+            {plans.map((plan, index) => {
               const isSelected = selectedPlanId === plan.id;
 
               return (
                 <motion.button
                   key={plan.id}
                   type="button"
-                  onClick={() => setSelectedPlanId(plan.id)}
+                  role="radio"
+                  aria-checked={isSelected}
+                  tabIndex={isSelected || (selectedPlanId === null && index === 0) ? 0 : -1}
+                  onClick={() => onChange({ ...defaultValues, selectedPlanId: plan.id })}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.98 }}
                   className={`flex min-h-19 flex-row items-center gap-4 rounded-lg border p-4 text-left transition-colors md:min-h-35 md:flex-col md:items-start md:justify-between ${
@@ -179,6 +193,8 @@ export default function Step2({ defaultValues, onBack, onSubmit }: Step2Props) {
               );
             })}
           </motion.section>
+
+          {error && <p id="plan-error" role="alert" className="text-sm font-bold text-red-500">{error}</p>}
 
           <motion.section
             variants={itemVariants}

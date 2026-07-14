@@ -13,8 +13,9 @@ type Step3FormData = {
 type Step3Props = {
   billingCycle: BillingCycle;
   defaultValues: Step3FormData;
+  onChange: (data: Step3FormData) => void;
   onBack: () => void;
-  onSubmit: (data: Step3FormData) => void;
+  onSubmit: () => void;
 };
 
 const addons = [
@@ -79,29 +80,24 @@ const stepVariants: Variants = {
 export default function Step3({
   billingCycle,
   defaultValues,
+  onChange,
   onBack,
   onSubmit,
 }: Step3Props) {
-  const [selectedAddonIds, setSelectedAddonIds] = React.useState<number[]>(
-    () => defaultValues.selectedAddonIds,
-  );
+  const selectedAddonIds = defaultValues.selectedAddonIds;
 
   const isYearly = billingCycle === "yearly";
 
   function toggleAddon(addonId: number) {
-    setSelectedAddonIds((prev) =>
-      prev.includes(addonId)
-        ? prev.filter((id) => id !== addonId)
-        : [...prev, addonId],
-    );
+    onChange({ selectedAddonIds: selectedAddonIds.includes(addonId)
+      ? selectedAddonIds.filter((id) => id !== addonId)
+      : [...selectedAddonIds, addonId] });
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    onSubmit({
-      selectedAddonIds,
-    });
+    onSubmit();
   }
 
   return (

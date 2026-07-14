@@ -4,16 +4,13 @@ import { motion, type Variants } from "motion/react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
-
-type Step1FormData = {
-  name: string;
-  email: string;
-  phone: string;
-};
+import type { Step1Errors, Step1FormData } from "@/app/page";
 
 type Step1Props = {
   defaultValues: Step1FormData;
-  onSubmit: (data: Step1FormData) => void;
+  errors: Step1Errors;
+  onChange: (data: Step1FormData) => void;
+  onSubmit: () => void;
 };
 
 const itemVariants: Variants = {
@@ -51,25 +48,27 @@ const stepVariants: Variants = {
   },
 };
 
-export default function Step1({ defaultValues, onSubmit }: Step1Props) {
-  const [formData, setFormData] = React.useState<Step1FormData>(() => ({
-    name: defaultValues.name,
-    email: defaultValues.email,
-    phone: defaultValues.phone,
-  }));
+export default function Step1({ defaultValues, errors, onChange, onSubmit }: Step1Props) {
+  React.useEffect(() => {
+    const firstInvalidField = (["name", "email", "phone"] as const).find(
+      (field) => errors[field],
+    );
+    if (firstInvalidField) {
+      document.getElementById(firstInvalidField)?.focus();
+    }
+  }, [errors]);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
-
-    setFormData((prev) => ({
-      ...prev,
+    onChange({
+      ...defaultValues,
       [name]: value,
-    }));
+    });
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onSubmit(formData);
+    onSubmit();
   }
 
   return (
@@ -91,6 +90,7 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
 
       <form
         onSubmit={handleSubmit}
+        noValidate
         className="mt-6 flex h-full flex-col justify-between md:mt-10"
       >
         <div className="flex flex-col gap-4 md:gap-6">
@@ -98,16 +98,16 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
             variants={itemVariants}
             className="flex w-full flex-col gap-2"
           >
-            <Label htmlFor="name" className="font-light text-blue-950">
-              Name
-            </Label>
+            <div className="flex justify-between gap-3"><Label htmlFor="name" className="font-light text-blue-950">Name</Label>{errors.name && <span id="name-error" role="alert" className="text-sm font-bold text-red-500">{errors.name}</span>}</div>
             <Input
               type="text"
               id="name"
               name="name"
-              value={formData.name}
+              value={defaultValues.name}
               onChange={handleChange}
-              className="w-full rounded-sm border border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2"
+              aria-invalid={Boolean(errors.name)}
+              aria-describedby={errors.name ? "name-error" : undefined}
+              className={`w-full rounded-sm border bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2 ${errors.name ? "border-red-500" : "border-purple-200"}`}
               placeholder="e.g. Stephen King"
               required
             />
@@ -117,16 +117,16 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
             variants={itemVariants}
             className="flex w-full flex-col gap-2"
           >
-            <Label htmlFor="email" className="font-light text-blue-950">
-              Email Address
-            </Label>
+            <div className="flex justify-between gap-3"><Label htmlFor="email" className="font-light text-blue-950">Email Address</Label>{errors.email && <span id="email-error" role="alert" className="text-sm font-bold text-red-500">{errors.email}</span>}</div>
             <Input
               type="email"
               id="email"
               name="email"
-              value={formData.email}
+              value={defaultValues.email}
               onChange={handleChange}
-              className="w-full rounded-sm border border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2"
+              aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? "email-error" : undefined}
+              className={`w-full rounded-sm border bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2 ${errors.email ? "border-red-500" : "border-purple-200"}`}
               placeholder="e.g. stephenking@lorem.com"
               required
             />
@@ -136,16 +136,16 @@ export default function Step1({ defaultValues, onSubmit }: Step1Props) {
             variants={itemVariants}
             className="flex w-full flex-col gap-2"
           >
-            <Label htmlFor="phone" className="font-light text-blue-950">
-              Phone Number
-            </Label>
+            <div className="flex justify-between gap-3"><Label htmlFor="phone" className="font-light text-blue-950">Phone Number</Label>{errors.phone && <span id="phone-error" role="alert" className="text-sm font-bold text-red-500">{errors.phone}</span>}</div>
             <Input
               type="tel"
               id="phone"
               name="phone"
-              value={formData.phone}
+              value={defaultValues.phone}
               onChange={handleChange}
-              className="w-full rounded-sm border border-purple-200 bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2"
+              aria-invalid={Boolean(errors.phone)}
+              aria-describedby={errors.phone ? "phone-error" : undefined}
+              className={`w-full rounded-sm border bg-transparent py-5 font-semibold placeholder:font-semibold placeholder:text-grey-500 md:rounded-lg md:border-2 ${errors.phone ? "border-red-500" : "border-purple-200"}`}
               placeholder="e.g. +1 234 567 890"
               minLength={10}
               maxLength={15}
