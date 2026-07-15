@@ -36,7 +36,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .units-menu button:hover { background: var(--neutral-700); }
 .hero { padding-top: 46px; text-align: center; }
 .hero h1 { max-width: 340px; margin: 0 auto 44px; font-family: var(--font-bricolage), sans-serif; font-size: clamp(42px, 13vw, 52px); line-height: 1.08; letter-spacing: -.02em; animation: rise-in 600ms 160ms cubic-bezier(.2,.8,.2,1) both; }
-.search { display: grid; gap: 12px; animation: rise-in 600ms 240ms cubic-bezier(.2,.8,.2,1) both; }
+.search { display: grid; position: relative; z-index: 10; gap: 12px; animation: rise-in 600ms 240ms cubic-bezier(.2,.8,.2,1) both; }
 .search-field-wrap { position: relative; }
 .search input { width: 100%; height: 56px; border: 1px solid transparent; border-radius: 12px; background: var(--neutral-800); padding: 0 18px 0 52px; }
 .search input:hover { background: var(--neutral-700); }
