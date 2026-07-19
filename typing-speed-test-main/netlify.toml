@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://typing-speed-test-frontendmentor.netlify.app/*"
+  to = "https://typing.yashbabani.com/:splat"
+  status = 301
+  force = true
